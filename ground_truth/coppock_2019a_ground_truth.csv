@@ -1,53 +1,53 @@
-paper_id,table_figure,claim,value_script,value_paper,match,notes,value_rewrite,match_rewrite
-coppock_2019a,text,cor_mt_original_all,0.8512379,0.85,1,Pearson r between MT and original estimates (40 pairs df=38),0.851,1
-coppock_2019a,text,cor_mt_original_gfk_subset,0.9016972,0.90,1,MT-original correlation for GfK subset (10 pairs df=8),0.902,1
-coppock_2019a,text,cor_mt_gfk,0.958225,0.96,1,MT-GfK correlation for GfK subset (10 pairs df=8),0.958,1
-coppock_2019a,text,cor_gfk_original,0.8517253,0.85,1,GfK-original correlation for GfK subset (10 pairs df=8),0.852,1
-coppock_2019a,text,n_orig_sig,25,25,1,Original coeficients significant at p<=0.05,25,1
-coppock_2019a,text,n_orig_sig_replicated_in_mt,18,18,1,Of 25 orig-sig coefs also sig in MTurk,18,1
-coppock_2019a,text,n_orig_nonsig,15,15,1,Original coeficients not significant,15,1
-coppock_2019a,text,n_orig_nonsig_also_nonsig_mt,11,11,1,Of 15 orig-nonsig coefs also nonsig in MTurk,11,1
-coppock_2019a,text,overall_replication_rate,0.725,0.725,1,(18+11)/(25+15) = 72.5 percent,0.725,1
-coppock_2019a,table_2,ri_original_n_comparisons,40,40,1,RI tests original studies,40,1
-coppock_2019a,table_2,ri_original_n_sig,1,1,1,"Published Table 2 reports 1 and the body text agrees. A 2026 re-run gives 1. The deposited output file gives 2, and restoring the pre-R-3.6.0 rounding sampler reproduces that 2 exactly, so this cell is sampler-dependent.",1,1
-coppock_2019a,table_2,ri_original_n_sig_holm,0,0,1,RI original significant Holm-corrected,0,1
-coppock_2019a,table_2,ri_mt_n_comparisons,40,40,1,RI tests MTurk replications,40,1
-coppock_2019a,table_2,ri_mt_n_sig,8,9,0,"Published Table 2 reports 9; the body text on p. 11 says 8. The deposited output file gives 9, and the rounding sampler reproduces it exactly; the current rejection sampler gives 8. The paper contradicts itself and the table value is not reproducible on current R.",8,0
-coppock_2019a,table_2,ri_mt_n_sig_holm,8,8,1,RI MTurk significant Holm-corrected,8,1
-coppock_2019a,table_2,ri_gfk_n_comparisons,10,10,1,RI tests GfK replications,10,1
-coppock_2019a,table_2,ri_gfk_n_sig,1,2,0,"Published Table 2 reports 2; the body text on p. 11 says 0. The deposited output file gives 1, and both samplers give 1 in 2026. Neither number in the paper is produced by the archive.",1,0
-coppock_2019a,table_2,ri_gfk_n_sig_holm,0,0,1,RI GfK significant Holm-corrected (0 noted in text),0,1
-coppock_2019a,table_a1,concealed_carry_original_est,0.33,0.33,1,Concealed carry original est (citizens rights frame),0.33,1
-coppock_2019a,table_a1,concealed_carry_original_se,0.08,0.08,1,Concealed carry original SE,0.08,1
-coppock_2019a,table_a1,concealed_carry_mt_est,0.21,0.21,1,Concealed carry MTurk est,0.21,1
-coppock_2019a,table_a1,concealed_carry_mt_se,0.05,0.05,1,Concealed carry MTurk SE,0.05,1
-coppock_2019a,table_a1,immigration_neg_impact_original_est,-0.28,-0.28,1,Immigration negative impact original est (positive frame),-0.28,1
-coppock_2019a,table_a1,immigration_neg_impact_original_se,0.13,0.13,1,Immigration negative impact original SE,0.13,1
-coppock_2019a,table_a1,immigration_neg_impact_mt_est,-0.22,-0.22,1,Immigration negative impact MTurk est,-0.22,1
-coppock_2019a,table_a1,immigration_neg_impact_mt_se,0.04,0.04,1,Immigration negative impact MTurk SE,0.04,1
-coppock_2019a,table_a1,immigration_support_original_est,0.39,0.39,1,Immigration support original est,0.39,1
-coppock_2019a,table_a1,immigration_support_original_se,0.14,0.14,1,Immigration support original SE,0.14,1
-coppock_2019a,table_a1,immigration_support_mt_est,0.26,0.26,1,Immigration support MTurk est,0.26,1
-coppock_2019a,table_a1,immigration_support_mt_se,0.05,0.05,1,Immigration support MTurk SE,0.05,1
-coppock_2019a,table_a1,death_penalty_original_est,0.42,0.42,1,Death penalty original est,0.42,1
-coppock_2019a,table_a1,death_penalty_original_se,0.09,0.09,1,Death penalty original SE,0.09,1
-coppock_2019a,table_a1,death_penalty_mt_est,0.10,0.10,1,Death penalty MTurk est,0.10,1
-coppock_2019a,table_a1,death_penalty_mt_se,0.05,0.05,1,Death penalty MTurk SE,0.05,1
-coppock_2019a,table_a1,free_trade_expert_original_est,0.25,0.25,1,Free trade expert original est,0.25,1
-coppock_2019a,table_a1,free_trade_expert_original_se,0.06,0.06,1,Free trade expert original SE,0.06,1
-coppock_2019a,table_a1,free_trade_expert_mt_est,0.28,0.28,1,Free trade MTurk est,0.28,1
-coppock_2019a,table_a1,free_trade_expert_mt_se,0.03,0.03,1,Free trade expert MTurk SE,0.03,1
-coppock_2019a,table_a1,free_trade_expert_gfk_est,0.17,0.17,1,Free trade expert GfK est,0.17,1
-coppock_2019a,table_a1,free_trade_expert_gfk_se,0.05,0.05,1,Free trade expert GfK SE,0.05,1
-coppock_2019a,table_a1,polarization_extremity_original_est,0.02,0.02,1,Polarization extremity original est,0.02,1
-coppock_2019a,table_a1,polarization_extremity_original_se,0.08,0.08,1,Polarization extremity original SE,0.08,1
-coppock_2019a,table_a1,polarization_extremity_mt_est,-0.05,-0.05,1,Polarization extremity MTurk est,-0.05,1
-coppock_2019a,table_a1,polarization_extremity_mt_se,0.04,0.04,1,Polarization extremity MTurk SE,0.04,1
-coppock_2019a,table_a1,polarization_extremity_gfk_est,0.05,0.05,1,Polarization extremity GfK est,0.05,1
-coppock_2019a,table_a1,polarization_extremity_gfk_se,0.06,0.06,1,Polarization extremity GfK SE,0.06,1
-coppock_2019a,table_a1,polarization_perceived_original_est,0.16,0.16,1,Polarization perceived original est,0.16,1
-coppock_2019a,table_a1,polarization_perceived_original_se,0.08,0.08,1,Polarization perceived original SE,0.08,1
-coppock_2019a,table_a1,polarization_perceived_mt_est,0.36,0.36,1,Polarization perceived MTurk est,0.36,1
-coppock_2019a,table_a1,polarization_perceived_mt_se,0.05,0.05,1,Polarization perceived MTurk SE,0.05,1
-coppock_2019a,table_a1,polarization_perceived_gfk_est,0.47,0.47,1,Polarization perceived GfK est,0.47,1
-coppock_2019a,table_a1,polarization_perceived_gfk_se,0.08,0.08,1,Polarization perceived GfK SE,0.08,1
+paper_id,table_figure,claim,value_script,value_paper,match,notes,value_rewrite,match_rewrite,defect_locus
+coppock_2019a,text,cor_mt_original_all,0.8512379,0.85,1,Pearson r between MT and original estimates (40 pairs df=38),0.851,1,
+coppock_2019a,text,cor_mt_original_gfk_subset,0.9016972,0.90,1,MT-original correlation for GfK subset (10 pairs df=8),0.902,1,
+coppock_2019a,text,cor_mt_gfk,0.958225,0.96,1,MT-GfK correlation for GfK subset (10 pairs df=8),0.958,1,
+coppock_2019a,text,cor_gfk_original,0.8517253,0.85,1,GfK-original correlation for GfK subset (10 pairs df=8),0.852,1,
+coppock_2019a,text,n_orig_sig,25,25,1,Original coeficients significant at p<=0.05,25,1,
+coppock_2019a,text,n_orig_sig_replicated_in_mt,18,18,1,Of 25 orig-sig coefs also sig in MTurk,18,1,
+coppock_2019a,text,n_orig_nonsig,15,15,1,Original coeficients not significant,15,1,
+coppock_2019a,text,n_orig_nonsig_also_nonsig_mt,11,11,1,Of 15 orig-nonsig coefs also nonsig in MTurk,11,1,
+coppock_2019a,text,overall_replication_rate,0.725,0.725,1,(18+11)/(25+15) = 72.5 percent,0.725,1,
+coppock_2019a,table_2,ri_original_n_comparisons,40,40,1,RI tests original studies,40,1,
+coppock_2019a,table_2,ri_original_n_sig,1,1,1,"Published Table 2 reports 1 and the body text agrees. A 2026 re-run gives 1. The deposited output file gives 2, and restoring the pre-R-3.6.0 rounding sampler reproduces that 2 exactly, so this cell is sampler-dependent.",1,1,
+coppock_2019a,table_2,ri_original_n_sig_holm,0,0,1,RI original significant Holm-corrected,0,1,
+coppock_2019a,table_2,ri_mt_n_comparisons,40,40,1,RI tests MTurk replications,40,1,
+coppock_2019a,table_2,ri_mt_n_sig,8,9,0,"Published Table 2 reports 9; the body text on p. 11 says 8. The deposited output file gives 9, and the rounding sampler reproduces it exactly; the current rejection sampler gives 8. The paper contradicts itself and the table value is not reproducible on current R.",8,0,environment
+coppock_2019a,table_2,ri_mt_n_sig_holm,8,8,1,RI MTurk significant Holm-corrected,8,1,
+coppock_2019a,table_2,ri_gfk_n_comparisons,10,10,1,RI tests GfK replications,10,1,
+coppock_2019a,table_2,ri_gfk_n_sig,1,2,0,"Published Table 2 reports 2; the body text on p. 11 says 0. The deposited output file gives 1, and both samplers give 1 in 2026. Neither number in the paper is produced by the archive.",1,0,paper_internal
+coppock_2019a,table_2,ri_gfk_n_sig_holm,0,0,1,RI GfK significant Holm-corrected (0 noted in text),0,1,
+coppock_2019a,table_a1,concealed_carry_original_est,0.33,0.33,1,Concealed carry original est (citizens rights frame),0.33,1,
+coppock_2019a,table_a1,concealed_carry_original_se,0.08,0.08,1,Concealed carry original SE,0.08,1,
+coppock_2019a,table_a1,concealed_carry_mt_est,0.21,0.21,1,Concealed carry MTurk est,0.21,1,
+coppock_2019a,table_a1,concealed_carry_mt_se,0.05,0.05,1,Concealed carry MTurk SE,0.05,1,
+coppock_2019a,table_a1,immigration_neg_impact_original_est,-0.28,-0.28,1,Immigration negative impact original est (positive frame),-0.28,1,
+coppock_2019a,table_a1,immigration_neg_impact_original_se,0.13,0.13,1,Immigration negative impact original SE,0.13,1,
+coppock_2019a,table_a1,immigration_neg_impact_mt_est,-0.22,-0.22,1,Immigration negative impact MTurk est,-0.22,1,
+coppock_2019a,table_a1,immigration_neg_impact_mt_se,0.04,0.04,1,Immigration negative impact MTurk SE,0.04,1,
+coppock_2019a,table_a1,immigration_support_original_est,0.39,0.39,1,Immigration support original est,0.39,1,
+coppock_2019a,table_a1,immigration_support_original_se,0.14,0.14,1,Immigration support original SE,0.14,1,
+coppock_2019a,table_a1,immigration_support_mt_est,0.26,0.26,1,Immigration support MTurk est,0.26,1,
+coppock_2019a,table_a1,immigration_support_mt_se,0.05,0.05,1,Immigration support MTurk SE,0.05,1,
+coppock_2019a,table_a1,death_penalty_original_est,0.42,0.42,1,Death penalty original est,0.42,1,
+coppock_2019a,table_a1,death_penalty_original_se,0.09,0.09,1,Death penalty original SE,0.09,1,
+coppock_2019a,table_a1,death_penalty_mt_est,0.10,0.10,1,Death penalty MTurk est,0.10,1,
+coppock_2019a,table_a1,death_penalty_mt_se,0.05,0.05,1,Death penalty MTurk SE,0.05,1,
+coppock_2019a,table_a1,free_trade_expert_original_est,0.25,0.25,1,Free trade expert original est,0.25,1,
+coppock_2019a,table_a1,free_trade_expert_original_se,0.06,0.06,1,Free trade expert original SE,0.06,1,
+coppock_2019a,table_a1,free_trade_expert_mt_est,0.28,0.28,1,Free trade MTurk est,0.28,1,
+coppock_2019a,table_a1,free_trade_expert_mt_se,0.03,0.03,1,Free trade expert MTurk SE,0.03,1,
+coppock_2019a,table_a1,free_trade_expert_gfk_est,0.17,0.17,1,Free trade expert GfK est,0.17,1,
+coppock_2019a,table_a1,free_trade_expert_gfk_se,0.05,0.05,1,Free trade expert GfK SE,0.05,1,
+coppock_2019a,table_a1,polarization_extremity_original_est,0.02,0.02,1,Polarization extremity original est,0.02,1,
+coppock_2019a,table_a1,polarization_extremity_original_se,0.08,0.08,1,Polarization extremity original SE,0.08,1,
+coppock_2019a,table_a1,polarization_extremity_mt_est,-0.05,-0.05,1,Polarization extremity MTurk est,-0.05,1,
+coppock_2019a,table_a1,polarization_extremity_mt_se,0.04,0.04,1,Polarization extremity MTurk SE,0.04,1,
+coppock_2019a,table_a1,polarization_extremity_gfk_est,0.05,0.05,1,Polarization extremity GfK est,0.05,1,
+coppock_2019a,table_a1,polarization_extremity_gfk_se,0.06,0.06,1,Polarization extremity GfK SE,0.06,1,
+coppock_2019a,table_a1,polarization_perceived_original_est,0.16,0.16,1,Polarization perceived original est,0.16,1,
+coppock_2019a,table_a1,polarization_perceived_original_se,0.08,0.08,1,Polarization perceived original SE,0.08,1,
+coppock_2019a,table_a1,polarization_perceived_mt_est,0.36,0.36,1,Polarization perceived MTurk est,0.36,1,
+coppock_2019a,table_a1,polarization_perceived_mt_se,0.05,0.05,1,Polarization perceived MTurk SE,0.05,1,
+coppock_2019a,table_a1,polarization_perceived_gfk_est,0.47,0.47,1,Polarization perceived GfK est,0.47,1,
+coppock_2019a,table_a1,polarization_perceived_gfk_se,0.08,0.08,1,Polarization perceived GfK SE,0.08,1,
