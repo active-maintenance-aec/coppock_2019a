@@ -32,6 +32,8 @@ latex_out <- knitr::is_latex_output()
 latex_only <- function(k, f) if (latex_out) f(k) else k
 ```
 
+*Drafted by Claude Opus 5 under the supervision of Alex Coppock.*
+
 This repository holds the actively maintained replication code for Coppock (2019), together with the reproducibility report that documents what the original archive did and did not do. It is part of a program applying the maintenance proposal in Peer, Orr and Coppock (2021, *PS: Political Science & Politics*, doi [10.1017/S1049096521000366](https://doi.org/10.1017/S1049096521000366)) to a set of published archives.
 
 | | |
@@ -339,7 +341,7 @@ The rewrite also does not re-run the power simulation behind Figure 4. Neither d
 
 ## Determinism
 
-`table_2_ri_heterogeneity.R` sets the archive's seed once and recomputes all 90 tests on every run rather than reading back a cached result. Two independent runs, five months apart on different R versions, agree in every one of the 90 p-values to the last bit. The 90 tests take a minute, not the half hour the March notes estimated without checking. The script deliberately does not skip its work when `output/ri_results.rds` already exists: a script that does that cannot be checked by diffing its own output, which is what this repository asks a reader to do.
+`table_2_ri_heterogeneity.R` sets the archive's seed once and recomputes all 90 tests on every run rather than reading back a cached result. Two independent runs, five months apart on different R versions, agree in every one of the 90 p-values to the last bit. The 90 tests take a minute. The script deliberately does not skip its work when `output/ri_results.rds` already exists: a script that does that cannot be checked by diffing its own output, which is what this repository asks a reader to do.
 
 ---
 

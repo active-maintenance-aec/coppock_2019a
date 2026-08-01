@@ -22,6 +22,8 @@
 - [Maintained rewrite verification](#maintained-rewrite-verification)
 - [R environment](#r-environment)
 
+*Drafted by Claude Opus 5 under the supervision of Alex Coppock.*
+
 This repository holds the actively maintained replication code for
 Coppock (2019), together with the reproducibility report that documents
 what the original archive did and did not do. It is part of a program
@@ -399,8 +401,7 @@ instead. The figure is reproduced from that object.
 all 90 tests on every run rather than reading back a cached result. Two
 independent runs, five months apart on different R versions, agree in
 every one of the 90 p-values to the last bit. The 90 tests take a
-minute, not the half hour the March notes estimated without checking.
-The script deliberately does not skip its work when
+minute. The script deliberately does not skip its work when
 `output/ri_results.rds` already exists: a script that does that cannot
 be checked by diffing its own output, which is what this repository asks
 a reader to do.
