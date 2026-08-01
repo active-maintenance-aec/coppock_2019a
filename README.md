@@ -233,11 +233,14 @@ does not depend on it. The retired `commarobust(fit)` was exactly
 lmtest::coeftest(fit, sandwich::vcovHC(fit, type = "HC2"))
 ```
 
-and that call is inlined in `maintained/helpers.R`. HC2 is the Neyman
-variance the paper reports. Reproduction is exact to floating point:
-across the 90 estimates the largest disagreement with the values the
-rewrite produced when `commarobust` still installed is 5e-14 in the
-point estimates and 1e-14 in the standard errors.
+which is what `estimatr::lm_robust()` computes by default: HC2 is both
+its default variance estimator and the Neyman variance the paper
+reports. Every model in `maintained/analysis_ate_estimates.R` is
+therefore fitted with `lm_robust()` directly, and no helper stands
+between the call site and the estimator. Reproduction is exact to
+floating point: across all 90 estimates the largest disagreement with
+the values the archive’s own package produced is 1.4e-12 in the point
+estimates and 8.0e-14 in the standard errors.
 
 ------------------------------------------------------------------------
 
@@ -364,7 +367,7 @@ Maintained rewrite script inventory.
 | `rm(list = ls())` | (omitted) |
 | `setwd(\"\")` | `here::here()` |
 | `load(\"...rdata\")` against a `.RData` file | the deposited filename, exact case |
-| `commarobust::commarobust_tidy()` | `lmtest::coeftest(fit, sandwich::vcovHC(fit, type = "HC2"))` |
+| `commarobust::commarobust_tidy()` | `estimatr::lm_robust()`, whose default is HC2 |
 | `do(...$summary_df)` | `reframe(...)` with `pick(everything())` |
 | `spread()` / `gather()` | `pivot_wider()` / `pivot_longer()` |
 | `geom_errorbarh()` | `geom_linerange()` |
