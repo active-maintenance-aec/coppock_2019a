@@ -1,0 +1,10 @@
+claim,value_script
+cor_mt_original_all,0.8512379191513727
+cor_mt_original_gfk_subset,0.9016972174899176
+cor_mt_gfk,0.9582250489553333
+cor_gfk_original,0.8517252588643589
+n_orig_sig,25
+n_orig_nonsig,15
+n_orig_sig_replicated_in_mt,18
+n_orig_nonsig_also_nonsig_mt,11
+overall_replication_rate,0.725

@@ -1,0 +1,4 @@
+sample,n_comparisons,n_sig,n_sig_holm
+gfk,10,1,0
+mt,40,8,8
+original,40,1,0
