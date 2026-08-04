@@ -30,6 +30,17 @@ source(here::here("maintained", "figure_4_power_simulation.R"))
 # In-text quantities ----
 source(here::here("maintained", "text_correlations.R"))
 
+# Ground truth ----
+# Reads every value_rewrite back out of maintained/output/, so it has to run last. It also
+# runs in_text_claims.R under capture.output as its coverage gate, so that file necessarily
+# runs twice per pipeline: once silently for the gate, and once below for the readable log.
+source(here::here("ground_truth", "build_ground_truth.R"))
+
+# In-text claims ----
+# The second instrument. One block per numeric claim the article makes that the pipeline
+# can reach, each recomputing the number from maintained/output/ by its own path.
+source(here::here("maintained", "in_text_claims.R"))
+
 # Deposited archive, again ----
 # The check at the top of this file is a precondition: it says original/ was intact
 # before anything ran. Nothing above writes to original/, and this second pass is what

@@ -1,5 +1,6 @@
 # coppock_2019a/maintained/figure_4_power_simulation.R
-# Output: output/figure_4_power_simulation.pdf, output/figure_4_power_simulation.png
+# Output: output/figure_4_power_simulation.csv, output/figure_4_power_simulation.pdf,
+#         output/figure_4_power_simulation.png
 # Depends on: helpers.R, original/coppock_generalizability_simulation_results.RData
 # Description: Power curve from simulation: probability of rejecting homogeneity null by N and SD(tau).
 
@@ -13,11 +14,18 @@ source(here::here("maintained", "helpers.R"))
 load(here::here("original", "coppock_generalizability_simulation_results.RData"))
 
 gg_df <- df |>
-  mutate(n_per_arm = n / 2)
+  as_tibble() |>
+  transmute(n_per_arm = n / 2, sd_tau = het_param, power = value) |>
+  arrange(sd_tau, n_per_arm)
+
+# The plotted values, written out so the figure can be diffed by something other than
+# its own timestamp and so the power figures the text quotes have a source to be read
+# from.
+write_csv(gg_df, here::here("maintained", "output", "figure_4_power_simulation.csv"))
 
 # Figure ----
 
-g <- ggplot(gg_df, aes(x = n_per_arm, y = value, group = het_param, color = het_param)) +
+g <- ggplot(gg_df, aes(x = n_per_arm, y = power, group = sd_tau, color = sd_tau)) +
   geom_line() +
   geom_vline(xintercept = 500, linetype = "dashed") +
   geom_hline(yintercept = 0.8, linetype = "dashed") +

@@ -1,5 +1,6 @@
 # coppock_2019a/maintained/figure_3_mt_original_scatter.R
-# Output: output/figure_3_mt_original_scatter.pdf, output/figure_3_mt_original_scatter.png
+# Output: output/figure_3_mt_original_scatter.csv, output/figure_3_mt_original_scatter.pdf,
+#         output/figure_3_mt_original_scatter.png
 # Depends on: analysis_ate_estimates.R output, helpers.R
 # Description: Scatterplot of MTurk vs original ATE estimates with CIs.
 
@@ -44,6 +45,14 @@ gg_df <- ests |>
     original_ui = original + 1.96 * original_se,
     original_li = original - 1.96 * original_se
   )
+
+# The plotted pairs and interval endpoints, written out so the figure can be diffed by
+# something other than its own timestamp.
+write_csv(
+  gg_df |> select(study, dv, term, mt, mt_se, original, original_se, mt_li, mt_ui,
+                  original_li, original_ui, original_sig),
+  here::here("maintained", "output", "figure_3_mt_original_scatter.csv")
+)
 
 # Figure ----
 

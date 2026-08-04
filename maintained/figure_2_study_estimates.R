@@ -1,5 +1,6 @@
 # coppock_2019a/maintained/figure_2_study_estimates.R
-# Output: output/figure_2_study_estimates.pdf, output/figure_2_study_estimates.png
+# Output: output/figure_2_study_estimates.csv, output/figure_2_study_estimates.pdf,
+#         output/figure_2_study_estimates.png
 # Depends on: analysis_ate_estimates.R output, helpers.R
 # Description: Faceted coefficient plot of ATE estimates by study and sample.
 
@@ -40,6 +41,13 @@ gg_df <- estimates |>
       labels = c("TESS/GfK", "Mechanical Turk", "Original")
     )
   )
+
+# The plotted estimates and interval endpoints, written out so the figure can be diffed
+# by something other than its own timestamp.
+write_csv(
+  gg_df |> select(study_factor, dv_name, coef_name, version, est, se, li, ui),
+  here::here("maintained", "output", "figure_2_study_estimates.csv")
+)
 
 # Figure ----
 

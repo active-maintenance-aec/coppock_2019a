@@ -43,7 +43,7 @@ This repository holds the actively maintained replication code for Coppock (2019
 
 **The data are not redistributed here.** The deposit is 38 files at Harvard Dataverse, which is the only copy this repository points at. `download_original.R` fetches it and verifies every file; `original_manifest.csv` pins the file identifiers, sizes and checksums, so the exact bytes this code was written against are recorded in version control even though the bytes themselves are not.
 
-**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything. `ground_truth/` ties every published number to the code that produces it. `original/` is created by the download script and is deliberately absent from the repository. This README is the reproducibility report, also available as a PDF in `report/`.
+**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything, plus `in_text_claims.R`, which recomputes every number the article states in prose. `ground_truth/` ties every published number to the code that produces it: `published_claims.csv` is the extraction of the article, `build_ground_truth.R` builds the comparison and gates the pipeline on it. `original/` is created by the download script and is deliberately absent from the repository. This README is the reproducibility report, also available as a PDF in `report/`. `coppock_2019a_errata.pdf` corrects two sentences of the published article.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this repository maintains. See `LICENSE`.
 
@@ -68,13 +68,32 @@ That fetches the deposit, verifies its 38 files, and produces every table and fi
 # Summary
 
 ```{r summary_setup, include=FALSE}
+# value_paper is forced to character in every reader: a column whose entries all look
+# numeric is guessed as double, and that silently turns the article's 0.90 into 0.9 and
+# 0.000 into 0, destroying the printed precision the comparison depends on.
 gt_all <- read_csv(here("ground_truth", "coppock_2019a_ground_truth.csv"),
-                   show_col_types = FALSE)
+                   col_types = cols(.default = col_guess(),
+                                    value_paper = col_character()))
+claims <- read_csv(here("ground_truth", "published_claims.csv"),
+                   col_types = cols(.default = col_character(),
+                                    value_paper = col_character()))
+
 n_claims <- nrow(gt_all)
+n_rewrite_comparable <- sum(!is.na(gt_all$match_rewrite))
 n_rewrite_match <- sum(gt_all$match_rewrite == 1, na.rm = TRUE)
 n_rewrite_miss <- sum(gt_all$match_rewrite == 0, na.rm = TRUE)
+n_script_comparable <- sum(!is.na(gt_all$match))
 n_script_match <- sum(gt_all$match == 1, na.rm = TRUE)
+n_extraction <- nrow(claims)
+n_blocks <- sum(claims$needs_block == "TRUE")
 miss_claims <- gt_all |> filter(match_rewrite == 0) |> pull(claim)
+
+published_a1 <- read_csv(here("ground_truth", "published_table_a1.csv"),
+                         col_types = cols(.default = col_character()))
+published_appendix <- read_csv(here("ground_truth", "published_appendix_tables.csv"),
+                               col_types = cols(.default = col_character()))
+n_a1_cells <- nrow(published_a1)
+n_appendix_cells <- 2 * nrow(published_appendix)
 ```
 
 Two questions, answered before the detail.
@@ -91,13 +110,17 @@ First, two mistyped `sink()` calls silently destroyed two of the archive's own o
 
 Second, the uncorrected counts in Table 2 do not come back. The cause is not a bug in the archive but the change R 3.6.0 made to `sample()`, which replaced the rounding sampler with the rejection sampler and so changed which permutations a given seed draws. Setting `RNGkind(sample.kind = "Rounding")` and rerunning reproduces the deposited output exactly, 2 and 9 and 1 across the three samples, where the current sampler gives 1 and 8 and 1. The archive is reproducible; it is reproducible under the R of 2018.
 
-Third, and separately from anything R did, the published Table 2 disagrees with the paper's own text and with the archive. Table 2 reports 1, 9 and 2 significant tests for the original, MTurk and TESS/GfK samples; the text on the facing page says 1, 8 and 0. The archive produces 2, 9 and 1 as deposited. No single run of the code produces the published column. The Holm-corrected column, which is the one the argument rests on, reproduces exactly under both samplers.
+Third, and separately from anything R did, the published Table 2's N Significant column is transposed. The deposited output file prints its three rows in alphabetical order of the sample name, TESS/GfK first and original last, and the published table prints them in the reverse order, original first. Table 2's N Comparisons column was reordered to match, 40 and 40 and 10; its N Significant column was not, so the published 1 in the Original row is the TESS/GfK count and the published 2 in the TESS/GfK row is the original count. The correct entries in the published row order are 2, 9 and 1, which is exactly what the deposit produces. The Holm-corrected column, which is the one the argument rests on, is symmetric under the same interchange and reproduces exactly under both samplers.
+
+Fourth, the article's two power figures are not the ones its own simulation gives. The section is treated below and in the errata.
 
 ## Does the maintained rewrite reproduce the paper?
 
-For `r n_rewrite_match` of `r n_claims` recorded claims, yes. The correlations that carry the paper's argument reproduce to the reported precision (0.85, 0.90, 0.96, 0.85), as do the 72.5 percent replication rate, every checked Table A1 estimate, and every cell of Table 2 except two.
+For `r n_rewrite_match` of the `r n_rewrite_comparable` comparable claims, yes. The correlations that carry the paper's argument reproduce to the reported precision (0.85, 0.90, 0.96, 0.85), as does the 72.5 percent replication rate. All `r n_a1_cells` published Table A1 entries reproduce, each an estimate, a standard error and a significance star; so do all `r n_appendix_cells` treatment estimate and standard error cells printed across the seventeen online appendix regression tables.
 
-The `r n_rewrite_miss` that do not match are the uncorrected significant-test counts for MTurk and TESS/GfK in Table 2, for the reasons above: they are sampler-dependent, and the published values are not reproducible from the archive under any sampler. The rewrite reports what current R produces rather than reproducing the 2018 draw, because pinning a deprecated sampler to recover a specific integer would document the number rather than the finding. The substantive claim, that these tests rarely reject the null of treatment effect homogeneity, holds in every version: at most 9 of 40 comparisons reject before correction and at most 8 after.
+The `r n_rewrite_miss` claims that do not match fall into three groups. Two are the uncorrected significant-test counts for MTurk and TESS/GfK in Table 2, which are sampler-dependent for the reasons above; the rewrite reports what current R produces rather than reproducing the 2018 draw, because pinning a deprecated sampler to recover a specific integer would document the number rather than the finding. Two more are the power figures the article quotes from Figure 4, which its own deposited simulation contradicts. The last two are the sentence stating that no TESS/GfK test was significant, where the deposit says one was, and the sentence saying the analysis is limited to two dependent variables per study, which holds or fails depending on what counts as a study.
+
+The substantive claim, that these tests rarely reject the null of treatment effect homogeneity, holds in every version: at most 9 of 40 comparisons reject before correction and at most 8 after.
 
 ---
 
@@ -208,7 +231,7 @@ which is what `estimatr::lm_robust()` computes by default: HC2 is both its defau
 ```{r gt_table}
 gt <- read_csv(
   here("ground_truth", "coppock_2019a_ground_truth.csv"),
-  show_col_types = FALSE
+  col_types = cols(.default = col_guess(), value_paper = col_character())
 )
 
 gt |>
@@ -216,7 +239,7 @@ gt |>
   kable(
     booktabs = TRUE,
     col.names = c("Location", "Quantity", "Paper", "Script", "Match"),
-    caption = paste0("Ground truth: ", nrow(gt), " rows, comparing the published value to a 2026 re-run of the deposited scripts."),
+    caption = paste0("Ground truth: ", nrow(gt), " rows, comparing the published value to the deposit's own committed output."),
     digits = 4
   ) |>
   latex_only(\(k) k |>
@@ -224,7 +247,7 @@ gt |>
     column_spec(2, width = "6.5cm"))
 ```
 
-`r n_script_match` of `r n_claims` published values are reproduced by a current re-run of the deposited scripts. The two exceptions are the uncorrected significant-test counts for MTurk and TESS/GfK in Table 2.
+`r n_script_match` of the `r n_script_comparable` published values with an archive counterpart are reproduced by the deposit's own committed output. `value_script` is read out of the objects and text files the archive itself deposited rather than typed or produced by re-running anything, and it is blank where the deposit prints nothing: Table 1's sample sizes, and the online appendix regression tables, whose deposited text files include two the archive's own mistyped `sink()` calls destroyed.
 
 ## Table 2 in full
 
@@ -247,15 +270,44 @@ tibble(
     kable_styling(latex_options = c("hold_position", "scale_down"), font_size = 7.5))
 ```
 
-Three things follow. The archive is internally reproducible: the rounding sampler recovers the deposited output in every cell. The R 3.6.0 sampler change moves two cells. The published table, meanwhile, matches no run of the code: its Original count agrees with the current sampler while its MTurk count agrees with the 2018 one, and its TESS/GfK count of 2 appears nowhere, in the archive or in the paper's own text.
+Three things follow. The archive is internally reproducible: the rounding sampler recovers the deposited output in every cell. The R 3.6.0 sampler change moves two cells, the MTurk and original counts, because one test in each of those samples has a maximum p-value of exactly 0.05 under the 2018 draw and none does under the current one.
 
-The most likely explanation is that Table 2 was typeset from an earlier execution than the one deposited, which is a hazard specific to results whose value depends on a random draw and is only weakly pinned by a seed. With `sims = 100` a p-value is a multiple of 0.01, and a count of how many of 90 such p-values fall at or below 0.05 will move by one or two between runs.
+And the published table's N Significant column is the deposited column in the deposited file's own row order. That file prints its rows alphabetically, `gfk` then `mt` then `original`, and reads 1, 9, 2 down the column. The published table prints its rows in the reverse order, Original then Mechanical Turk then TESS/GfK, and its N Significant column also reads 1, 9, 2. The N Comparisons column beside it was reordered correctly, 40 and 40 and 10 rather than 10 and 40 and 40, which is why the interchange is invisible from inside the table. The Holm column is symmetric under it and so cannot show it either. Under this reading every cell of the published table is accounted for: the correct entries in the published row order are 2, 9 and 1.
+
+The alternative, that Table 2 was typeset from a run other than the one deposited, does not survive measurement. `ground_truth/measure_table_2_dispersion.R` runs the deposited procedure over a range of seeds under both samplers and records what it gets:
+
+```{r dispersion_table}
+dispersion <- read_csv(here("ground_truth", "table_2_seed_dispersion.csv"),
+                       show_col_types = FALSE)
+
+n_runs <- n_distinct(paste(dispersion$sampler, dispersion$seed))
+gfk_range <- range(dispersion$n_sig[dispersion$sample == "gfk"])
+
+dispersion |>
+  summarise(
+    runs = n(),
+    counts = str_c(sort(unique(n_sig)), collapse = ", "),
+    .by = c(sample, sampler)
+  ) |>
+  arrange(sample, sampler) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Sample", "Sampler", "Runs", "N Significant, values taken"),
+    caption = paste0("Counts of significant homogeneity tests across ", n_runs,
+                     " runs of the deposited procedure at different seeds.")
+  ) |>
+  latex_only(\(k) k |> kable_styling(latex_options = "hold_position"))
+```
+
+The TESS/GfK count was `r gfk_range[1]` in every one of the `r n_runs` runs and never `r as.numeric(claims$value_paper[claims$claim_id == "t2_gfk_n_sig"])`, while the original and MTurk counts both moved. A published TESS/GfK count of `r as.numeric(claims$value_paper[claims$claim_id == "t2_gfk_n_sig"])` is not something the deposited code produces.
+
+The body text is a separate matter and is not settled by any of this. It reads 1, 8 and 0 where the deposit reads 2, 9 and 1. Its first two figures are the counts a strict `<` 0.05 would give on the deposit's own draw, where Table 2's own rule is `<=`, so the sentence and the table can differ legitimately by one in each of those samples. Its third figure has no such account: the TESS/GfK count is 1 under either rule and under either sampler. That sentence is corrected in `coppock_2019a_errata.pdf`; the other two are recorded as unresolved.
 
 ---
 
 # Maintained rewrite
 
-`maintained/` holds seven scripts and a shared `helpers.R`, replacing the archive's six analysis scripts and its function file. The rewrite is a translation: estimators, specifications and sample restrictions are unchanged.
+`maintained/` holds eight scripts and a shared `helpers.R`, replacing the archive's six analysis scripts and its function file. The rewrite is a translation: estimators, specifications and sample restrictions are unchanged.
 
 ```{r scripts_table}
 tibble(
@@ -267,17 +319,19 @@ tibble(
     "figure_2_study_estimates.R",
     "figure_3_mt_original_scatter.R",
     "figure_4_power_simulation.R",
-    "text_correlations.R"
+    "text_correlations.R",
+    "in_text_claims.R"
   ),
   Output = c(
-    "packages; HC2 tidier; Table A1 cell formatter",
+    "packages; Table A1 cell formatter",
     "output/analysis_results.rds",
     "output/table_a1_ate_summary.csv, .tex",
     "output/table_2_ri_heterogeneity.csv, .tex, output/ri_results.rds",
-    "output/figure_2_study_estimates.pdf, .png",
-    "output/figure_3_mt_original_scatter.pdf, .png",
-    "output/figure_4_power_simulation.pdf, .png",
-    "output/text_correlations.csv"
+    "output/figure_2_study_estimates.csv, .pdf, .png",
+    "output/figure_3_mt_original_scatter.csv, .pdf, .png",
+    "output/figure_4_power_simulation.csv, .pdf, .png",
+    "output/text_correlations.csv",
+    "printed CLAIM lines only"
   )
 ) |>
   kable(
@@ -335,9 +389,43 @@ tibble(
 
 ## What the rewrite does not cover
 
-The archive's `coppock_generalizability_appendix.R` produces sixteen per-study regression tables for the online appendix. The rewrite does not reproduce them, and they are not represented in the ground truth. They are the natural next addition, and the two `sink()` errors documented above mean that two of them cannot be checked against the deposit at all.
+The archive's `coppock_generalizability_appendix.R` produces the seventeen per-study regression tables of the online appendix. Each prints the same treatment coefficients the rewrite estimates, to three decimal places rather than Table A1's two, and every one of those `r n_appendix_cells` cells reproduces. Each table also prints an intercept, a sample size and an R-squared, and appendix Table 6 prints a party identification covariate. The rewrite drops the intercept and that covariate before writing its estimates and exports neither sample sizes nor R-squared, so those cells have no counterpart in `maintained/output/`; the ground truth records them as uncovered rather than as reproduced. Table 1's sample size columns are uncovered for the same reason.
 
-The rewrite also does not re-run the power simulation behind Figure 4. Neither does the archive: the simulation is commented out in `coppock_generalizability_simulation.R`, with a note that it "takes a *very* long time to run", and the deposited result object is loaded instead. The figure is reproduced from that object.
+Figure 1 is uncovered by anything. It illustrates the theoretical argument with a simulated population, and no script in the deposit draws it.
+
+The rewrite also does not re-run the power simulation behind Figure 4. Neither does the archive: the simulation is commented out in `coppock_generalizability_simulation.R`, with a note that it "takes a *very* long time to run", and the deposited result object is loaded instead. The figure is reproduced from that object, and `figure_4_power_simulation.R` now writes the plotted grid to a CSV so the numbers the text quotes from it have a source.
+
+## The power sentence
+
+The article says of Figure 4 that at 500 subjects per treatment arm "we would be well powered (power $\approx$ 0.8) to detect treatment effect heterogeneity on the scale of 0.2 SD, and moderately powered for 0.1 SD (power $\approx$ 0.6)."
+
+```{r power_table}
+power <- read_csv(here("maintained", "output", "figure_4_power_simulation.csv"),
+                  show_col_types = FALSE)
+
+power_at <- function(sd) {
+  value <- power$power[power$n_per_arm == 500 & power$sd_tau == sd]
+  stopifnot(length(value) == 1)
+  value
+}
+
+arm_for_08 <- min(power$n_per_arm[power$sd_tau == 0.2 & power$power >= 0.8])
+
+tibble(
+  scale = c("0.2 SD", "0.1 SD"),
+  published = c(claims$value_paper[claims$claim_id == "fig4_power_at_02"],
+                claims$value_paper[claims$claim_id == "fig4_power_at_01"]),
+  simulated = sprintf("%.2f", c(power_at(0.2), power_at(0.1)))
+) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Heterogeneity scale", "Power stated in the text", "Power in the deposited simulation"),
+    caption = "The two power figures the article quotes, against the simulation results it deposits, both at 500 subjects per treatment arm."
+  ) |>
+  latex_only(\(k) k |> kable_styling(latex_options = "hold_position"))
+```
+
+Figure 4 draws a dashed guide line at 500 subjects and another at power 0.8, and annotates the 0.2 SD curve where it crosses the second of them. The curve first reaches 0.8 at `r arm_for_08` subjects per arm, not 500, so the sentence reads the height of the guide line rather than the curve. The figure is right; the sentence is not, and it is corrected in `coppock_2019a_errata.pdf`. The claim the paper rests on, that the tests are powered against politically meaningful heterogeneity, survives at 0.2 SD and is weaker at 0.1 SD than the text says.
 
 ## Determinism
 
@@ -402,6 +490,35 @@ read_csv(here("maintained", "output", "table_a1_ate_summary.csv"),
 
 ---
 
+# The extraction and the two instruments
+
+Every published number in this article and its online appendix is written down once, in `ground_truth/published_claims.csv`. That file is the extraction: `r n_extraction` rows, each carrying a claim identifier, where the number appears, what kind of claim it is, the string the page prints and the number of decimals it prints it to. It is the only place in the repository a published number is typed, and nothing in `maintained/` reads it except for those decimal counts.
+
+```{r extraction_table}
+claims |>
+  count(claim_type, needs_block) |>
+  mutate(needs_block = if_else(needs_block == "TRUE", "yes", "no")) |>
+  kable(
+    booktabs = TRUE,
+    col.names = c("Claim type", "Needs a claim block", "Claims"),
+    caption = paste0("The extraction: ", nrow(claims),
+                     " published claims, classified by hand.")
+  ) |>
+  latex_only(\(k) k |> kable_styling(latex_options = "hold_position"))
+```
+
+A `pipeline` claim is one the analysis produces; `descriptive` claims are about shape, sign or count and have no printed number to compare; `definitional` and `structural` claims are design parameters and layout facts; `transcribed` claims are copied from other articles and cannot drift. The `needs_block` column is TRUE where the pipeline can print something true about the claim, which is `r n_blocks` of the `r n_extraction`. The remainder are verified where they are used: the confidence level of the plausible-effects interval is visible in the `qnorm(0.9999)` call the archive's own function file makes, Figure 4's guide lines in the `geom_hline()` and `geom_vline()` that draw them, and the significance threshold behind Table A1's stars in `helpers.R`.
+
+Two separate instruments then check the same claims.
+
+`ground_truth/build_ground_truth.R` assembles the comparison table. It reads `value_rewrite` back out of `maintained/output/` and `value_script` out of the objects and text files the archive deposited, so neither column can drift from what it describes, and it compares each against the published string by printing the computed number to the page's own precision rather than by a numeric tolerance, because a double does not record how many decimals the article printed.
+
+`maintained/in_text_claims.R` carries one block per claim needing one: the article's sentence verbatim in a comment, then code that recomputes the number from the same committed outputs by its own path. It never reads the ground truth. The two reach the same quantities differently, so a disagreement between them is a finding rather than a formality: the ground truth reads the correlations out of `text_correlations.csv` while the claims file rebuilds them from the estimates.
+
+The build script is the gate. It runs `in_text_claims.R` non-interactively into its own environment, counts the `CLAIM` lines it printed, and stops unless that count equals the `r n_blocks` claims the extraction says need one, every identifier appears on both sides, every `pipeline` and `descriptive` claim has a ground truth row, every published float has coverage or a stated reason, every adverse verdict carries a `defect_locus` and no clean match does, and the two instruments agree value by value. A block that errored, or that ended in a bare expression and so printed nothing, would satisfy a scan for markers while checking nothing, which is why the file is run rather than read.
+
+Two sentences of the published article are corrected in `coppock_2019a_errata.pdf` at the root of this repository. Neither changes a conclusion.
+
 # Maintained rewrite verification
 
 ```{r rewrite_verify}
@@ -418,7 +535,9 @@ gt |>
     column_spec(2, width = "6.5cm"))
 ```
 
-**`r n_rewrite_match`** of **`r n_claims`** claims match the published values. The `r n_rewrite_miss` that do not are `r paste(miss_claims, collapse = " and ")`, discussed above.
+**`r n_rewrite_match`** of the **`r n_rewrite_comparable`** comparable claims match the published values. The `r n_rewrite_miss` that do not are discussed above: `r paste(miss_claims, collapse = "; ")`.
+
+The rows with no `match_rewrite` are those the rewrite does not compute, and they are recorded rather than dropped: Table 1's sample sizes, the intercept, sample size and R-squared rows of the seventeen online appendix tables, and the article's claim about the typical number of subjects per treatment arm.
 
 ---
 

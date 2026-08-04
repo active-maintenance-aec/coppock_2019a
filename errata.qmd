@@ -1,0 +1,77 @@
+---
+title: "Errata"
+subtitle: "Coppock, A. (2019). Generalizing from Survey Experiments Conducted on Mechanical Turk: A Replication Approach. *Political Science Research and Methods* 7(3), 613-628."
+format:
+  pdf:
+    output-file: coppock_2019a_errata.pdf
+    geometry: margin=1.1in
+    colorlinks: true
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+library(here)
+library(tidyverse)
+
+here::i_am("errata.qmd")
+
+# Corrected values are computed here, at render time, from the maintained pipeline's
+# committed output. Published values are read from the extraction of the article, never
+# typed into this document.
+published_claims <- read_csv(
+  here("ground_truth", "published_claims.csv"),
+  col_types = cols(.default = col_character(), value_paper = col_character())
+)
+
+paper <- function(id) {
+  value <- published_claims$value_paper[published_claims$claim_id == id]
+  stopifnot(length(value) == 1)
+  value
+}
+
+power <- read_csv(here("maintained", "output", "figure_4_power_simulation.csv"),
+                  show_col_types = FALSE)
+table_2 <- read_csv(here("maintained", "output", "table_2_ri_heterogeneity.csv"),
+                    show_col_types = FALSE)
+
+power_at <- function(sd) {
+  value <- power$power[power$n_per_arm == 500 & power$sd_tau == sd]
+  stopifnot(length(value) == 1)
+  value
+}
+
+power_02 <- power_at(0.2)
+power_01 <- power_at(0.1)
+arm_for_08 <- min(power$n_per_arm[power$sd_tau == 0.2 & power$power >= 0.8])
+
+gfk_sig <- table_2$n_sig[table_2$sample == "gfk"]
+gfk_tests <- table_2$n_comparisons[table_2$sample == "gfk"]
+
+one <- function(x) sprintf("%.1f", x)
+two <- function(x) sprintf("%.2f", x)
+```
+
+Two sentences in the published article state numbers the deposited replication archive does not support. Both are in the section reporting the randomization inference tests of treatment effect homogeneity, and neither changes a conclusion of the article: the tests still reject the null of constant effects in a small minority of comparisons, and the correspondence between the Mechanical Turk and probability sample estimates is untouched.
+
+Article DOI: [10.1017/psrm.2018.10](https://doi.org/10.1017/psrm.2018.10). Replication archive: [10.7910/DVN/F1CFFM](https://doi.org/10.7910/DVN/F1CFFM). The code behind every corrected value below is at <https://github.com/active-maintenance-aec/coppock_2019a>, and every one of them is recomputed when this document is rendered rather than typed into it.
+
+Corrections are marked in **bold**. Numbers the article hedges with an approximation sign keep the article's own precision, because the approximation is the claim; fuller values appear in the note beneath each entry.
+
+# 1. Simulated power, page 10
+
+**Published.** "The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be well powered (power $\approx$ **`r paper("fig4_power_at_02")`**) to detect treatment effect heterogeneity on the scale of 0.2 SD, and moderately powered for 0.1 SD (power $\approx$ **`r paper("fig4_power_at_01")`**)."
+
+**Corrected.** "The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be well powered (power $\approx$ **`r one(power_02)`**) to detect treatment effect heterogeneity on the scale of 0.2 SD, and moderately powered for 0.1 SD (power $\approx$ **`r one(power_01)`**)."
+
+*The simulation results the article deposits, and which Figure 4 is drawn from, give a rejection probability of `r two(power_02)` at 0.2 SD and `r two(power_01)` at 0.1 SD, both at 500 subjects per treatment arm. Figure 4 draws guide lines at 500 subjects and at power 0.8 and annotates the 0.2 SD curve where it crosses the second of them, which the simulation puts at `r arm_for_08` subjects per arm rather than 500; the sentence reads the height of the guide line rather than the curve. The figure itself is correct and is not reprinted here.*
+
+# 2. Significant heterogeneity tests on the TESS/GfK sample, page 10
+
+**Published.** "On the TESS/GfK replications, **`r paper("text_gfk_n_sig")`** of `r paper("text_gfk_n_comparisons")` tests were significant."
+
+**Corrected.** "On the TESS/GfK replications, **`r gfk_sig`** of `r gfk_tests` tests were significant."
+
+*The deposited output file for Table 2 records `r gfk_sig` significant TESS/GfK test, and so does the maintained pipeline; the count does not move with the change R 3.6.0 made to `sample()`, which moves the other two rows of that column. Table 2 prints `r paper("t2_gfk_n_sig")` in the TESS/GfK row of its N Significant column and `r paper("t2_original_n_sig")` in the Original row, which is that column read in the row order of the deposited output file rather than in the table's own; the two entries are interchanged. Correcting the table requires the pre-R-3.6.0 sampler, so it is documented in the repository rather than reprinted here.*
