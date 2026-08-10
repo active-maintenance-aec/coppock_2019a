@@ -24,6 +24,13 @@ library(kableExtra)
 
 here::i_am("README.qmd")
 
+# The errata spine, defined once in errata.qmd and written out by it. This report reads it
+# rather than keeping its own count, so the two cannot disagree about how many entries there
+# are.
+spine <- read_csv(here("errata_entries.csv"), show_col_types = FALSE)
+n_errata_word <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+                   "ten", "eleven", "twelve")[nrow(spine)]
+
 # kableExtra styling is LaTeX-only; the GitHub README build takes plain pipe tables.
 latex_out <- knitr::is_latex_output()
 
@@ -43,7 +50,7 @@ This repository holds the actively maintained replication code for Coppock (2019
 
 **The data are not redistributed here.** The deposit is 38 files at Harvard Dataverse, which is the only copy this repository points at. `download_original.R` fetches it and verifies every file; `original_manifest.csv` pins the file identifiers, sizes and checksums, so the exact bytes this code was written against are recorded in version control even though the bytes themselves are not.
 
-**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything, plus `in_text_claims.R`, which recomputes every number the article states in prose. `ground_truth/` ties every published number to the code that produces it: `published_claims.csv` is the extraction of the article, `build_ground_truth.R` builds the comparison and gates the pipeline on it. `original/` is created by the download script and is deliberately absent from the repository. This README is the reproducibility report, also available as a PDF in `report/`. `coppock_2019a_errata.pdf` corrects two sentences of the published article.
+**Repository layout.** `maintained/` is the maintained rewrite: one script per published table or figure, writing to `output/`, which is committed so a reader can compare a fresh run against it without downloading anything, plus `in_text_claims.R`, which recomputes every number the article states in prose. `ground_truth/` ties every published number to the code that produces it: `published_claims.csv` is the extraction of the article, `build_ground_truth.R` builds the comparison and gates the pipeline on it. `original/` is created by the download script and is deliberately absent from the repository. This README is the reproducibility report, also available as a PDF in `report/`. `coppock_2019a_errata.pdf` corrects `r n_errata_word` sentences of the published article.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this repository maintains. See `LICENSE`.
 
@@ -517,7 +524,7 @@ Two separate instruments then check the same claims.
 
 The build script is the gate. It runs `in_text_claims.R` non-interactively into its own environment, counts the `CLAIM` lines it printed, and stops unless that count equals the `r n_blocks` claims the extraction says need one, every identifier appears on both sides, every `pipeline` and `descriptive` claim has a ground truth row, every published float has coverage or a stated reason, every adverse verdict carries a `defect_locus` and no clean match does, and the two instruments agree value by value. A block that errored, or that ended in a bare expression and so printed nothing, would satisfy a scan for markers while checking nothing, which is why the file is run rather than read.
 
-Two sentences of the published article are corrected in `coppock_2019a_errata.pdf` at the root of this repository. Neither changes a conclusion.
+`r str_to_sentence(n_errata_word)` sentences of the published article are corrected in `coppock_2019a_errata.pdf` at the root of this repository. Neither changes a conclusion.
 
 # Maintained rewrite verification
 

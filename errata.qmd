@@ -54,24 +54,86 @@ one <- function(x) sprintf("%.1f", x)
 two <- function(x) sprintf("%.2f", x)
 ```
 
-Two sentences in the published article state numbers the deposited replication archive does not support. Both are in the section reporting the randomization inference tests of treatment effect homogeneity, and neither changes a conclusion of the article: the tests still reject the null of constant effects in a small minority of comparisons, and the correspondence between the Mechanical Turk and probability sample estimates is untouched.
+```{r entries}
+# THE ERRATA SPINE. Every entry is defined once, here, and rendered from this tibble into
+# this document and into the machine-readable errata_entries.csv written at the bottom of
+# the file, which is what any other document carrying these corrections reads. Before the
+# spine existed an entry was written out in prose wherever it was needed, and the copies
+# had already diverged.
+#
+# [[...]] marks the span that changes. Each renderer supplies its own markup for it: bold
+# here. Nothing else in a field is markup, so the same string can be set by any of them.
+#
+# Numbering is the published note's and is APPEND-ONLY: entry 1 can already have been cited,
+# so a later finding is added at the end and never interleaved.
+#
+# The published values come from the extraction of the article and the corrected ones from
+# the pipeline, and both stay computed: the fields are built with str_glue() so the numbers
+# are produced when this document renders, not typed.
+entries <- tribble(
+  ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note,
+
+  1, "quantity", "pipeline", "full",
+  "Simulated power, page 10",
+  "published p. 10",
+  str_glue("The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be well powered (power $\\approx$ [[{paper('fig4_power_at_02')}]]) to detect treatment effect heterogeneity on the scale of 0.2 SD, and moderately powered for 0.1 SD (power $\\approx$ [[{paper('fig4_power_at_01')}]])."),
+  str_glue("The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be well powered (power $\\approx$ [[{one(power_02)}]]) to detect treatment effect heterogeneity on the scale of 0.2 SD, and moderately powered for 0.1 SD (power $\\approx$ [[{one(power_01)}]])."),
+  str_glue(
+    "The simulation results the article deposits, and which Figure 4 is drawn from, give a ",
+    "rejection probability of {two(power_02)} at 0.2 SD and {two(power_01)} at 0.1 SD, both ",
+    "at 500 subjects per treatment arm. Figure 4 draws guide lines at 500 subjects and at ",
+    "power 0.8 and annotates the 0.2 SD curve where it crosses the second of them, which the ",
+    "simulation puts at {arm_for_08} subjects per arm rather than 500; the sentence reads the ",
+    "height of the guide line rather than the curve. The figure itself is correct and is not ",
+    "reprinted here."),
+
+  2, "quantity", "pipeline", "full",
+  "Significant heterogeneity tests on the TESS/GfK sample, page 10",
+  "published p. 10",
+  str_glue("On the TESS/GfK replications, [[{paper('text_gfk_n_sig')}]] of {paper('text_gfk_n_comparisons')} tests were significant."),
+  str_glue("On the TESS/GfK replications, [[{gfk_sig}]] of {gfk_tests} tests were significant."),
+  str_glue(
+    "The deposited output file for Table 2 records {gfk_sig} significant TESS/GfK test, and ",
+    "so does the maintained pipeline; the count does not move with the change R 3.6.0 made to ",
+    "`sample()`, which moves the other two rows of that column. Table 2 prints ",
+    "{paper('t2_gfk_n_sig')} in the TESS/GfK row of its N Significant column and ",
+    "{paper('t2_original_n_sig')} in the Original row, which is that column read in the row ",
+    "order of the deposited output file rather than in the table's own; the two entries are ",
+    "interchanged. Correcting the table requires the pre-R-3.6.0 sampler, so it is documented ",
+    "in the repository rather than reprinted here.")
+) |>
+  mutate(across(c(title, published, corrected, note), as.character))
+
+stopifnot(nrow(entries) == max(entries$entry), !anyDuplicated(entries$entry))
+
+# The prose below counts the entries in words, as the note has always done.
+n_entries_word <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+                    "ten", "eleven", "twelve")[nrow(entries)]
+
+# The spine's markup, resolved for this document.
+bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
+```
+
+`r str_to_sentence(n_entries_word)` sentences in the published article state numbers the deposited replication archive does not support. Both are in the section reporting the randomization inference tests of treatment effect homogeneity, and neither changes a conclusion of the article: the tests still reject the null of constant effects in a small minority of comparisons, and the correspondence between the Mechanical Turk and probability sample estimates is untouched.
 
 Article DOI: [10.1017/psrm.2018.10](https://doi.org/10.1017/psrm.2018.10). Replication archive: [10.7910/DVN/F1CFFM](https://doi.org/10.7910/DVN/F1CFFM). The code behind every corrected value below is at <https://github.com/active-maintenance-aec/coppock_2019a>, and every one of them is recomputed when this document is rendered rather than typed into it.
 
 Corrections are marked in **bold**. Numbers the article hedges with an approximation sign keep the article's own precision, because the approximation is the claim; fuller values appear in the note beneath each entry.
 
-# 1. Simulated power, page 10
+```{r render-entries, results="asis"}
+# A heading is only a heading when a blank line precedes it, so every emitted entry opens
+# with one.
+walk(seq_len(nrow(entries)), function(i) {
+  e <- entries[i, ]
+  cat("\n\n# ", e$entry, ". ", e$title,
+      "\n\n**Published.** \"", bold(e$published), "\"",
+      "\n\n**Corrected.** \"", bold(e$corrected), "\"",
+      "\n\n*", e$note, "*\n", sep = "")
+})
+```
 
-**Published.** "The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be well powered (power $\approx$ **`r paper("fig4_power_at_02")`**) to detect treatment effect heterogeneity on the scale of 0.2 SD, and moderately powered for 0.1 SD (power $\approx$ **`r paper("fig4_power_at_01")`**)."
-
-**Corrected.** "The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be well powered (power $\approx$ **`r one(power_02)`**) to detect treatment effect heterogeneity on the scale of 0.2 SD, and moderately powered for 0.1 SD (power $\approx$ **`r one(power_01)`**)."
-
-*The simulation results the article deposits, and which Figure 4 is drawn from, give a rejection probability of `r two(power_02)` at 0.2 SD and `r two(power_01)` at 0.1 SD, both at 500 subjects per treatment arm. Figure 4 draws guide lines at 500 subjects and at power 0.8 and annotates the 0.2 SD curve where it crosses the second of them, which the simulation puts at `r arm_for_08` subjects per arm rather than 500; the sentence reads the height of the guide line rather than the curve. The figure itself is correct and is not reprinted here.*
-
-# 2. Significant heterogeneity tests on the TESS/GfK sample, page 10
-
-**Published.** "On the TESS/GfK replications, **`r paper("text_gfk_n_sig")`** of `r paper("text_gfk_n_comparisons")` tests were significant."
-
-**Corrected.** "On the TESS/GfK replications, **`r gfk_sig`** of `r gfk_tests` tests were significant."
-
-*The deposited output file for Table 2 records `r gfk_sig` significant TESS/GfK test, and so does the maintained pipeline; the count does not move with the change R 3.6.0 made to `sample()`, which moves the other two rows of that column. Table 2 prints `r paper("t2_gfk_n_sig")` in the TESS/GfK row of its N Significant column and `r paper("t2_original_n_sig")` in the Original row, which is that column read in the row order of the deposited output file rather than in the table's own; the two entries are interchanged. Correcting the table requires the pre-R-3.6.0 sampler, so it is documented in the repository rather than reprinted here.*
+```{r emit-spine}
+# The machine-readable spine, written wherever this document is rendered. Anything else that
+# carries these corrections reads it rather than keeping its own copy, so the two cannot drift.
+write_csv(entries, here("errata_entries.csv"))
+```
