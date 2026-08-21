@@ -583,7 +583,11 @@ claims_output <- capture.output(
   source(here::here("maintained", "in_text_claims.R"), local = new.env())
 )
 
-printed <- tibble(line = str_subset(claims_output, "^CLAIM ")) |>
+# The filter matches a claim line's whole shape rather than its prefix. in_text_claims.R now
+# closes with excheckr's two CLAIM SUMMARY lines, which a prefix match also takes, and they
+# carry no " = " for the id pattern to find; the stopifnot below caught them as two NA ids
+# rather than letting them through, but the filter is the right place to be specific.
+printed <- tibble(line = str_subset(claims_output, "^CLAIM [^ ]+ = .* \\|\\| ")) |>
   transmute(
     claim_id = str_match(line, "^CLAIM ([^ ]+) = ")[, 2],
     value_in_text = str_match(line, "^CLAIM [^ ]+ = (.*?) \\|\\| ")[, 2]

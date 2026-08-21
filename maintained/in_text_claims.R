@@ -23,6 +23,7 @@
 #   quotes below write sigma-tau as "sigma_tau" and the approximation sign as "~=".
 
 source(here::here("maintained", "helpers.R"))
+library(excheckr)
 
 options(width = 200)
 
@@ -36,32 +37,54 @@ figure_2 <- out("figure_2_study_estimates.csv")
 figure_3 <- out("figure_3_mt_original_scatter.csv")
 figure_4 <- out("figure_4_power_simulation.csv")
 
-# The extraction, read for its per-claim precision only. Reading the transcription is not
-# the prohibited read; reading the comparison would be.
+# The extraction, read for the article's own statement of each claim. Reading the
+# transcription is not the prohibited read; reading the comparison would be.
 published_claims <- read_csv(
   here::here("ground_truth", "published_claims.csv"),
   col_types = cols(.default = col_character(), value_paper = col_character())
 )
+
+# The corrections this paper's errata note publishes, read from the spine errata.qmd writes
+# rather than from the note's prose. A claim an entry names is scored against the correction
+# and not against the sentence the article prints, so a corrected claim that drifted back to
+# the published value stops the run instead of quietly reading as a match.
+errata_entries <- read_csv(here::here("errata_entries.csv"),
+                           col_types = cols(.default = col_character()))
 
 published_a1 <- read_csv(here::here("ground_truth", "published_table_a1.csv"),
                          col_types = cols(.default = col_character()))
 published_appendix <- read_csv(here::here("ground_truth", "published_appendix_tables.csv"),
                                col_types = cols(.default = col_character()))
 
-# claim: print one line in the form the coverage gate parses, at the precision the
-# extraction records for this claim. The digits come from published_claims.csv rather than
-# from the value in hand, because the two instruments have to agree on precision and every
-# rule for deriving it independently lets them drift.
-claim <- function(id, value, label) {
-  digits <- as.integer(published_claims$digits[published_claims$claim_id == id])
-  stopifnot(length(digits) == 1, !is.na(digits))
-  printed <- if (length(value) != 1 || is.na(value)) {
-    "NA"
-  } else {
-    sprintf(paste0("%.", digits, "f"), value)
-  }
-  cat("CLAIM ", id, " = ", printed, " || ", label, "\n", sep = "")
-}
+# The scoring machinery comes from excheckr, which carries the verdict ladder, the
+# typography parser and the printed form this file used to define for itself. What is passed
+# here is what the package cannot know: the extraction, the errata spine, and the shape of
+# the printed line. format = "id" is the CLAIM <id> = <value> || [verdict] <label> line
+# ground_truth/build_ground_truth.R parses, and it must stay exactly that.
+#
+# The label stays at the call site rather than being fetched from the extraction's claim
+# column, because half of this file's labels are glued from a loop variable and count a
+# table's reproduced cells against its published total. That sentence is about the check
+# rather than about the article, so the extraction is not where it lives.
+#
+# The precision is no longer named twice. It used to be read out of the extraction's digits
+# column so that the two instruments could not drift apart on rounding; measured on
+# 2026-08-20, claim_digits() reproduces all 200 of this extraction's declared digits from
+# the typography of value_paper alone, and the four rows it cannot are rows with no
+# published value that no block reaches. The article's own statement is what the column was
+# recording.
+# expect_column carries the two claims this article's own record already declares cannot be
+# compared at printed precision, so the declaration lives beside the published value rather
+# than being typed again in the block that prints it. Table 2's MTurk cell moves with the R
+# 3.6.0 sample() change and the maintained pipeline keeps the current sampler; Table 2's
+# TESS/GfK cell holds the Original count, because that column reproduces the deposited output
+# file in its alphabetical row order rather than the table's printed one. The extraction's
+# notes column carries the full reason for each, and the ground truth files them as
+# defect_locus = environment and paper_internal. PROCEDURES makes both README findings rather
+# than errata: a corrected Table 2 would need the retired sampler, which maintained/output/
+# deliberately cannot produce.
+claim_start(published = published_claims, errata = errata_entries, format = "id",
+            expect_column = "expect")
 
 # One row per estimate, one column per sample. build_ground_truth.R reaches the same
 # quantities through maintained/output/text_correlations.csv; this file builds them from
@@ -355,3 +378,14 @@ for (k in 1:17) {
         str_glue("appendix Table {k} treatment cells reproduced of ",
                  "{2 * nrow(rows_k)} published"))
 }
+
+# Gates ----
+# The verdicts above are assertions only if something reads them. assert_claims() is what
+# reads them: no claim ended on a failing verdict, every claim a quantity erratum names was
+# printed and printed as corrected, the claims printed are exactly those the extraction
+# declares need a block, and the verdict counts partition the claims.
+assert_claims()
+
+# The exemptions are counted, never merely allowed. A file that let the unasserted set grow
+# in silence would report the same clean run whether it checked every claim or none.
+invisible(claim_summary())
