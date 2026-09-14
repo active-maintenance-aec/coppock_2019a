@@ -57,7 +57,7 @@ extraction of the article, `build_ground_truth.R` builds the comparison
 and gates the pipeline on it. `original/` is created by the download
 script and is deliberately absent from the repository. This README is
 the reproducibility report, also available as a PDF in `report/`.
-`coppock_2019a_errata.pdf` corrects two sentences of the published
+`coppock_2019a_errata.pdf` corrects three sentences of the published
 article.
 
 **License.** CC0 1.0 Universal, matching the terms of the deposit this
@@ -739,7 +739,7 @@ a bare expression and so printed nothing, would satisfy a scan for
 markers while checking nothing, which is why the file is run rather than
 read.
 
-Two sentences of the published article are corrected in
+Three sentences of the published article are corrected in
 `coppock_2019a_errata.pdf` at the root of this repository. Neither
 changes a conclusion.
 
@@ -917,11 +917,11 @@ subjects per treatment arm.
 |:-----------|:-----------------------|
 | R version  | 4.6.0                  |
 | Platform   | aarch64-apple-darwin23 |
-| Date run   | 2026-08-10             |
+| Date run   | 2026-09-13             |
 | tidyverse  | 2.0.0                  |
 | sandwich   | 3.1.1                  |
 | lmtest     | 0.9.40                 |
-| estimatr   | 1.0.6                  |
+| estimatr   | 2.0.0                  |
 | metap      | 1.14                   |
 | knitr      | 1.51                   |
 | kableExtra | 1.4.0                  |

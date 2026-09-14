@@ -92,15 +92,16 @@ entries <- tribble(
   "Simulated power, page 10",
   "published p. 10",
   str_glue("The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be well powered (power $\\approx$ [[{paper('fig4_power_at_02')}]]) to detect treatment effect heterogeneity on the scale of 0.2 SD, and moderately powered for 0.1 SD (power $\\approx$ [[{paper('fig4_power_at_01')}]])."),
-  str_glue("The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be well powered (power $\\approx$ [[{one(power_02)}]]) to detect treatment effect heterogeneity on the scale of 0.2 SD, and moderately powered for 0.1 SD (power $\\approx$ [[{one(power_01)}]])."),
+  str_glue("The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be [[moderately]] well powered (power $\\approx$ [[{one(power_02)}]]) to detect treatment effect heterogeneity on the scale of 0.2 SD, and [[poorly]] powered for 0.1 SD (power $\\approx$ [[{one(power_01)}]])."),
   str_glue(
     "The simulation results the article deposits, and which Figure 4 is drawn from, give a ",
     "rejection probability of {two(power_02)} at 0.2 SD and {two(power_01)} at 0.1 SD, both ",
     "at 500 subjects per treatment arm. Figure 4 draws guide lines at 500 subjects and at ",
     "power 0.8 and annotates the 0.2 SD curve where it crosses the second of them, which the ",
     "simulation puts at {arm_for_08} subjects per arm rather than 500; the sentence reads the ",
-    "height of the guide line rather than the curve. The figure itself is correct and is not ",
-    "reprinted here."),
+    "height of the guide line rather than the curve. At those rejection probabilities the ",
+    "test is moderately well powered at 0.2 SD rather than well powered, and poorly powered at ",
+    "0.1 SD rather than moderately so, and both descriptions are corrected with the numbers. The figure itself is correct and is not reprinted here."),
   "fig4_power_at_02;fig4_power_at_01",
   str_c(one(power_02), ";", one(power_01)),
 
@@ -119,7 +120,20 @@ entries <- tribble(
     "interchanged. Correcting the table requires the pre-R-3.6.0 sampler, so it is documented ",
     "in the repository rather than reprinted here."),
   "text_gfk_n_sig",
-  as.character(gfk_sig)
+  as.character(gfk_sig),
+
+  3, "wording", "pipeline", "full",
+  "The description of statistical power, page 11",
+  "published p. 11",
+  "Because we are [[relatively]] well powered to detect politically meaningful differences in treatment response, I conclude from this evidence that the treatment effect homogeneity explanation of the correspondence across experimental sites is plausible.",
+  "Because we are [[moderately]] well powered to detect politically meaningful differences in treatment response, I conclude from this evidence that the treatment effect homogeneity explanation of the correspondence across experimental sites is plausible.",
+  str_glue(
+    "The sentence rests on the power figures of entry 1. At the corrected rejection ",
+    "probabilities, {two(power_02)} at 0.2 SD and {two(power_01)} at 0.1 SD, the tests are ",
+    "moderately well powered rather than relatively well powered, which is the description ",
+    "entry 1 now gives them. The conclusion the sentence draws is unchanged."),
+  NA_character_,
+  NA_character_
 ) |>
   mutate(across(c(title, published, corrected, note, claim_ids, corrected_values),
                 as.character))
@@ -184,7 +198,7 @@ n_entries_word <- c("one", "two", "three", "four", "five", "six", "seven", "eigh
 bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
 ```
 
-`r str_to_sentence(n_entries_word)` sentences in the published article state numbers the deposited replication archive does not support. Both are in the section reporting the randomization inference tests of treatment effect homogeneity, and neither changes a conclusion of the article: the tests still reject the null of constant effects in a small minority of comparisons, and the correspondence between the Mechanical Turk and probability sample estimates is untouched.
+`r str_to_sentence(n_entries_word)` sentences in the published article need correcting. Two state numbers the deposited replication archive does not support, and the third describes the tests' statistical power more generously than the corrected numbers allow. All `r n_entries_word` are in the section reporting the randomization inference tests of treatment effect homogeneity, and none changes a conclusion of the article: the tests still reject the null of constant effects in a small minority of comparisons, and the correspondence between the Mechanical Turk and probability sample estimates is untouched.
 
 Article DOI: [10.1017/psrm.2018.10](https://doi.org/10.1017/psrm.2018.10). Replication archive: [10.7910/DVN/F1CFFM](https://doi.org/10.7910/DVN/F1CFFM). The code behind every corrected value below is at <https://github.com/active-maintenance-aec/coppock_2019a>, and every one of them is recomputed when this document is rendered rather than typed into it.
 
