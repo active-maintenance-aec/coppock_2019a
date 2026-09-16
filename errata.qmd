@@ -133,6 +133,37 @@ entries <- tribble(
     "moderately well powered rather than relatively well powered, which is the description ",
     "entry 1 now gives them. The conclusion the sentence draws is unchanged."),
   NA_character_,
+  NA_character_,
+
+  4, "wording", "reading", "full",
+  "The word naming the procedure in footnote 8, page 11",
+  "published p. 11",
+  "To implement the [[correlation]], order the $m$ uncorrected p-values within a \"family\" from smallest to largest.",
+  "To implement the [[correction]], order the $m$ uncorrected p-values within a \"family\" from smallest to largest.",
+  str_c(
+    "The note is about the Holm correction, which its own first sentence names twice, and ",
+    "the sentence that says how to apply it calls it a correlation. Nothing in the analysis ",
+    "turns on the word."),
+  NA_character_,
+  NA_character_,
+
+  5, "definition", "reading", "full",
+  "The condition stated for the Holm correction, footnote 8, page 11",
+  "published p. 11",
+  "Identify the smallest p-value for which the following condition holds: [[$p_k \\le \\frac{k}{m}\\alpha$]], where $k$ indexes the p-values, and $\\alpha$ the target significance level.",
+  "Identify the smallest p-value for which the following condition holds: [[$p_k > \\alpha/(m - k + 1)$]], where $k$ indexes the p-values, and $\\alpha$ the target significance level.",
+  str_c(
+    "The condition the note prints is the Benjamini-Hochberg threshold on the false discovery ",
+    "rate, not the Holm threshold on the family-wise error rate that the note names and that ",
+    "the analysis used. The rest of the note is already Holm's step-down rule: it says to find ",
+    "the SMALLEST p-value meeting the condition and to treat it and every larger p-value as ",
+    "insignificant, which is where Holm stops and is not how Benjamini-Hochberg is read. So ",
+    "the single defect is the condition, and correcting it makes the note describe the ",
+    "procedure the code ran. Both scripts call `p.adjust(max_pval, \"holm\")`, the deposit's ",
+    "own `coppock_generalizability_ri_analysis.R` and the maintained ",
+    "`table_2_ri_heterogeneity.R`, so Table 2's N Significant (Holm) column and every number ",
+    "under it are unaffected."),
+  NA_character_,
   NA_character_
 ) |>
   mutate(across(c(title, published, corrected, note, claim_ids, corrected_values),
@@ -198,7 +229,7 @@ n_entries_word <- c("one", "two", "three", "four", "five", "six", "seven", "eigh
 bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
 ```
 
-`r str_to_sentence(n_entries_word)` sentences in the published article need correcting. Two state numbers the deposited replication archive does not support, and the third describes the tests' statistical power more generously than the corrected numbers allow. All `r n_entries_word` are in the section reporting the randomization inference tests of treatment effect homogeneity, and none changes a conclusion of the article: the tests still reject the null of constant effects in a small minority of comparisons, and the correspondence between the Mechanical Turk and probability sample estimates is untouched.
+`r str_to_sentence(n_entries_word)` sentences in the published article need correcting. Two state numbers the deposited replication archive does not support, and a third describes the tests' statistical power more generously than the corrected numbers allow. The remaining two are in the footnote that explains the Holm correction: one calls the correction a correlation, and the other states the Benjamini-Hochberg threshold on the false discovery rate in place of the Holm threshold the footnote names and the code applied. All `r n_entries_word` are in the section reporting the randomization inference tests of treatment effect homogeneity, and none changes a conclusion of the article: the tests still reject the null of constant effects in a small minority of comparisons, the counts in Table 2 come from the code rather than from the footnote's formula, and the correspondence between the Mechanical Turk and probability sample estimates is untouched.
 
 Article DOI: [10.1017/psrm.2018.10](https://doi.org/10.1017/psrm.2018.10). Replication archive: [10.7910/DVN/F1CFFM](https://doi.org/10.7910/DVN/F1CFFM). The code behind every corrected value below is at <https://github.com/active-maintenance-aec/coppock_2019a>, and every one of them is recomputed when this document is rendered rather than typed into it.
 
