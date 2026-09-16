@@ -1,11 +1,11 @@
 paper_id,claim_id,table_figure,claim,value_script,value_paper,match,value_rewrite,match_rewrite,holds,defect_locus,notes
 coppock_2019a,intro_n_pairs,"Text, p. 2",Pairs of estimates entering the correlation,40,40,1,40,1,NA,NA,
-coppock_2019a,intro_correlation,"Text, p. 2",MTurk-original correlation,0.8512379191513756,0.85,1,0.8512379191513758,1,NA,NA,
+coppock_2019a,intro_correlation,"Text, p. 2",MTurk-original correlation,0.8512379191513756,0.85,1,0.8512379191513735,1,NA,NA,
 coppock_2019a,results_pairs,"Text, p. 8",Original-MTurk pairs of coefficients,40,40,1,40,1,NA,NA,
-coppock_2019a,results_correlation,"Text, p. 8","MTurk-original correlation, restated",0.8512379191513756,0.85,1,0.8512379191513758,1,NA,NA,
-coppock_2019a,results_cor_mt_orig_gfk,"Text, p. 8",MTurk-original correlation on the TESS/GfK subset,0.9016972174899047,0.90,1,0.9016972174899096,1,NA,NA,
-coppock_2019a,results_cor_gfk_mt,"Text, p. 8",TESS/GfK-MTurk correlation,0.9582250489553441,0.96,1,0.9582250489553382,1,NA,NA,
-coppock_2019a,results_cor_gfk_orig,"Text, p. 8",TESS/GfK-original correlation,0.8517252588643589,0.85,1,0.8517252588643593,1,NA,NA,
+coppock_2019a,results_correlation,"Text, p. 8","MTurk-original correlation, restated",0.8512379191513756,0.85,1,0.8512379191513735,1,NA,NA,
+coppock_2019a,results_cor_mt_orig_gfk,"Text, p. 8",MTurk-original correlation on the TESS/GfK subset,0.9016972174899047,0.90,1,0.9016972174899088,1,NA,NA,
+coppock_2019a,results_cor_gfk_mt,"Text, p. 8",TESS/GfK-MTurk correlation,0.9582250489553441,0.96,1,0.958225048955341,1,NA,NA,
+coppock_2019a,results_cor_gfk_orig,"Text, p. 8",TESS/GfK-original correlation,0.8517252588643589,0.85,1,0.85172525886436,1,NA,NA,
 coppock_2019a,results_orig_sig,"Text, p. 8",Coefficients significant in the original studies,25,25,1,25,1,NA,NA,
 coppock_2019a,results_replicated,"Text, p. 8","Of those, also significant on MTurk",18,18,1,18,1,NA,NA,
 coppock_2019a,results_orig_nonsig,"Text, p. 8",Coefficients not significant in the original studies,15,15,1,15,1,NA,NA,
@@ -140,7 +140,7 @@ coppock_2019a,appx_t16_other_cells,Online Appendix Table 16,"Intercept, sample s
 coppock_2019a,appx_t17_treatment_cells,Online Appendix Table 17,Treatment estimate and standard error cells reproduced of 6 published,NA,6,NA,6,1,NA,NA,"The deposited appendix script writes these tables as text, but two of its sink() calls are mistyped and the deposited files for appendix Tables 1 and 15 do not survive, so no value_script is read for any of them."
 coppock_2019a,appx_t17_other_cells,Online Appendix Table 17,"Intercept, sample size and R-squared cells of appendix Table 17 (Terrorism Spending)",NA,12,NA,NA,NA,NA,rewrite,"The maintained rewrite drops the intercept and the party identification covariate before writing its estimates and exports neither sample sizes nor R-squared, so maintained/output/ carries none of these cells."
 coppock_2019a,methods_max_dvs,"Text, p. 6",Most dependent variables in any of the deposit's study groupings,5,2,0,5,0,NA,unresolved,"The article says it limited the number of dependent variables per study to two. Under the deposit's twelve groupings the largest is 5; under the online appendix's numbering, which splits the same data into fifteen studies, none exceeds two, so the sentence does not identify the quantity it constrains."
-coppock_2019a,fn5_persuasion_magnitude,Footnote 5,Mean absolute standardized effect,0.20018641783484187,0.2,1,0.20018641783484223,1,1,NA,"The footnote hedges the figure with a tilde, so it is read as an approximation and holds at the one decimal it states."
+coppock_2019a,fn5_persuasion_magnitude,Footnote 5,Mean absolute standardized effect,0.20018641783484187,0.2,1,0.20018641783484245,1,1,NA,"The footnote hedges the figure with a tilde, so it is read as an approximation and holds at the one decimal it states."
 coppock_2019a,results_zero_sign_flips,"Text, p. 8",Pairs significant in both versions with opposite signs,0,0,1,0,1,1,NA,
 coppock_2019a,text_one_shared_case,"Text, pp. 10-11",Comparisons rejecting homogeneity in more than one sample,NA,1,NA,1,1,1,NA,"The one comparison is in free_trade, which is the Hiscox (2006) study the sentence names."
 coppock_2019a,fig4_typical_arm,Figure 4,Subjects per treatment arm the MTurk replications typically employ,NA,500,NA,NA,NA,NA,rewrite,"The maintained rewrite exports no sample sizes and no treatment arm counts, so nothing in maintained/output/ can be compared against this."

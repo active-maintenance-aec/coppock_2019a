@@ -11,6 +11,7 @@ source(here::here("maintained", "helpers.R"))
 results <- read_rds(here::here("maintained", "output", "analysis_results.rds"))
 
 load(here::here("original", "coppock_generalizability_study_data.RData"))
+study_df <- published_study_labels(study_df)
 
 results <- results |>
   left_join(study_df, by = "study") |>
