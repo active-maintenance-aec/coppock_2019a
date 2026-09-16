@@ -18,25 +18,32 @@ results <- results |>
   left_join(coefficients_df, by = "term")
 
 # One row per estimate, one column per sample ----
+# The study, dv and term CODES are carried through beside their printed labels,
+# because they are the only key anything outside this pipeline can join on.
+# ground_truth/published_table_a1.csv records the published table in those same
+# codes, and the remastered edition sets Table A 1 in the published row order
+# over these values: without the codes it would have to match rows by their
+# labels, which differ in case between the deposit and the page, or by their
+# position, which is exactly what the two files do not share.
 
 ests <- results |>
-  select(study_factor, coef_name, dv_name, sample, est) |>
+  select(study, dv, term, study_factor, coef_name, dv_name, sample, est) |>
   pivot_wider(names_from = sample, values_from = est)
 
 ses <- results |>
-  select(study_factor, coef_name, dv_name, sample, se) |>
+  select(study, dv, term, study_factor, coef_name, dv_name, sample, se) |>
   pivot_wider(names_from = sample, values_from = se, names_glue = "{sample}_se")
 
 ps <- results |>
-  select(study_factor, coef_name, dv_name, sample, p) |>
+  select(study, dv, term, study_factor, coef_name, dv_name, sample, p) |>
   pivot_wider(names_from = sample, values_from = p, names_glue = "{sample}_p")
 
 # Table ----
 # Repeated study names are blanked so each study heads its own block.
 
 table_df <- ests |>
-  left_join(ses, by = c("study_factor", "coef_name", "dv_name")) |>
-  left_join(ps, by = c("study_factor", "coef_name", "dv_name")) |>
+  left_join(ses, by = c("study", "dv", "term", "study_factor", "coef_name", "dv_name")) |>
+  left_join(ps, by = c("study", "dv", "term", "study_factor", "coef_name", "dv_name")) |>
   arrange(study_factor, dv_name) |>
   mutate(
     original_entry = pmap_chr(list(original, original_se, original_p), format_entry),
@@ -44,7 +51,8 @@ table_df <- ests |>
     gfk_entry = pmap_chr(list(gfk, gfk_se, gfk_p), format_entry),
     study_print = if_else(duplicated(study_factor), NA_character_, as.character(study_factor))
   ) |>
-  select(study_factor, dv_name, coef_name, original_entry, mt_entry, gfk_entry, study_print)
+  select(study, dv, term, study_factor, dv_name, coef_name, original_entry, mt_entry,
+         gfk_entry, study_print)
 
 write_csv(table_df, here::here("maintained", "output", "table_a1_ate_summary.csv"))
 

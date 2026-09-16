@@ -1,41 +1,41 @@
-study_factor,dv_name,coef_name,original_entry,mt_entry,gfk_entry,study_print
-Haider-Markel and Joslyn (2001),Support for Concealed Carry Law,Citizens' Rights Frame,0.33 (0.08)*,0.21 (0.05)*,NA,Haider-Markel and Joslyn (2001)
-Brader (2005),Negative Impact,Positive Frame,-0.28 (0.13)*,-0.22 (0.04)*,NA,Brader (2005)
-Brader (2005),Support for Immigration,Positive Frame,0.39 (0.14)*,0.26 (0.05)*,NA,NA
-Peffley and Hurwitz (2007),Favor Death Penalty,African Americans,0.42 (0.09)*,0.10 (0.05)*,NA,Peffley and Hurwitz (2007)
-Transue (2007),Willingness to Pay Tax,Other Americans,0.18 (0.10),-0.08 (0.10),NA,Transue (2007)
-Transue (2007),Willingness to Pay Tax,Public Schools,0.16 (0.10),0.19 (0.09)*,NA,NA
-Chong and Druckman (2010),Patriot Act Support,Con / Memory Based,-0.38 (0.12)*,-0.18 (0.11),NA,Chong and Druckman (2010)
-Chong and Druckman (2010),Patriot Act Support,Con / No Processing,-0.41 (0.13)*,-0.39 (0.11)*,NA,NA
-Chong and Druckman (2010),Patriot Act Support,Con / Online Processing,-0.45 (0.12)*,-0.40 (0.11)*,NA,NA
-Chong and Druckman (2010),Patriot Act Support,Pro / Memory Based,0.33 (0.12)*,0.20 (0.11),NA,NA
-Chong and Druckman (2010),Patriot Act Support,Pro / No Processing,0.43 (0.12)*,0.32 (0.11)*,NA,NA
-Chong and Druckman (2010),Patriot Act Support,Pro / Online Processing,0.33 (0.12)*,0.27 (0.11)*,NA,NA
-Chong and Druckman (2010),Patriot Act Support,Both / Memory Based,-0.07 (0.14),-0.10 (0.12),NA,NA
-Chong and Druckman (2010),Patriot Act Support,Both / No Processing,-0.08 (0.16),0.01 (0.13),NA,NA
-Chong and Druckman (2010),Patriot Act Support,Both / Online Processing,0.01 (0.13),-0.16 (0.13),NA,NA
-Nicholson (2012),Support for Foreclosure Bill,In Party Cue,0.18 (0.08)*,0.11 (0.07),NA,Nicholson (2012)
-Nicholson (2012),Support for Immigration Bill,In Party Cue,0.23 (0.09)*,0.10 (0.06),NA,NA
-"McGinty, Webster, and Barry (2013)",Magazines,News,0.11 (0.04)*,0.01 (0.04),NA,"McGinty, Webster, and Barry (2013)"
-"McGinty, Webster, and Barry (2013)",Magazines,LCM Ban,0.18 (0.06)*,0.12 (0.05)*,NA,NA
-"McGinty, Webster, and Barry (2013)",Magazines,Mental Illness,0.10 (0.05),-0.01 (0.05),NA,NA
-"McGinty, Webster, and Barry (2013)",SMI Danger,News,0.09 (0.05),0.02 (0.04),NA,NA
-"McGinty, Webster, and Barry (2013)",SMI Danger,LCM Ban,-0.07 (0.06),0.01 (0.05),NA,NA
-"McGinty, Webster, and Barry (2013)",SMI Danger,Mental Illness,-0.12 (0.06)*,-0.08 (0.05),NA,NA
-Craig and Richeson (2014),Support for Immigration,Majority Minority,-0.00 (0.10),-0.22 (0.07)*,NA,Craig and Richeson (2014)
-Craig and Richeson (2014),Way of Life,Majority Minority,-0.14 (0.11),0.08 (0.07),NA,NA
-Johnston and Ballard (2016),Agree on Gold Standard,Expert Treatment,0.38 (0.11)*,0.50 (0.04)*,NA,Johnston and Ballard (2016)
-Johnston and Ballard (2016),Agree on Health Care,Expert Treatment,0.15 (0.10),0.34 (0.04)*,NA,NA
-Johnston and Ballard (2016),Agree on Immigration,Expert Treatment,0.14 (0.11),0.33 (0.04)*,NA,NA
-Johnston and Ballard (2016),Agree on Tax Cut,Expert Treatment,0.35 (0.10)*,0.44 (0.04)*,NA,NA
-Johnston and Ballard (2016),Agree on Trade with China,Expert Treatment,0.24 (0.10)*,0.42 (0.04)*,NA,NA
-Hiscox (2006),Support for Free Trade,Expert,0.25 (0.06)*,0.28 (0.03)*,0.17 (0.05)*,Hiscox (2006)
-Hiscox (2006),Support for Free Trade,Positive,-0.17 (0.08)*,-0.08 (0.04),-0.03 (0.07),NA
-Hiscox (2006),Support for Free Trade,Negative,-0.28 (0.08)*,-0.32 (0.05)*,-0.32 (0.07)*,NA
-Hiscox (2006),Support for Free Trade,Pos + Neg,-0.41 (0.09)*,-0.33 (0.05)*,-0.23 (0.07)*,NA
-Levendusky and Malhotra (2016),Extremity of Policy Views,Polarizied Treatment,0.02 (0.08),-0.05 (0.04),0.05 (0.06),Levendusky and Malhotra (2016)
-Levendusky and Malhotra (2016),Perceived Polarization,Polarizied Treatment,0.16 (0.08)*,0.36 (0.05)*,0.47 (0.08)*,NA
-Hopkins and Mummolo (2017),Support for Crime Spending,Crime Argument,0.06 (0.05),-0.01 (0.05),0.09 (0.05),Hopkins and Mummolo (2017)
-Hopkins and Mummolo (2017),Support for Health Care Spending,Health Care Argument,-0.03 (0.05),-0.05 (0.04),-0.03 (0.05),NA
-Hopkins and Mummolo (2017),Support for Stimulus Spending,Stimulus Argument,-0.16 (0.04)*,-0.21 (0.04)*,-0.23 (0.04)*,NA
-Hopkins and Mummolo (2017),Support for Terrorism Spending,Terrorism Argument,0.25 (0.05)*,0.11 (0.05)*,0.18 (0.06)*,NA
+study,dv,term,study_factor,dv_name,coef_name,original_entry,mt_entry,gfk_entry,study_print
+concealed_carry,dv_gun_s,Z_gunrights,Haider-Markel and Joslyn (2001),Support for Concealed Carry Law,Citizens' Rights Frame,0.33 (0.08)*,0.21 (0.05)*,NA,Haider-Markel and Joslyn (2001)
+immigration,brader_neg_impact_s,Z_brader_pos_negpositive,Brader (2005),Negative Impact,Positive Frame,-0.28 (0.13)*,-0.22 (0.04)*,NA,Brader (2005)
+immigration,brader_num_imm_s,Z_brader_pos_negpositive,Brader (2005),Support for Immigration,Positive Frame,0.39 (0.14)*,0.26 (0.05)*,NA,NA
+death_penalty,CP_dv_s,Z_CP_3race,Peffley and Hurwitz (2007),Favor Death Penalty,African Americans,0.42 (0.09)*,0.10 (0.05)*,NA,Peffley and Hurwitz (2007)
+superordinate_id,willing_s,Z_identityOther Americans,Transue (2007),Willingness to Pay Tax,Other Americans,0.18 (0.10),-0.08 (0.10),NA,Transue (2007)
+superordinate_id,willing_s,Z_particularismPublic Schools,Transue (2007),Willingness to Pay Tax,Public Schools,0.16 (0.10),0.19 (0.09)*,NA,NA
+patriot_act,PA_support_s,T1_condition_nameSC_MB,Chong and Druckman (2010),Patriot Act Support,Con / Memory Based,-0.38 (0.12)*,-0.18 (0.11),NA,Chong and Druckman (2010)
+patriot_act,PA_support_s,T1_condition_nameSC_NO,Chong and Druckman (2010),Patriot Act Support,Con / No Processing,-0.41 (0.13)*,-0.39 (0.11)*,NA,NA
+patriot_act,PA_support_s,T1_condition_nameSC_OL,Chong and Druckman (2010),Patriot Act Support,Con / Online Processing,-0.45 (0.12)*,-0.40 (0.11)*,NA,NA
+patriot_act,PA_support_s,T1_condition_nameSP_MB,Chong and Druckman (2010),Patriot Act Support,Pro / Memory Based,0.33 (0.12)*,0.20 (0.11),NA,NA
+patriot_act,PA_support_s,T1_condition_nameSP_NO,Chong and Druckman (2010),Patriot Act Support,Pro / No Processing,0.43 (0.12)*,0.32 (0.11)*,NA,NA
+patriot_act,PA_support_s,T1_condition_nameSP_OL,Chong and Druckman (2010),Patriot Act Support,Pro / Online Processing,0.33 (0.12)*,0.27 (0.11)*,NA,NA
+patriot_act,PA_support_s,T1_condition_nameSP_SC_MB,Chong and Druckman (2010),Patriot Act Support,Both / Memory Based,-0.07 (0.14),-0.10 (0.12),NA,NA
+patriot_act,PA_support_s,T1_condition_nameSP_SC_NO,Chong and Druckman (2010),Patriot Act Support,Both / No Processing,-0.08 (0.16),0.01 (0.13),NA,NA
+patriot_act,PA_support_s,T1_condition_nameSP_SC_OL,Chong and Druckman (2010),Patriot Act Support,Both / Online Processing,0.01 (0.13),-0.16 (0.13),NA,NA
+elite_endorsements,fore_dv_s,Z_matchin_party,Nicholson (2012),Support for Foreclosure Bill,In Party Cue,0.18 (0.08)*,0.11 (0.07),NA,Nicholson (2012)
+elite_endorsements,imm_dv_s,Z_matchin_party,Nicholson (2012),Support for Immigration Bill,In Party Cue,0.23 (0.09)*,0.10 (0.06),NA,NA
+mental_illness,mcginty_magazines_s,Z_mcginty_news,"McGinty, Webster, and Barry (2013)",Magazines,News,0.11 (0.04)*,0.01 (0.04),NA,"McGinty, Webster, and Barry (2013)"
+mental_illness,mcginty_magazines_s,Z_mcginty_policylcm,"McGinty, Webster, and Barry (2013)",Magazines,LCM Ban,0.18 (0.06)*,0.12 (0.05)*,NA,NA
+mental_illness,mcginty_magazines_s,Z_mcginty_policymi,"McGinty, Webster, and Barry (2013)",Magazines,Mental Illness,0.10 (0.05),-0.01 (0.05),NA,NA
+mental_illness,mcginty_SMI_danger_s,Z_mcginty_news,"McGinty, Webster, and Barry (2013)",SMI Danger,News,0.09 (0.05),0.02 (0.04),NA,NA
+mental_illness,mcginty_SMI_danger_s,Z_mcginty_policylcm,"McGinty, Webster, and Barry (2013)",SMI Danger,LCM Ban,-0.07 (0.06),0.01 (0.05),NA,NA
+mental_illness,mcginty_SMI_danger_s,Z_mcginty_policymi,"McGinty, Webster, and Barry (2013)",SMI Danger,Mental Illness,-0.12 (0.06)*,-0.08 (0.05),NA,NA
+system_threat,craig_num_imm_s,Z_craigcraig_treatment,Craig and Richeson (2014),Support for Immigration,Majority Minority,-0.00 (0.10),-0.22 (0.07)*,NA,Craig and Richeson (2014)
+system_threat,craig_wol_s,Z_craigcraig_treatment,Craig and Richeson (2014),Way of Life,Majority Minority,-0.14 (0.11),0.08 (0.07),NA,NA
+expert_economists,agree_5_s,Z_expert_5,Johnston and Ballard (2016),Agree on Gold Standard,Expert Treatment,0.38 (0.11)*,0.50 (0.04)*,NA,Johnston and Ballard (2016)
+expert_economists,agree_2_s,Z_expert_2,Johnston and Ballard (2016),Agree on Health Care,Expert Treatment,0.15 (0.10),0.34 (0.04)*,NA,NA
+expert_economists,agree_1_s,Z_expert_1,Johnston and Ballard (2016),Agree on Immigration,Expert Treatment,0.14 (0.11),0.33 (0.04)*,NA,NA
+expert_economists,agree_4_s,Z_expert_4,Johnston and Ballard (2016),Agree on Tax Cut,Expert Treatment,0.35 (0.10)*,0.44 (0.04)*,NA,NA
+expert_economists,agree_3_s,Z_expert_3,Johnston and Ballard (2016),Agree on Trade with China,Expert Treatment,0.24 (0.10)*,0.42 (0.04)*,NA,NA
+free_trade,Y_Hiscox_s,Z_Hiscox_expert,Hiscox (2006),Support for Free Trade,Expert,0.25 (0.06)*,0.28 (0.03)*,0.17 (0.05)*,Hiscox (2006)
+free_trade,Y_Hiscox_s,Z_Hiscox_valencepositive,Hiscox (2006),Support for Free Trade,Positive,-0.17 (0.08)*,-0.08 (0.04),-0.03 (0.07),NA
+free_trade,Y_Hiscox_s,Z_Hiscox_valencenegative,Hiscox (2006),Support for Free Trade,Negative,-0.28 (0.08)*,-0.32 (0.05)*,-0.32 (0.07)*,NA
+free_trade,Y_Hiscox_s,Z_Hiscox_valenceboth,Hiscox (2006),Support for Free Trade,Pos + Neg,-0.41 (0.09)*,-0.33 (0.05)*,-0.23 (0.07)*,NA
+polarization,L_ex_s,Z_Levenduskypolarized,Levendusky and Malhotra (2016),Extremity of Policy Views,Polarizied Treatment,0.02 (0.08),-0.05 (0.04),0.05 (0.06),Levendusky and Malhotra (2016)
+polarization,L_dif_s,Z_Levenduskypolarized,Levendusky and Malhotra (2016),Perceived Polarization,Polarizied Treatment,0.16 (0.08)*,0.36 (0.05)*,0.47 (0.08)*,NA
+frame_breadth,Y_crime_s,Z_crime_Y_crime,Hopkins and Mummolo (2017),Support for Crime Spending,Crime Argument,0.06 (0.05),-0.01 (0.05),0.09 (0.05),Hopkins and Mummolo (2017)
+frame_breadth,Y_health_s,Z_health_Y_health,Hopkins and Mummolo (2017),Support for Health Care Spending,Health Care Argument,-0.03 (0.05),-0.05 (0.04),-0.03 (0.05),NA
+frame_breadth,Y_stimulus_s,Z_stimulus_Y_stimulus,Hopkins and Mummolo (2017),Support for Stimulus Spending,Stimulus Argument,-0.16 (0.04)*,-0.21 (0.04)*,-0.23 (0.04)*,NA
+frame_breadth,Y_terror_s,Z_terror_Y_terror,Hopkins and Mummolo (2017),Support for Terrorism Spending,Terrorism Argument,0.25 (0.05)*,0.11 (0.05)*,0.18 (0.06)*,NA
