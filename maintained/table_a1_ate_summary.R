@@ -17,6 +17,58 @@ results <- results |>
   left_join(dvs_df, by = "dv") |>
   left_join(coefficients_df, by = "term")
 
+# The published page's own labels ----
+# THE DEPOSIT'S LABELS ARE A PRE-COPYEDIT DRAFT AND THE PAGE GOVERNS THE WORDS.
+# Cambridge sets both label columns in sentence case where the study data use
+# title case, sets `Both/memory based` where they set `Both / Memory Based`,
+# spells out `Positive + negative` where they abbreviate `Pos + Neg`, and sets a
+# curly apostrophe in `Citizens rights frame`. 41 of this table's 64 labels
+# differ. They are read off published pp. 15 and 16 and recorded in
+# ground_truth/published_table_a1_labels.csv, which is a transcription like
+# published_table_a1.csv beside it rather than a rule.
+#
+# NOTHING IN THE GROUND TRUTH COMPARES A LABEL, and neither does either remaster
+# gate: a float's interior is dropped by rectangle on both sides. The remastered
+# edition printed all 41 for as long as it has existed and read zero unexplained
+# throughout. What found them is check_floats.py, which compares the words inside
+# each float on both compiled PDFs.
+#
+# THIS IS NOT DONE IN published_study_labels, AND THAT IS DELIBERATE. The
+# published article disagrees with itself about one study: Figure 2 on p. 7 sets
+# `McGinty, Webster, and Barry (2013)` while Table A1, Table 1 and the body all
+# set it without the Oxford comma. The deposit's label already matches Figure 2,
+# so relabelling in the one shared place would correct this table and break that
+# figure. A label the two published floats spell differently belongs to each
+# float and not to the study.
+a1_labels <- read_csv(here::here("ground_truth", "published_table_a1_labels.csv"),
+                      col_types = cols(.default = col_character()))
+
+# A label in the data that the transcription does not name STOPS the script,
+# because a silent pass-through is how a pre-copyedit label reaches the page.
+# study_factor is a FACTOR whose level order is the published study order, so it
+# relabels through fct_relabel: as.character() would drop the levels and re-sort
+# the twelve study blocks alphabetically.
+page_label <- function(x, which) {
+  map <- a1_labels[a1_labels$column == which, ]
+  lookup <- set_names(map$published, map$deposit)
+  swap <- function(v) {
+    unknown <- setdiff(v, names(lookup))
+    stopifnot(
+      "a label in the data is not in published_table_a1_labels.csv" =
+        length(unknown) == 0
+    )
+    unname(lookup[v])
+  }
+  if (is.factor(x)) fct_relabel(x, swap) else swap(x)
+}
+
+results <- results |>
+  mutate(
+    study_factor = page_label(study_factor, "study_factor"),
+    dv_name = page_label(dv_name, "dv_name"),
+    coef_name = page_label(coef_name, "coef_name")
+  )
+
 # One row per estimate, one column per sample ----
 # The study, dv and term CODES are carried through beside their printed labels,
 # because they are the only key anything outside this pipeline can join on.

@@ -1,0 +1,65 @@
+column,deposit,published,differs
+study_factor,Brader (2005),Brader (2005),0
+study_factor,Chong and Druckman (2010),Chong and Druckman (2010),0
+study_factor,Craig and Richeson (2014),Craig and Richeson (2014),0
+study_factor,Haider-Markel and Joslyn (2001),Haider-Markel and Joslyn (2001),0
+study_factor,Hiscox (2006),Hiscox (2006),0
+study_factor,Hopkins and Mummolo (2017),Hopkins and Mummolo (2017),0
+study_factor,Johnston and Ballard (2016),Johnston and Ballard (2016),0
+study_factor,Levendusky and Malhotra (2016),Levendusky and Malhotra (2016),0
+study_factor,"McGinty, Webster, and Barry (2013)","McGinty, Webster and Barry (2013)",1
+study_factor,Nicholson (2012),Nicholson (2012),0
+study_factor,Peffley and Hurwitz (2007),Peffley and Hurwitz (2007),0
+study_factor,Transue (2007),Transue (2007),0
+dv_name,Agree on Gold Standard,Agree on gold standard,1
+dv_name,Agree on Health Care,Agree on health care,1
+dv_name,Agree on Immigration,Agree on immigration,1
+dv_name,Agree on Tax Cut,Agree on Tax Cut,0
+dv_name,Agree on Trade with China,Agree on trade with China,1
+dv_name,Extremity of Policy Views,Extremity of policy views,1
+dv_name,Favor Death Penalty,Favor death penalty,1
+dv_name,Magazines,Magazines,0
+dv_name,Negative Impact,Negative impact,1
+dv_name,Patriot Act Support,Patriot Act Support,0
+dv_name,Perceived Polarization,Perceived polarization,1
+dv_name,SMI Danger,SMI danger,1
+dv_name,Support for Concealed Carry Law,Support for Concealed Carry Law,0
+dv_name,Support for Crime Spending,Support for crime spending,1
+dv_name,Support for Foreclosure Bill,Support for Foreclosure Bill,0
+dv_name,Support for Free Trade,Support for free trade,1
+dv_name,Support for Health Care Spending,Support for health care spending,1
+dv_name,Support for Immigration,Support for immigration,1
+dv_name,Support for Immigration Bill,Support for Immigration Bill,0
+dv_name,Support for Stimulus Spending,Support for stimulus spending,1
+dv_name,Support for Terrorism Spending,Support for terrorism spending,1
+dv_name,Way of Life,Way of life,1
+dv_name,Willingness to Pay Tax,Willingness to pay tax,1
+coef_name,African Americans,African Americans,0
+coef_name,Both / Memory Based,Both/memory based,1
+coef_name,Both / No Processing,Both/no processing,1
+coef_name,Both / Online Processing,Both/online processing,1
+coef_name,Citizens' Rights Frame,Citizens’ rights frame,1
+coef_name,Con / Memory Based,Con/memory based,1
+coef_name,Con / No Processing,Con/no processing,1
+coef_name,Con / Online Processing,Con/online processing,1
+coef_name,Crime Argument,Crime argument,1
+coef_name,Expert,Expert,0
+coef_name,Expert Treatment,Expert treatment,1
+coef_name,Health Care Argument,Health care argument,1
+coef_name,In Party Cue,In party cue,1
+coef_name,LCM Ban,LCM ban,1
+coef_name,Majority Minority,Majority minority,1
+coef_name,Mental Illness,Mental illness,1
+coef_name,Negative,Negative,0
+coef_name,News,News,0
+coef_name,Other Americans,Other Americans,0
+coef_name,Polarizied Treatment,Polarizied treatment,1
+coef_name,Pos + Neg,Positive + negative,1
+coef_name,Positive,Positive,0
+coef_name,Positive Frame,Positive frame,1
+coef_name,Pro / Memory Based,Pro/memory based,1
+coef_name,Pro / No Processing,Pro/no processing,1
+coef_name,Pro / Online Processing,Pro/online processing,1
+coef_name,Public Schools,Public schools,1
+coef_name,Stimulus Argument,Stimulus argument,1
+coef_name,Terrorism Argument,Terrorism argument,1
