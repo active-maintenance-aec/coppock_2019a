@@ -50,6 +50,10 @@ arm_for_08 <- min(power$n_per_arm[power$sd_tau == 0.2 & power$power >= 0.8])
 gfk_sig <- table_2$n_sig[table_2$sample == "gfk"]
 gfk_tests <- table_2$n_comparisons[table_2$sample == "gfk"]
 
+mt_tests <- as.numeric(paper("t2_mt_n_comparisons"))
+mt_expected_02 <- round(mt_tests * power_02)
+mt_expected_01 <- round(mt_tests * power_01)
+
 one <- function(x) sprintf("%.1f", x)
 two <- function(x) sprintf("%.2f", x)
 ```
@@ -131,7 +135,11 @@ entries <- tribble(
     "The sentence rests on the power figures of entry 1. At the corrected rejection ",
     "probabilities, {two(power_02)} at 0.2 SD and {two(power_01)} at 0.1 SD, the tests are ",
     "moderately well powered rather than relatively well powered, which is the description ",
-    "entry 1 now gives them. The conclusion the sentence draws is unchanged."),
+    "entry 1 now gives them. The conclusion the sentence draws survives on narrower ",
+    "evidence: with {mt_tests} MTurk tests at 500 subjects per arm, heterogeneity of 0.2 SD in ",
+    "every treatment would produce about {mt_expected_02} rejections against the ",
+    "{paper('t2_mt_n_sig')} observed, but heterogeneity of 0.1 SD would produce about ",
+    "{mt_expected_01}, so the tests rule out the first and not the second."),
   NA_character_,
   NA_character_,
 
