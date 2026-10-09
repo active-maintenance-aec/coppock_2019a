@@ -93,8 +93,8 @@ entries <- tribble(
   ~entry, ~class, ~source, ~form, ~title, ~location, ~published, ~corrected, ~note, ~claim_ids, ~corrected_values,
 
   1, "quantity", "pipeline", "full",
-  "Simulated power, page 10",
-  "published p. 10",
+  "Simulated power, page 622",
+  "published p. 622",
   str_glue("The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be well powered (power $\\approx$ [[{paper('fig4_power_at_02')}]]) to detect treatment effect heterogeneity on the scale of 0.2 SD, and moderately powered for 0.1 SD (power $\\approx$ [[{paper('fig4_power_at_01')}]])."),
   str_glue("The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be [[moderately]] well powered (power $\\approx$ [[{one(power_02)}]]) to detect treatment effect heterogeneity on the scale of 0.2 SD, and [[poorly]] powered for 0.1 SD (power $\\approx$ [[{one(power_01)}]])."),
   str_glue(
@@ -110,8 +110,8 @@ entries <- tribble(
   str_c(one(power_02), ";", one(power_01)),
 
   2, "quantity", "pipeline", "full",
-  "Significant heterogeneity tests on the TESS/GfK sample, page 10",
-  "published p. 10",
+  "Significant heterogeneity tests on the TESS/GfK sample, page 622",
+  "published p. 622",
   str_glue("On the TESS/GfK replications, [[{paper('text_gfk_n_sig')}]] of {paper('text_gfk_n_comparisons')} tests were significant."),
   str_glue("On the TESS/GfK replications, [[{gfk_sig}]] of {gfk_tests} tests were significant."),
   str_glue(
@@ -127,8 +127,8 @@ entries <- tribble(
   as.character(gfk_sig),
 
   3, "wording", "pipeline", "full",
-  "The description of statistical power, page 11",
-  "published p. 11",
+  "The description of statistical power, page 623",
+  "published p. 623",
   "Because we are [[relatively]] well powered to detect politically meaningful differences in treatment response, I conclude from this evidence that the treatment effect homogeneity explanation of the correspondence across experimental sites is plausible.",
   "Because we are [[moderately]] well powered to detect politically meaningful differences in treatment response, I conclude from this evidence that the treatment effect homogeneity explanation of the correspondence across experimental sites is plausible.",
   str_glue(
@@ -144,8 +144,8 @@ entries <- tribble(
   NA_character_,
 
   4, "wording", "reading", "full",
-  "The word naming the procedure in footnote 8, page 11",
-  "published p. 11",
+  "The word naming the procedure in footnote 8, page 623",
+  "published p. 623",
   "To implement the [[correlation]], order the $m$ uncorrected p-values within a \"family\" from smallest to largest.",
   "To implement the [[correction]], order the $m$ uncorrected p-values within a \"family\" from smallest to largest.",
   str_c(
@@ -156,8 +156,8 @@ entries <- tribble(
   NA_character_,
 
   5, "definition", "reading", "full",
-  "The condition stated for the Holm correction, footnote 8, page 11",
-  "published p. 11",
+  "The condition stated for the Holm correction, footnote 8, page 623",
+  "published p. 623",
   "Identify the smallest p-value for which the following condition holds: [[$p_k \\le \\frac{k}{m}\\alpha$]], where $k$ indexes the p-values, and $\\alpha$ the target significance level.",
   "Identify the smallest p-value for which the following condition holds: [[$p_k > \\alpha/(m - k + 1)$]], where $k$ indexes the p-values, and $\\alpha$ the target significance level.",
   str_c(
