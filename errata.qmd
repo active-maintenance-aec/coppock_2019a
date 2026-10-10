@@ -54,6 +54,18 @@ mt_tests <- as.numeric(paper("t2_mt_n_comparisons"))
 mt_expected_02 <- round(mt_tests * power_02)
 mt_expected_01 <- round(mt_tests * power_01)
 
+# The treatment the next published sentence names (Hiscox 2006) as the only one to reject
+# in more than one sample.
+ri <- read_rds(here("maintained", "output", "ri_results.rds"))
+rejects <- ri |> filter(max_pval <= 0.05)
+in_two <- rejects |> count(study, condition_names, dv) |> filter(n > 1)
+stopifnot(nrow(in_two) == 1, in_two$study == "free_trade")
+hiscox <- rejects |> semi_join(in_two, by = c("study", "condition_names", "dv"))
+stopifnot(setequal(hiscox$sample, c("gfk", "mt")))
+original_reject <- rejects |> filter(sample == "original")
+stopifnot(nrow(original_reject) == 1, original_reject$study != "free_trade")
+p_text <- function(x) if (x < 0.01) "p < 0.01" else str_c("p = ", two(x))
+
 one <- function(x) sprintf("%.1f", x)
 two <- function(x) sprintf("%.2f", x)
 ```
@@ -122,7 +134,12 @@ entries <- tribble(
     "{paper('t2_original_n_sig')} in the Original row, which is that column read in the row ",
     "order of the deposited output file rather than in the table's own; the two entries are ",
     "interchanged. Correcting the table requires the pre-R-3.6.0 sampler, so it is documented ",
-    "in the repository rather than reprinted here."),
+    "in the repository rather than reprinted here. The corrected count is what makes the ",
+    "next sentence true: it says that only Hiscox (2006) returned a significant test in more ",
+    "than one sample, which the printed 0 rules out, because the Original sample's single ",
+    "significant test is a different study. The one TESS/GfK rejection is Hiscox's negative ",
+    "treatment ({p_text(hiscox$max_pval[hiscox$sample == 'gfk'])}), which also rejects on ",
+    "MTurk ({p_text(hiscox$max_pval[hiscox$sample == 'mt'])})."),
   "text_gfk_n_sig",
   as.character(gfk_sig),
 
