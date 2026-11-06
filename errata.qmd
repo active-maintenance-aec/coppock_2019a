@@ -108,7 +108,7 @@ entries <- tribble(
   "Simulated power, page 622",
   "published p. 622",
   str_glue("The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be well powered (power $\\approx$ [[{paper('fig4_power_at_02')}]]) to detect treatment effect heterogeneity on the scale of 0.2 SD, and moderately powered for 0.1 SD (power $\\approx$ [[{paper('fig4_power_at_01')}]])."),
-  str_glue("The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be [[moderately]] well powered (power $\\approx$ [[{one(power_02)}]]) to detect treatment effect heterogeneity on the scale of 0.2 SD, and [[poorly]] powered for 0.1 SD (power $\\approx$ [[{one(power_01)}]])."),
+  str_glue("The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be [[moderately]] well powered (power $\\approx$ [[{one(power_02)}]]) to detect treatment effect heterogeneity on the scale of 0.2 SD, and [[poorly]] powered for 0.1 SD (power $\\approx$ [[{two(power_01)}]])."),
   str_glue(
     "The simulation results the article deposits, and which Figure 4 is drawn from, give a ",
     "rejection probability of {two(power_02)} at 0.2 SD and {two(power_01)} at 0.1 SD, both ",
@@ -119,7 +119,7 @@ entries <- tribble(
     "test is moderately well powered at 0.2 SD rather than well powered, and poorly powered at ",
     "0.1 SD rather than moderately so, and both descriptions are corrected with the numbers. The figure itself is correct and is not reprinted here."),
   "fig4_power_at_02;fig4_power_at_01",
-  str_c(one(power_02), ";", one(power_01)),
+  str_c(one(power_02), ";", two(power_01)),
 
   2, "quantity", "pipeline", "full",
   "Significant heterogeneity tests on the TESS/GfK sample, page 622",
