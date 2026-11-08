@@ -159,7 +159,8 @@ TESS/GfK row is the original count. The correct entries in the published
 row order are 2, 9 and 1, which is exactly what the deposit produces.
 The Holm-corrected column, which is the one the argument rests on, is
 symmetric under the same interchange and reproduces exactly under both
-samplers.
+samplers. Correcting the table would need the retired sampler, so errata
+entry 6 carries the transposition as a note that corrects nothing.
 
 Fourth, the article’s two power figures are not the ones its own
 simulation gives. The section is treated below and in the errata.
@@ -183,7 +184,9 @@ figures the article quotes from Figure 4, which its own deposited
 simulation contradicts. The last two are the sentence stating that no
 TESS/GfK test was significant, where the deposit says one was, and the
 sentence saying the analysis is limited to two dependent variables per
-study, which holds or fails depending on what counts as a study.
+study, which holds or fails depending on what counts as a study; the
+last of these is errata entry 8, a note that corrects nothing, because
+the sentence does not identify what counts as a study.
 
 The substantive claim, that these tests rarely reject the null of
 treatment effect homogeneity, holds in every version: at most 9 of 40
@@ -491,8 +494,10 @@ figures are the counts a strict `<` 0.05 would give on the deposit’s own
 draw, where Table 2’s own rule is `<=`, so the sentence and the table
 can differ legitimately by one in each of those samples. Its third
 figure has no such account: the TESS/GfK count is 1 under either rule
-and under either sampler. That sentence is corrected in
-`coppock_2019a_errata.pdf`; the other two are recorded as unresolved.
+and under either sampler. The third figure is corrected in
+`coppock_2019a_errata.pdf` (entry 2); the first two are errata entry 7,
+a note that corrects nothing, for the reason given here: correcting them
+would decide which rule the sentence meant.
 
 ------------------------------------------------------------------------
 
@@ -740,8 +745,11 @@ markers while checking nothing, which is why the file is run rather than
 read.
 
 Five sentences of the published article are corrected in
-`coppock_2019a_errata.pdf` at the root of this repository. Neither
-changes a conclusion.
+`coppock_2019a_errata.pdf` at the root of this repository, which also
+carries three notes that correct nothing (entries 6 to 8: the transposed
+N Significant column of Table 2, the two body-text counts that follow a
+strict inequality, and the sentence limiting each study to two dependent
+variables). No correction and no note changes a conclusion.
 
 # Maintained rewrite verification
 
@@ -915,13 +923,13 @@ subjects per treatment arm.
 
 | Item       | Value                  |
 |:-----------|:-----------------------|
-| R version  | 4.6.0                  |
+| R version  | 4.6.1                  |
 | Platform   | aarch64-apple-darwin23 |
-| Date run   | 2026-09-27             |
+| Date run   | 2026-11-08             |
 | tidyverse  | 2.0.0                  |
 | sandwich   | 3.1.1                  |
 | lmtest     | 0.9.40                 |
-| estimatr   | 2.0.1                  |
+| estimatr   | 2.0.1.9000             |
 | metap      | 1.14                   |
 | knitr      | 1.51                   |
 | kableExtra | 1.4.0                  |

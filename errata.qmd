@@ -68,6 +68,20 @@ p_text <- function(x) if (x < 0.01) "p < 0.01" else str_c("p = ", two(x))
 
 one <- function(x) sprintf("%.1f", x)
 two <- function(x) sprintf("%.2f", x)
+
+# What the deposit's own output prints, read from the ground truth rather than typed.
+gt_all <- read_csv(here("ground_truth", "coppock_2019a_ground_truth.csv"),
+                   show_col_types = FALSE)
+deposit <- function(id) {
+  value <- gt_all$value_script[gt_all$claim_id == id]
+  stopifnot(length(value) == 1)
+  value
+}
+
+# Dependent variables per study grouping, as the deposit's own analysis groups them.
+dvs_per_study <- ri |> distinct(study, dv) |> count(study)
+n_groupings <- nrow(dvs_per_study)
+max_dvs <- max(dvs_per_study$n)
 ```
 
 ```{r entries}
@@ -136,8 +150,9 @@ entries <- tribble(
     "{paper('t2_gfk_n_sig')} in the TESS/GfK row of its N Significant column and ",
     "{paper('t2_original_n_sig')} in the Original row, which is that column read in the row ",
     "order of the deposited output file rather than in the table's own; the two entries are ",
-    "interchanged. Correcting the table requires the pre-R-3.6.0 sampler, so it is documented ",
-    "in the repository rather than reprinted here. The corrected count is what makes the ",
+    "interchanged. Entry 6 sets out the transposition, and because correcting the table ",
+    "requires the pre-R-3.6.0 sampler it is carried there as a note rather than reprinted ",
+    "corrected. The corrected count is what makes the ",
     "next sentence true: it says that only Hiscox (2006) returned a significant test in more ",
     "than one sample, which the printed 0 rules out, because the Original sample's single ",
     "significant test is a different study. The one TESS/GfK rejection is Hiscox's negative ",
@@ -192,6 +207,101 @@ entries <- tribble(
     "the sentence that says how to apply it calls it a correlation. Nothing in the analysis ",
     "turns on the word."),
   NA_character_,
+  NA_character_,
+
+  # Entries 6 to 8 are notes (decision 15). Each quotes a passage the edition reprints as
+  # published and sets no corrected side.
+  #
+  # Entry 6 is a note and not a correction because the corrected cells, 2 and 9 and 1 in the
+  # published row order, are what the deposit prints but not what any run on current R
+  # produces: the maintained pipeline returns 1 and 8 and 1, and only the retired
+  # pre-R-3.6.0 sampler recovers the deposit (README, "Table 2 in full"; notes.md, the
+  # 2026-08-19 entry). A corrected table would print numbers this edition cannot regenerate.
+  6, "float", "pipeline", "note",
+  "The N Significant column of Table 2, page 622",
+  "p. 622, Table 2",
+  str_c(
+    "Original, N Comparisons {paper('t2_original_n_comparisons')}, N Significant [[{paper('t2_original_n_sig')}]], N Significant (Holm) {paper('t2_original_n_sig_holm')}\n\n",
+    "Mechanical Turk, N Comparisons {paper('t2_mt_n_comparisons')}, N Significant {paper('t2_mt_n_sig')}, N Significant (Holm) {paper('t2_mt_n_sig_holm')}\n\n",
+    "TESS/GfK, N Comparisons {paper('t2_gfk_n_comparisons')}, N Significant [[{paper('t2_gfk_n_sig')}]], N Significant (Holm) {paper('t2_gfk_n_sig_holm')}") |>
+    str_glue(),
+  NA_character_,
+  str_glue(
+    "Table 2 sets its rows in the order Original, Mechanical Turk, TESS/GfK, with ",
+    "{paper('t2_original_n_comparisons')}, {paper('t2_mt_n_comparisons')}, and ",
+    "{paper('t2_gfk_n_comparisons')} comparisons, and it prints {paper('t2_original_n_sig')}, ",
+    "{paper('t2_mt_n_sig')}, and {paper('t2_gfk_n_sig')} significant tests in those rows. The ",
+    "deposited output file for the table prints its rows alphabetically by sample, TESS/GfK ",
+    "first and original last, and its N Significant column reads {deposit('t2_gfk_n_sig')}, ",
+    "{deposit('t2_mt_n_sig')}, {deposit('t2_original_n_sig')} from top to bottom, which is the ",
+    "order the published column reads from top to bottom. The N Comparisons column was ",
+    "reordered to the table's own row order and the N Significant column was not, so the ",
+    "Original and TESS/GfK cells of that column are interchanged: in the published row order ",
+    "the deposit gives {deposit('t2_original_n_sig')}, {deposit('t2_mt_n_sig')}, and ",
+    "{deposit('t2_gfk_n_sig')}. The Holm column, {paper('t2_original_n_sig_holm')}, ",
+    "{paper('t2_mt_n_sig_holm')}, and {paper('t2_gfk_n_sig_holm')}, is symmetric under the ",
+    "interchange and so cannot show it. No corrected cell is set, because the deposit's counts ",
+    "come back only under the sampler R retired in 3.6.0: the maintained pipeline, on current ",
+    "R, returns {table_2$n_sig[table_2$sample == 'original']}, ",
+    "{table_2$n_sig[table_2$sample == 'mt']}, and {gfk_sig} in the published row order, so a ",
+    "corrected table would print counts this edition cannot regenerate. The TESS/GfK count of ",
+    "{deposit('t2_gfk_n_sig')} does not depend on the sampler, and entry 2 corrects the sentence ",
+    "of the text that misreports it. No conclusion of the paper changes: the Holm column, which ",
+    "carries the argument, is untouched by the interchange, and the tests still reject the null ",
+    "of constant effects in a small minority of comparisons."),
+  "t2_original_n_sig;t2_gfk_n_sig",
+  NA_character_,
+
+  # Entry 7 is a note and not a correction because the text's 1 and 8 are the counts a strict
+  # inequality gives on the deposit's draw, and correcting them to the table's 2 and 9 would
+  # decide which rule the sentence meant, which is the authors' to say (README, "Table 2 in
+  # full"; the third figure of the sentence, 0, is corrected in entry 2).
+  7, "quantity", "pipeline", "note",
+  "The Original and Mechanical Turk counts in the sentence reporting Table 2, page 622",
+  "p. 622",
+  str_glue("Among the original {paper('text_original_studies')} studies, just [[{paper('text_original_n_sig')}]] of the {paper('text_original_n_comparisons')} treatment versus control comparisons revealed evidence of effect heterogeneity. Among the MTurk replications, [[{paper('text_mt_n_sig')}]] of {paper('text_mt_n_comparisons')} treatments were shown to have heterogeneous effects."),
+  NA_character_,
+  str_glue(
+    "The sentence gives {paper('text_original_n_sig')} and {paper('text_mt_n_sig')} where ",
+    "the deposited output gives {deposit('t2_original_n_sig')} and {deposit('t2_mt_n_sig')}, ",
+    "and where Table 2 prints {paper('t2_original_n_sig')} and ",
+    "{paper('t2_mt_n_sig')} in the Original and Mechanical Turk rows (the first of those ",
+    "belongs to the TESS/GfK row, as entry 6 sets out). On the deposit's own draw exactly one ",
+    "original test and exactly one MTurk test have a maximum p-value of exactly 0.05, so a ",
+    "strict inequality at 0.05 gives {paper('text_original_n_sig')} and ",
+    "{paper('text_mt_n_sig')}, which are the sentence's figures, and the deposit's own rule, ",
+    "which is not strict, gives {deposit('t2_original_n_sig')} and {deposit('t2_mt_n_sig')}. ",
+    "The text and the table can therefore differ legitimately by one in each of those two ",
+    "samples. No corrected figure is set, because correcting either would decide which rule ",
+    "the sentence meant, which only the author can say. The sentence's third figure, for the ",
+    "TESS/GfK replications, has no such account and is corrected in entry 2. No conclusion ",
+    "changes: under either rule a small minority of the comparisons reject the null of ",
+    "constant effects, which is all the sentence is used for."),
+  "text_original_n_sig;text_mt_n_sig",
+  NA_character_,
+
+  # Entry 8 is a note and not a correction because the sentence is true or false according to
+  # what counts as a study, and a corrected sentence would have to choose a count of studies
+  # and write the author's methods paragraph for him (notes.md, "One descriptive claim is
+  # unjudgeable"). The numbers below are computed from the deposit's own grouping; the two
+  # studies named are the ones notes.md identifies as carrying more than two.
+  8, "description", "pipeline", "note",
+  "The limit of two dependent variables per study, page 618",
+  "p. 618",
+  "I limited the number of dependent variables analyzed in each study to [[two]].",
+  NA_character_,
+  str_glue(
+    "The deposit's analysis groups the data into {n_groupings} studies, and the largest of ",
+    "them carries {max_dvs} dependent variables: Johnston and Ballard (`expert_economists`) carries ",
+    "{dvs_per_study$n[dvs_per_study$study == 'expert_economists']} and Hopkins and Mummolo ",
+    "(`frame_breadth`) {dvs_per_study$n[dvs_per_study$study == 'frame_breadth']}. Under the online appendix's numbering, which splits the same data into ",
+    "fifteen studies, none carries more than two. The sentence is therefore false under one ",
+    "count of studies and true under the other, and it does not say which it means. No ",
+    "corrected sentence is set, because correcting it would mean choosing a count of studies ",
+    "and writing the author's account of his own design for him. No conclusion of the paper ",
+    "changes: the analysis is the same under either count, and only the description of it ",
+    "is at issue."),
+  "methods_max_dvs",
   NA_character_
 ) |>
   mutate(across(c(title, published, corrected, note, claim_ids, corrected_values),
@@ -232,10 +342,16 @@ if (!all(value_placed)) {
 # An entry that changes a quantity has to say which one, and an entry that changes none may
 # not carry a value. The class is the declaration and this is where it binds.
 stopifnot(
-  all(!is.na(entries$corrected_values[entries$class == "quantity"])),
+  all(!is.na(entries$corrected_values[entries$class == "quantity" & entries$form != "note"])),
   all(is.na(entries$corrected_values[entries$class != "quantity"])),
+  all(is.na(entries$corrected_values[entries$form == "note"])),
   all(is.na(entries$corrected_values) | !is.na(entries$claim_ids))
 )
+# form == "note" declares that the entry quotes a passage and proposes no change to it, so it
+# has no corrected side. The two have to agree: a note carrying corrected text would print a
+# correction this edition does not make, and a correction carrying NA would print "NA" where
+# its corrected sentence belongs.
+stopifnot(is.na(entries$corrected) == (entries$form == "note"))
 
 # Every id an entry claims to correct must be a real ground-truth claim. The build gate in
 # ground_truth/build_ground_truth.R checks the same property from the other side; checking it
@@ -250,14 +366,18 @@ cited_ids <- entries$claim_ids |>
 stopifnot(all(cited_ids %in% gt_ids))
 
 # The prose below counts the entries in words, as the note has always done.
-n_entries_word <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-                    "ten", "eleven", "twelve")[nrow(entries)]
+# The count of corrections only: a note is not a correction, and the opening sentence counts
+# corrections.
+number_word <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+                 "ten", "eleven", "twelve")
+n_entries_word <- number_word[sum(entries$form != "note")]
+n_notes_word <- number_word[sum(entries$form == "note")]
 
 # The spine's markup, resolved for this document.
 bold <- function(x) str_replace_all(x, "\\[\\[(.*?)\\]\\]", "**\\1**")
 ```
 
-`r str_to_sentence(n_entries_word)` sentences in the published article need correcting. Two state numbers the deposited replication archive does not support, and a third describes the tests' statistical power more generously than the corrected numbers allow. The remaining two are in the footnote that explains the Holm correction: one calls the correction a correlation, and the other states the Benjamini-Hochberg threshold on the false discovery rate in place of the Holm threshold the footnote names and the code applied. All `r n_entries_word` are in the section reporting the randomization inference tests of treatment effect homogeneity, and none changes a conclusion of the article: the tests still reject the null of constant effects in a small minority of comparisons, the counts in Table 2 come from the code rather than from the footnote's formula, and the correspondence between the Mechanical Turk and probability sample estimates is untouched.
+`r str_to_sentence(n_entries_word)` sentences in the published article need correcting. Two state numbers the deposited replication archive does not support, and a third describes the tests' statistical power more generously than the corrected numbers allow. The remaining two are in the footnote that explains the Holm correction: one calls the correction a correlation, and the other states the Benjamini-Hochberg threshold on the false discovery rate in place of the Holm threshold the footnote names and the code applied. All `r n_entries_word` are in the section reporting the randomization inference tests of treatment effect homogeneity. It also carries `r n_notes_word` entries of a second kind, which quote a passage and propose no change to it: the Original and TESS/GfK cells of Table 2's N Significant column, which are interchanged; the Original and Mechanical Turk counts in the sentence that reports the table, which differ from the deposit by one each; and the sentence limiting each study to two dependent variables, which is true or false according to what counts as a study. **No correction and no note here changes a conclusion of the paper.** The tests still reject the null of constant effects in a small minority of comparisons, the counts in Table 2 come from the code rather than from the footnote's formula, and the correspondence between the Mechanical Turk and probability sample estimates is untouched.
 
 Article DOI: [10.1017/psrm.2018.10](https://doi.org/10.1017/psrm.2018.10). Replication archive: [10.7910/DVN/F1CFFM](https://doi.org/10.7910/DVN/F1CFFM). The code behind every corrected value below is at <https://github.com/active-maintenance-aec/coppock_2019a>, and every one of them is recomputed when this document is rendered rather than typed into it.
 
@@ -265,14 +385,29 @@ Corrections are marked in **bold**. Numbers the article hedges with an approxima
 
 ```{r render-entries, results="asis"}
 # A heading is only a heading when a blank line precedes it, so every emitted entry opens
-# with one.
-walk(seq_len(nrow(entries)), function(i) {
+# with one. A field holding two passages keeps them one paragraph apart.
+emit_entry <- function(i) {
   e <- entries[i, ]
   cat("\n\n# ", e$entry, ". ", e$title,
-      "\n\n**Published.** \"", bold(e$published), "\"",
-      "\n\n**Corrected.** \"", bold(e$corrected), "\"",
-      "\n\n*", e$note, "*\n", sep = "")
-})
+      "\n\n**Published.** \"", bold(e$published), "\"", sep = "")
+  # A note entry has no corrected side, and that absence is the whole of the form: an empty
+  # Corrected block would read as a correction to nothing.
+  if (e$form != "note") cat("\n\n**Corrected.** \"", bold(e$corrected), "\"", sep = "")
+  cat("\n\n*", e$note, "*\n", sep = "")
+}
+walk(which(entries$form != "note"), emit_entry)
+```
+
+# Carried, and not corrected
+
+The `r n_notes_word` entries below are different in kind from the `r n_entries_word` corrections in this note. Each quotes a passage this edition reprints exactly as the paper published it, and proposes no change to it.
+
+Two of them concern the counts of significant homogeneity tests, which come back only under a sampler R retired in 3.6.0, so that any corrected figure would be one the maintained pipeline cannot regenerate, or which turn on a choice of inequality that is the author's to make. The third is a sentence about the study's design that is true under one count of studies and false under another. Correcting any of the three would mean either printing a number this edition cannot reproduce or writing the author's prose for him.
+
+Each is recorded here because an edition that silently reproduced them would leave a reader unable to tell a faithful reprint from an uncorrected error.
+
+```{r entries-carried, results="asis"}
+walk(which(entries$form == "note"), emit_entry)
 ```
 
 ```{r emit-spine}

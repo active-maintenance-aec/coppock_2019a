@@ -28,8 +28,12 @@ here::i_am("README.qmd")
 # rather than keeping its own count, so the two cannot disagree about how many entries there
 # are.
 spine <- read_csv(here("errata_entries.csv"), show_col_types = FALSE)
+corrections <- spine |> filter(form != "note")
+n_notes <- sum(spine$form == "note")
 n_errata_word <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
-                   "ten", "eleven", "twelve")[nrow(spine)]
+                   "ten", "eleven", "twelve")[nrow(corrections)]
+n_notes_word <- c("one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+                  "ten", "eleven", "twelve")[n_notes]
 
 # kableExtra styling is LaTeX-only; the GitHub README build takes plain pipe tables.
 latex_out <- knitr::is_latex_output()
@@ -117,7 +121,7 @@ First, two mistyped `sink()` calls silently destroyed two of the archive's own o
 
 Second, the uncorrected counts in Table 2 do not come back. The cause is not a bug in the archive but the change R 3.6.0 made to `sample()`, which replaced the rounding sampler with the rejection sampler and so changed which permutations a given seed draws. Setting `RNGkind(sample.kind = "Rounding")` and rerunning reproduces the deposited output exactly, 2 and 9 and 1 across the three samples, where the current sampler gives 1 and 8 and 1. The archive is reproducible; it is reproducible under the R of 2018.
 
-Third, and separately from anything R did, the published Table 2's N Significant column is transposed. The deposited output file prints its three rows in alphabetical order of the sample name, TESS/GfK first and original last, and the published table prints them in the reverse order, original first. Table 2's N Comparisons column was reordered to match, 40 and 40 and 10; its N Significant column was not, so the published 1 in the Original row is the TESS/GfK count and the published 2 in the TESS/GfK row is the original count. The correct entries in the published row order are 2, 9 and 1, which is exactly what the deposit produces. The Holm-corrected column, which is the one the argument rests on, is symmetric under the same interchange and reproduces exactly under both samplers.
+Third, and separately from anything R did, the published Table 2's N Significant column is transposed. The deposited output file prints its three rows in alphabetical order of the sample name, TESS/GfK first and original last, and the published table prints them in the reverse order, original first. Table 2's N Comparisons column was reordered to match, 40 and 40 and 10; its N Significant column was not, so the published 1 in the Original row is the TESS/GfK count and the published 2 in the TESS/GfK row is the original count. The correct entries in the published row order are 2, 9 and 1, which is exactly what the deposit produces. The Holm-corrected column, which is the one the argument rests on, is symmetric under the same interchange and reproduces exactly under both samplers. Correcting the table would need the retired sampler, so errata entry 6 carries the transposition as a note that corrects nothing.
 
 Fourth, the article's two power figures are not the ones its own simulation gives. The section is treated below and in the errata.
 
@@ -125,7 +129,7 @@ Fourth, the article's two power figures are not the ones its own simulation give
 
 For `r n_rewrite_match` of the `r n_rewrite_comparable` comparable claims, yes. The correlations that carry the paper's argument reproduce to the reported precision (0.85, 0.90, 0.96, 0.85), as does the 72.5 percent replication rate. All `r n_a1_cells` published Table A1 entries reproduce, each an estimate, a standard error and a significance star; so do all `r n_appendix_cells` treatment estimate and standard error cells printed across the seventeen online appendix regression tables.
 
-The `r n_rewrite_miss` claims that do not match fall into three groups. Two are the uncorrected significant-test counts for MTurk and TESS/GfK in Table 2, which are sampler-dependent for the reasons above; the rewrite reports what current R produces rather than reproducing the 2018 draw, because pinning a deprecated sampler to recover a specific integer would document the number rather than the finding. Two more are the power figures the article quotes from Figure 4, which its own deposited simulation contradicts. The last two are the sentence stating that no TESS/GfK test was significant, where the deposit says one was, and the sentence saying the analysis is limited to two dependent variables per study, which holds or fails depending on what counts as a study.
+The `r n_rewrite_miss` claims that do not match fall into three groups. Two are the uncorrected significant-test counts for MTurk and TESS/GfK in Table 2, which are sampler-dependent for the reasons above; the rewrite reports what current R produces rather than reproducing the 2018 draw, because pinning a deprecated sampler to recover a specific integer would document the number rather than the finding. Two more are the power figures the article quotes from Figure 4, which its own deposited simulation contradicts. The last two are the sentence stating that no TESS/GfK test was significant, where the deposit says one was, and the sentence saying the analysis is limited to two dependent variables per study, which holds or fails depending on what counts as a study; the last of these is errata entry 8, a note that corrects nothing, because the sentence does not identify what counts as a study.
 
 The substantive claim, that these tests rarely reject the null of treatment effect homogeneity, holds in every version: at most 9 of 40 comparisons reject before correction and at most 8 after.
 
@@ -308,7 +312,7 @@ dispersion |>
 
 The TESS/GfK count was `r gfk_range[1]` in every one of the `r n_runs` runs and never `r as.numeric(claims$value_paper[claims$claim_id == "t2_gfk_n_sig"])`, while the original and MTurk counts both moved. A published TESS/GfK count of `r as.numeric(claims$value_paper[claims$claim_id == "t2_gfk_n_sig"])` is not something the deposited code produces.
 
-The body text is a separate matter and is not settled by any of this. It reads 1, 8 and 0 where the deposit reads 2, 9 and 1. Its first two figures are the counts a strict `<` 0.05 would give on the deposit's own draw, where Table 2's own rule is `<=`, so the sentence and the table can differ legitimately by one in each of those samples. Its third figure has no such account: the TESS/GfK count is 1 under either rule and under either sampler. That sentence is corrected in `coppock_2019a_errata.pdf`; the other two are recorded as unresolved.
+The body text is a separate matter and is not settled by any of this. It reads 1, 8 and 0 where the deposit reads 2, 9 and 1. Its first two figures are the counts a strict `<` 0.05 would give on the deposit's own draw, where Table 2's own rule is `<=`, so the sentence and the table can differ legitimately by one in each of those samples. Its third figure has no such account: the TESS/GfK count is 1 under either rule and under either sampler. The third figure is corrected in `coppock_2019a_errata.pdf` (entry 2); the first two are errata entry 7, a note that corrects nothing, for the reason given here: correcting them would decide which rule the sentence meant.
 
 ---
 
@@ -524,7 +528,7 @@ Two separate instruments then check the same claims.
 
 The build script is the gate. It runs `in_text_claims.R` non-interactively into its own environment, counts the `CLAIM` lines it printed, and stops unless that count equals the `r n_blocks` claims the extraction says need one, every identifier appears on both sides, every `pipeline` and `descriptive` claim has a ground truth row, every published float has coverage or a stated reason, every adverse verdict carries a `defect_locus` and no clean match does, and the two instruments agree value by value. A block that errored, or that ended in a bare expression and so printed nothing, would satisfy a scan for markers while checking nothing, which is why the file is run rather than read.
 
-`r str_to_sentence(n_errata_word)` sentences of the published article are corrected in `coppock_2019a_errata.pdf` at the root of this repository. Neither changes a conclusion.
+`r str_to_sentence(n_errata_word)` sentences of the published article are corrected in `coppock_2019a_errata.pdf` at the root of this repository, which also carries `r n_notes_word` notes that correct nothing (entries 6 to 8: the transposed N Significant column of Table 2, the two body-text counts that follow a strict inequality, and the sentence limiting each study to two dependent variables). No correction and no note changes a conclusion.
 
 # Maintained rewrite verification
 
