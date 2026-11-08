@@ -80,8 +80,11 @@ two <- function(x) sprintf("%.2f", x)
 # [[...]] marks the span that changes. Each renderer supplies its own markup for it: bold
 # here. Nothing else in a field is markup, so the same string can be set by any of them.
 #
-# Numbering is the published note's and is APPEND-ONLY: entry 1 can already have been cited,
-# so a later finding is added at the end and never interleaved.
+# Numbering follows PROCEDURES.md Stage 4b: entries are ordered by severity block (quantity;
+# description, interpretation, definition; label, float, cross_reference; wording, spelling,
+# typography; bibliographic), discovery order inside a block, and a finding that lands in an
+# earlier block renumbers the entries after it. Renumbered 2026-11-07; the old-to-new map is
+# in that day's commit message.
 #
 # The published values come from the extraction of the article and the corrected ones from
 # the pipeline, and both stay computed: the fields are built with str_glue() so the numbers
@@ -106,7 +109,7 @@ entries <- tribble(
 
   1, "quantity", "pipeline", "full",
   "Simulated power, page 622",
-  "published p. 622",
+  "p. 622",
   str_glue("The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be well powered (power $\\approx$ [[{paper('fig4_power_at_02')}]]) to detect treatment effect heterogeneity on the scale of 0.2 SD, and moderately powered for 0.1 SD (power $\\approx$ [[{paper('fig4_power_at_01')}]])."),
   str_glue("The MTurk versions of the experiments studied here typically employ 500 subjects per treatment arm, suggesting that we would be [[moderately]] well powered (power $\\approx$ [[{one(power_02)}]]) to detect treatment effect heterogeneity on the scale of 0.2 SD, and [[poorly]] powered for 0.1 SD (power $\\approx$ [[{two(power_01)}]])."),
   str_glue(
@@ -123,7 +126,7 @@ entries <- tribble(
 
   2, "quantity", "pipeline", "full",
   "Significant heterogeneity tests on the TESS/GfK sample, page 622",
-  "published p. 622",
+  "p. 622",
   str_glue("On the TESS/GfK replications, [[{paper('text_gfk_n_sig')}]] of {paper('text_gfk_n_comparisons')} tests were significant."),
   str_glue("On the TESS/GfK replications, [[{gfk_sig}]] of {gfk_tests} tests were significant."),
   str_glue(
@@ -143,9 +146,28 @@ entries <- tribble(
   "text_gfk_n_sig",
   as.character(gfk_sig),
 
-  3, "wording", "pipeline", "full",
+  3, "definition", "reading", "full",
+  "The condition stated for the Holm correction, footnote 8, page 623",
+  "p. 623",
+  "Identify the smallest p-value for which the following condition holds: [[$p_k \\le \\frac{k}{m}\\alpha$]], where $k$ indexes the p-values, and $\\alpha$ the target significance level.",
+  "Identify the smallest p-value for which the following condition holds: [[$p_k > \\alpha/(m - k + 1)$]], where $k$ indexes the p-values, and $\\alpha$ the target significance level.",
+  str_c(
+    "The condition the note prints is the Benjamini-Hochberg threshold on the false discovery ",
+    "rate, not the Holm threshold on the family-wise error rate that the note names and that ",
+    "the analysis used. The rest of the note is already Holm's step-down rule: it says to find ",
+    "the SMALLEST p-value meeting the condition and to treat it and every larger p-value as ",
+    "insignificant, which is where Holm stops and is not how Benjamini-Hochberg is read. So ",
+    "the single defect is the condition, and correcting it makes the note describe the ",
+    "procedure the code ran. Both scripts call `p.adjust(max_pval, \"holm\")`, the deposit's ",
+    "own `coppock_generalizability_ri_analysis.R` and the maintained ",
+    "`table_2_ri_heterogeneity.R`, so Table 2's N Significant (Holm) column and every number ",
+    "under it are unaffected."),
+  NA_character_,
+  NA_character_,
+
+  4, "wording", "pipeline", "full",
   "The description of statistical power, page 623",
-  "published p. 623",
+  "p. 623",
   "Because we are [[relatively]] well powered to detect politically meaningful differences in treatment response, I conclude from this evidence that the treatment effect homogeneity explanation of the correspondence across experimental sites is plausible.",
   "Because we are [[moderately]] well powered to detect politically meaningful differences in treatment response, I conclude from this evidence that the treatment effect homogeneity explanation of the correspondence across experimental sites is plausible.",
   str_glue(
@@ -160,34 +182,15 @@ entries <- tribble(
   NA_character_,
   NA_character_,
 
-  4, "wording", "reading", "full",
+  5, "wording", "reading", "full",
   "The word naming the procedure in footnote 8, page 623",
-  "published p. 623",
+  "p. 623",
   "To implement the [[correlation]], order the $m$ uncorrected p-values within a \"family\" from smallest to largest.",
   "To implement the [[correction]], order the $m$ uncorrected p-values within a \"family\" from smallest to largest.",
   str_c(
     "The note is about the Holm correction, which its own first sentence names twice, and ",
     "the sentence that says how to apply it calls it a correlation. Nothing in the analysis ",
     "turns on the word."),
-  NA_character_,
-  NA_character_,
-
-  5, "definition", "reading", "full",
-  "The condition stated for the Holm correction, footnote 8, page 623",
-  "published p. 623",
-  "Identify the smallest p-value for which the following condition holds: [[$p_k \\le \\frac{k}{m}\\alpha$]], where $k$ indexes the p-values, and $\\alpha$ the target significance level.",
-  "Identify the smallest p-value for which the following condition holds: [[$p_k > \\alpha/(m - k + 1)$]], where $k$ indexes the p-values, and $\\alpha$ the target significance level.",
-  str_c(
-    "The condition the note prints is the Benjamini-Hochberg threshold on the false discovery ",
-    "rate, not the Holm threshold on the family-wise error rate that the note names and that ",
-    "the analysis used. The rest of the note is already Holm's step-down rule: it says to find ",
-    "the SMALLEST p-value meeting the condition and to treat it and every larger p-value as ",
-    "insignificant, which is where Holm stops and is not how Benjamini-Hochberg is read. So ",
-    "the single defect is the condition, and correcting it makes the note describe the ",
-    "procedure the code ran. Both scripts call `p.adjust(max_pval, \"holm\")`, the deposit's ",
-    "own `coppock_generalizability_ri_analysis.R` and the maintained ",
-    "`table_2_ri_heterogeneity.R`, so Table 2's N Significant (Holm) column and every number ",
-    "under it are unaffected."),
   NA_character_,
   NA_character_
 ) |>
@@ -275,5 +278,12 @@ walk(seq_len(nrow(entries)), function(i) {
 ```{r emit-spine}
 # The machine-readable spine, written wherever this document is rendered. Anything else that
 # carries these corrections reads it rather than keeping its own copy, so the two cannot drift.
+# The spine's vocabularies are closed (cleanup of 2026-11-07): a value outside them is a
+# typo, and the edition builders read these columns to shape every entry.
+stopifnot(
+  all(entries$class %in% c("quantity", "description", "interpretation", "definition", "label", "float", "cross_reference", "wording", "spelling", "typography", "bibliographic")),
+  all(entries$form %in% c("full", "brief", "note")),
+  all(entries$source %in% c("pipeline", "reading", "reference_audit", "publisher_record", "authors_archive", "proof"))
+)
 write_csv(entries, here("errata_entries.csv"))
 ```
