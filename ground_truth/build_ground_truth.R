@@ -613,10 +613,14 @@ stopifnot(nrow(printed) == length(declared))
 
 # The two instruments must land on the same number. in_text_claims.R prints in the units
 # and rounding the extraction records and never sees this file, so a disagreement is one of
-# the two being wrong and it stops the build.
+# the two being wrong and it stops the build. The comparison is at the precision the claims
+# file prints, which excheckr::claim() takes from the published or the corrected value,
+# whichever is finer: a corrected 0.15 against a published 0.6 is printed to two decimals,
+# and is not a disagreement.
 cross_check <- gt |>
   inner_join(printed, by = "claim_id") |>
-  filter(!is.na(value_rewrite), render(value_rewrite, digits) != value_in_text)
+  filter(!is.na(value_rewrite),
+         render(value_rewrite, pmax(digits, excheckr::claim_digits(value_in_text))) != value_in_text)
 
 if (nrow(cross_check) > 0) {
   print(select(cross_check, claim_id, value_paper, value_rewrite, value_in_text), n = 40)
