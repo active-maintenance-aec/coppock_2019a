@@ -1,0 +1,13 @@
+pass,script,role,exit_status,outcome,stopped_at
+as_shipped,coppock_generalizability_analysis.R,analysis,1,error,Error in library(commarobust) : there is no package called ‘commarobust’
+as_shipped,coppock_generalizability_figures.R,analysis,1,error,Error in library(commarobust) : there is no package called ‘commarobust’
+as_shipped,coppock_generalizability_table.R,analysis,1,error,Error in library(commarobust) : there is no package called ‘commarobust’
+as_shipped,coppock_generalizability_ri_analysis.R,analysis,1,error,"Error in readChar(con, 5L, useBytes = TRUE) : cannot open the connection; cannot open compressed file 'coppock_generalizability_studies.rdata', probable reason 'No such file or directory'"
+as_shipped,coppock_generalizability_simulation.R,analysis,1,error,"Error in readChar(con, 5L, useBytes = TRUE) : cannot open the connection; cannot open compressed file 'coppock_generalizability_simulation_results.rdata', probable reason 'No such file or directory'"
+as_shipped,coppock_generalizability_appendix.R,analysis,1,error,Error in library(commarobust) : there is no package called ‘commarobust’
+stripped,coppock_generalizability_analysis.R,analysis,1,error,Error in library(commarobust) : there is no package called ‘commarobust’
+stripped,coppock_generalizability_figures.R,analysis,1,error,Error in library(commarobust) : there is no package called ‘commarobust’
+stripped,coppock_generalizability_table.R,analysis,1,error,Error in library(commarobust) : there is no package called ‘commarobust’
+stripped,coppock_generalizability_ri_analysis.R,analysis,1,error,"Error in readChar(con, 5L, useBytes = TRUE) : cannot open the connection; cannot open compressed file 'coppock_generalizability_studies.rdata', probable reason 'No such file or directory'"
+stripped,coppock_generalizability_simulation.R,analysis,1,error,"Error in readChar(con, 5L, useBytes = TRUE) : cannot open the connection; cannot open compressed file 'coppock_generalizability_simulation_results.rdata', probable reason 'No such file or directory'"
+stripped,coppock_generalizability_appendix.R,analysis,1,error,Error in library(commarobust) : there is no package called ‘commarobust’

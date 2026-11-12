@@ -341,6 +341,11 @@ if (!all(value_placed)) {
   stop("An entry's corrected_values are not in the spans of its corrected sentence.")
 }
 
+# The gate's result is written to the spine as values_in_spans, one logical per entry and NA
+# for an entry that carries no values, so a reader can see it without rerunning the gate.
+entries <- entries |>
+  left_join(tibble(entry = quantified$entry, values_in_spans = value_placed), by = "entry")
+
 # An entry that changes a quantity has to say which one, and an entry that changes none may
 # not carry a value. The class is the declaration and this is where it binds.
 stopifnot(

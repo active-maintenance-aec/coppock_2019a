@@ -1,0 +1,25 @@
+float,published_numbers,covered,reproduced_by_rewrite,reproduced_by_archive,plotted,plotted_reproduced,note
+Figure 1,5,0,0,0,0,0,"A stipulated illustration of the theory with no data behind it, drawn by no script in the deposit or the rewrite. It prints the two scenarios' sample and population average effects and the 1/3 sampling threshold."
+Table 1,51,12,12,12,NA,NA,"The 39 sample sizes are not covered, because the rewrite exports estimates only, and the 12 fielding years are design facts."
+Figure 2,0,0,0,0,90,90,Prints no numbers on its face; plotted counts the estimates drawn.
+Figure 3,0,0,0,0,40,40,Prints no numbers on its face; plotted counts the estimates drawn.
+Figure 4,1,0,0,0,209,209,"Prints the 0.2 SD annotation on its face. plotted counts the power values in the deposited simulation grid the figure is drawn from, and plotted_reproduced those the rewrite's figure data carries unchanged. The two guide lines are drawn, not printed."
+Table 2,9,9,7,7,NA,NA,NA
+Table A1,180,180,180,180,NA,NA,"Each of the 90 entries prints an estimate and a standard error, compared as a unit together with its star."
+Online Appendix Table 1,12,4,4,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 2,24,8,8,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 3,12,4,4,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 4,16,8,8,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 5,44,36,36,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 6,32,8,8,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 7,40,24,24,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 8,24,8,8,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 9,36,12,12,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 10,24,8,8,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 11,36,24,24,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 12,18,6,6,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 13,18,6,6,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 14,18,6,6,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 15,18,6,6,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 16,18,6,6,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."
+Online Appendix Table 17,18,6,6,NA,NA,NA,"Intercept, sample size, and R-squared cells are not covered. The deposit's appendix text files are not read, so reproduced_by_archive is NA."

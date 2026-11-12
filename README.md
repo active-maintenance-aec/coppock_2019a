@@ -25,7 +25,10 @@
 - [Maintained rewrite verification](#maintained-rewrite-verification)
 - [R environment](#r-environment)
 
-**Archived at Zenodo:** [doi:10.5281/zenodo.24168306](https://doi.org/10.5281/zenodo.24168306). This DOI always resolves to the latest release of the maintained version.
+**Archived at Zenodo:**
+[doi:10.5281/zenodo.24168306](https://doi.org/10.5281/zenodo.24168306).
+This DOI always resolves to the latest release of the maintained
+version.
 
 *Drafted by Claude Opus 5 under the supervision of Alex Coppock.*
 
@@ -277,113 +280,113 @@ estimates and 8.0e-14 in the standard errors.
 # Number-by-number comparison
 
 | Location | Quantity | Paper | Script | Match |
-|:---|:---|:---|---:|---:|
-| Text, p. 2 | Pairs of estimates entering the correlation | 40 | 40.0000 | 1 |
-| Text, p. 2 | MTurk-original correlation | 0.85 | 0.8512 | 1 |
-| Text, p. 8 | Original-MTurk pairs of coefficients | 40 | 40.0000 | 1 |
-| Text, p. 8 | MTurk-original correlation, restated | 0.85 | 0.8512 | 1 |
-| Text, p. 8 | MTurk-original correlation on the TESS/GfK subset | 0.90 | 0.9017 | 1 |
-| Text, p. 8 | TESS/GfK-MTurk correlation | 0.96 | 0.9582 | 1 |
-| Text, p. 8 | TESS/GfK-original correlation | 0.85 | 0.8517 | 1 |
-| Text, p. 8 | Coefficients significant in the original studies | 25 | 25.0000 | 1 |
-| Text, p. 8 | Of those, also significant on MTurk | 18 | 18.0000 | 1 |
-| Text, p. 8 | Coefficients not significant in the original studies | 15 | 15.0000 | 1 |
-| Text, p. 8 | Of those, also not significant on MTurk | 11 | 11.0000 | 1 |
-| Text, p. 8 | Replicated significant coefficients, restated inside the formula | 18 | 18.0000 | 1 |
-| Text, p. 8 | Replicated null coefficients, restated inside the formula | 11 | 11.0000 | 1 |
-| Text, p. 8 | Originally significant coefficients, restated inside the formula | 25 | 25.0000 | 1 |
-| Text, p. 8 | Originally null coefficients, restated inside the formula | 15 | 15.0000 | 1 |
-| Text, p. 8 | Replication rate as a percentage | 72.5 | 72.5000 | 1 |
-| Abstract | Replication experiments reported | 15 | 15.0000 | 1 |
-| Text, p. 2 | Replication studies, restated | 15 | 15.0000 | 1 |
-| Text, p. 10 | Replications the heterogeneity test covers | 15 | 15.0000 | 1 |
-| Text, p. 2 | Study pairs behind the correlation | 12 | 12.0000 | 1 |
-| Text, p. 8 | Study pairs, restated | 12 | 12.0000 | 1 |
-| Results I heading, p. 5 | Studies the section covers | 12 | 12.0000 | 1 |
-| Text, p. 10 | Original studies in the test | 12 | 12.0000 | 1 |
-| Text, p. 10 | Original studies, restated in the sentence | 12 | 12.0000 | 1 |
-| Text, p. 10 | Study versions the test covers | 27 | 27.0000 | 1 |
-| Text, p. 8 | Coefficients behind the correlation | 40 | 40.0000 | 1 |
-| Text, pp. 5-6 | Studies replicated on both platforms | 3 | 3.0000 | 1 |
-| Text, p. 5 | Cases with a fresh probability sample | 3 | 3.0000 | 1 |
-| Text, p. 8 | Studies with a TESS/GfK version | 3 | 3.0000 | 1 |
-| Text, p. 8 | Coefficients in those studies | 10 | 10.0000 | 1 |
-| Text, p. 2 | Degrees of freedom of the correlation | 38 | 38.0000 | 1 |
-| Text, p. 8 | Degrees of freedom, restated | 38 | 38.0000 | 1 |
-| Text, p. 8 | Degrees of freedom on the TESS/GfK subset | 8 | 8.0000 | 1 |
-| Text, p. 8 | Degrees of freedom, TESS/GfK against MTurk | 8 | 8.0000 | 1 |
-| Text, p. 8 | Degrees of freedom, TESS/GfK against original | 8 | 8.0000 | 1 |
-| Figure 2 | Facets, one per study | 12 | 12.0000 | 1 |
-| Figure 2 | Estimates plotted | 90 | 90.0000 | 1 |
-| Figure 2 | Facets carrying two study versions | 9 | NA | NA |
-| Figure 2 | Facets carrying three study versions | 3 | NA | NA |
-| Figure 2 | Versions in each two-version facet | 2 | NA | NA |
-| Figure 2 | Versions in each three-version facet | 3 | NA | NA |
-| Figure 2 | Confidence level of the plotted intervals | 95 | NA | NA |
-| Figure 3 | Coefficient pairs plotted | 40 | 40.0000 | 1 |
-| Figure 3 | Confidence level of the plotted intervals | 95 | NA | NA |
-| Text, p. 10 | Simulation parameters varied | 2 | NA | NA |
-| Figure 4 | Heterogeneity scale named for the high-power claim | 0.2 | 0.2000 | 1 |
-| Figure 4 | Heterogeneity scale named for the moderate-power claim | 0.1 | 0.1000 | 1 |
-| Figure 4 | Simulated power at 0.2 SD and 500 subjects per arm | 0.8 | 0.6100 | 0 |
-| Figure 4 | Simulated power at 0.1 SD and 500 subjects per arm | 0.6 | 0.1500 | 0 |
-| Table 1 | Estimates reported for concealed_carry | 1 | 1.0000 | 1 |
-| Table 1 | Estimates reported for death_penalty | 1 | 1.0000 | 1 |
-| Table 1 | Estimates reported for elite_endorsements | 2 | 2.0000 | 1 |
-| Table 1 | Estimates reported for expert_economists | 5 | 5.0000 | 1 |
-| Table 1 | Estimates reported for frame_breadth | 4 | 4.0000 | 1 |
-| Table 1 | Estimates reported for free_trade | 4 | 4.0000 | 1 |
-| Table 1 | Estimates reported for immigration | 2 | 2.0000 | 1 |
-| Table 1 | Estimates reported for mental_illness | 6 | 6.0000 | 1 |
-| Table 1 | Estimates reported for patriot_act | 9 | 9.0000 | 1 |
-| Table 1 | Estimates reported for polarization | 2 | 2.0000 | 1 |
-| Table 1 | Estimates reported for superordinate_id | 2 | 2.0000 | 1 |
-| Table 1 | Estimates reported for system_threat | 2 | 2.0000 | 1 |
-| Table 1 | Subjects in the original Haider-Markel and Joslyn (2001) analysis | 518 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Haider-Markel and Joslyn (2001) | 1009 | NA | NA |
-| Table 1 | Subjects in the original Brader (2005) analysis | 281 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Brader (2005) | 1709 | NA | NA |
-| Table 1 | Subjects in the original Peffley and Hurwitz (2007) analysis | 905 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Peffley and Hurwitz (2007) | 1285 | NA | NA |
-| Table 1 | Subjects in the original Transue (2007) analysis | 345 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Transue (2007) | 367 | NA | NA |
-| Table 1 | Subjects in the original Chong and Druckman (2010) analysis | 1302 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Chong and Druckman (2010) | 1887 | NA | NA |
-| Table 1 | Subjects in the original Nicholson (2012) analysis | 1491 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Nicholson (2012) | 1249 | NA | NA |
-| Table 1 | Subjects in the original McGinty, Webster and Barry (2013) analysis | 2935 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of McGinty, Webster and Barry (2013) | 2487 | NA | NA |
-| Table 1 | Subjects in the original Craig and Richeson (2014) analysis | 611 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Craig and Richeson (2014) | 709 | NA | NA |
-| Table 1 | Subjects in the original Johnston and Ballard (2016) analysis | 2041 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Johnston and Ballard (2016) | 2985 | NA | NA |
-| Table 1 | Subjects in the original Hiscox (2006) analysis | 1610 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Hiscox (2006) | 2972 | NA | NA |
-| Table 1 | Subjects in the TESS/GfK replication of Hiscox (2006) | 2084 | NA | NA |
-| Table 1 | Subjects in the original Levendusky and Malhotra (2016) analysis | 1041 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Levendusky and Malhotra (2016) | 1987 | NA | NA |
-| Table 1 | Subjects in the TESS/GfK replication of Levendusky and Malhotra (2016) | 1411 | NA | NA |
-| Table 1 | Subjects in the original Hopkins and Mummolo (2017) analysis | 3269 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Hopkins and Mummolo (2017) | 2972 | NA | NA |
-| Table 1 | Subjects in the TESS/GfK replication of Hopkins and Mummolo (2017) | 3189 | NA | NA |
-| Table 2 | Table 2, original, comparisons tested | 40 | 40.0000 | 1 |
-| Table 2 | Table 2, original, significant after the Holm correction | 0 | 0.0000 | 1 |
-| Table 2 | Table 2, mt, comparisons tested | 40 | 40.0000 | 1 |
-| Table 2 | Table 2, mt, significant after the Holm correction | 8 | 8.0000 | 1 |
-| Table 2 | Table 2, gfk, comparisons tested | 10 | 10.0000 | 1 |
-| Table 2 | Table 2, gfk, significant after the Holm correction | 0 | 0.0000 | 1 |
-| Table 2 | Table 2, original, significant before correction | 1 | 2.0000 | 0 |
-| Table 2 | Table 2, MTurk, significant before correction | 9 | 9.0000 | 1 |
-| Table 2 | Table 2, TESS/GfK, significant before correction | 2 | 1.0000 | 0 |
-| Text, p. 10 | Original comparisons tested, as the text states them | 40 | 40.0000 | 1 |
-| Text, p. 10 | MTurk comparisons tested, as the text states them | 40 | 40.0000 | 1 |
-| Text, p. 10 | TESS/GfK comparisons tested, as the text states them | 10 | 10.0000 | 1 |
-| Text, p. 10 | Original comparisons the text says rejected homogeneity | 1 | 2.0000 | 0 |
-| Text, p. 10 | MTurk comparisons the text says rejected homogeneity | 8 | 9.0000 | 0 |
-| Text, p. 10 | TESS/GfK comparisons the text says rejected homogeneity | 0 | 1.0000 | 0 |
-| Table A1 | Table A1 original entries reproduced of 40 published | 40 | 40.0000 | 1 |
-| Table A1 | Table A1 mt entries reproduced of 40 published | 40 | 40.0000 | 1 |
-| Table A1 | Table A1 gfk entries reproduced of 10 published | 10 | 10.0000 | 1 |
+|:---|:---|:---|---:|:---|
+| Introduction, p. 2 | Pairs of estimates entering the correlation | 40 | 40.0000 | TRUE |
+| Introduction, p. 2 | MTurk-original correlation | 0.85 | 0.8512 | TRUE |
+| Results I, p. 8 | Original-MTurk pairs of coefficients | 40 | 40.0000 | TRUE |
+| Results I, p. 8 | MTurk-original correlation, restated | 0.85 | 0.8512 | TRUE |
+| Results I, p. 8 | MTurk-original correlation on the TESS/GfK subset | 0.90 | 0.9017 | TRUE |
+| Results I, p. 8 | TESS/GfK-MTurk correlation | 0.96 | 0.9582 | TRUE |
+| Results I, p. 8 | TESS/GfK-original correlation | 0.85 | 0.8517 | TRUE |
+| Results I, p. 8 | Coefficients significant in the original studies | 25 | 25.0000 | TRUE |
+| Results I, p. 8 | Of those, also significant on MTurk | 18 | 18.0000 | TRUE |
+| Results I, p. 8 | Coefficients not significant in the original studies | 15 | 15.0000 | TRUE |
+| Results I, p. 8 | Of those, also not significant on MTurk | 11 | 11.0000 | TRUE |
+| Results I, p. 8 | Replicated significant coefficients, restated inside the formula | 18 | 18.0000 | TRUE |
+| Results I, p. 8 | Replicated null coefficients, restated inside the formula | 11 | 11.0000 | TRUE |
+| Results I, p. 8 | Originally significant coefficients, restated inside the formula | 25 | 25.0000 | TRUE |
+| Results I, p. 8 | Originally null coefficients, restated inside the formula | 15 | 15.0000 | TRUE |
+| Results I, p. 8 | Replication rate as a percentage | 72.5 | 72.5000 | TRUE |
+| Abstract, p. 1 | Replication experiments reported | 15 | 15.0000 | TRUE |
+| Introduction, p. 2 | Replication studies, restated | 15 | 15.0000 | TRUE |
+| Results II, p. 10 | Replications the heterogeneity test covers | 15 | 15.0000 | TRUE |
+| Introduction, p. 2 | Study pairs behind the correlation | 12 | 12.0000 | TRUE |
+| Results I, p. 8 | Study pairs, restated | 12 | 12.0000 | TRUE |
+| Results I heading, p. 5 | Studies the section covers | 12 | 12.0000 | TRUE |
+| Results II, p. 10 | Original studies in the test | 12 | 12.0000 | TRUE |
+| Results II, p. 10 | Original studies, restated in the sentence | 12 | 12.0000 | TRUE |
+| Results II, p. 10 | Study versions the test covers | 27 | 27.0000 | TRUE |
+| Results I, p. 8 | Coefficients behind the correlation | 40 | 40.0000 | TRUE |
+| Results I, pp. 5-6 | Studies replicated on both platforms | 3 | 3.0000 | TRUE |
+| Results I, p. 5 | Cases with a fresh probability sample | 3 | 3.0000 | TRUE |
+| Results I, p. 8 | Studies with a TESS/GfK version | 3 | 3.0000 | TRUE |
+| Results I, p. 8 | Coefficients in those studies | 10 | 10.0000 | TRUE |
+| Introduction, p. 2 | Degrees of freedom of the correlation | 38 | 38.0000 | TRUE |
+| Results I, p. 8 | Degrees of freedom, restated | 38 | 38.0000 | TRUE |
+| Results I, p. 8 | Degrees of freedom on the TESS/GfK subset | 8 | 8.0000 | TRUE |
+| Results I, p. 8 | Degrees of freedom, TESS/GfK against MTurk | 8 | 8.0000 | TRUE |
+| Results I, p. 8 | Degrees of freedom, TESS/GfK against original | 8 | 8.0000 | TRUE |
+| Figure 2, p. 7 | Facets, one per study | 12 | 12.0000 | TRUE |
+| Figure 2, p. 7 | Estimates plotted | 90 | 90.0000 | TRUE |
+| Results I, p. 7 | Facets carrying two study versions | 9 | NA | NA |
+| Results I, p. 7 | Facets carrying three study versions | 3 | NA | NA |
+| Results I, p. 7 | Versions in each two-version facet | 2 | NA | NA |
+| Results I, p. 7 | Versions in each three-version facet | 3 | NA | NA |
+| Results I, p. 6 | Confidence level of the plotted intervals | 95 | NA | NA |
+| Figure 3, p. 9 | Coefficient pairs plotted | 40 | 40.0000 | TRUE |
+| Results I, p. 8 | Confidence level of the plotted intervals | 95 | NA | NA |
+| Results II, p. 10 | Simulation parameters varied | 2 | NA | NA |
+| Results II, p. 10 | Heterogeneity scale named for the high-power claim | 0.2 | 0.2000 | TRUE |
+| Results II, p. 10 | Heterogeneity scale named for the moderate-power claim | 0.1 | 0.1000 | TRUE |
+| Results II, p. 10 | Simulated power at 0.2 SD and 500 subjects per arm | 0.8 | 0.6100 | FALSE |
+| Results II, p. 10 | Simulated power at 0.1 SD and 500 subjects per arm | 0.6 | 0.1500 | FALSE |
+| Table 1, p. 5 | Estimates reported for concealed_carry | 1 | 1.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for death_penalty | 1 | 1.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for elite_endorsements | 2 | 2.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for expert_economists | 5 | 5.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for frame_breadth | 4 | 4.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for free_trade | 4 | 4.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for immigration | 2 | 2.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for mental_illness | 6 | 6.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for patriot_act | 9 | 9.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for polarization | 2 | 2.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for superordinate_id | 2 | 2.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for system_threat | 2 | 2.0000 | TRUE |
+| Table 1, p. 5 | Subjects in the original Haider-Markel and Joslyn (2001) analysis | 518 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Haider-Markel and Joslyn (2001) | 1009 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Brader (2005) analysis | 281 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Brader (2005) | 1709 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Peffley and Hurwitz (2007) analysis | 905 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Peffley and Hurwitz (2007) | 1285 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Transue (2007) analysis | 345 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Transue (2007) | 367 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Chong and Druckman (2010) analysis | 1302 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Chong and Druckman (2010) | 1887 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Nicholson (2012) analysis | 1491 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Nicholson (2012) | 1249 | NA | NA |
+| Table 1, p. 5 | Subjects in the original McGinty, Webster and Barry (2013) analysis | 2935 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of McGinty, Webster and Barry (2013) | 2487 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Craig and Richeson (2014) analysis | 611 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Craig and Richeson (2014) | 709 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Johnston and Ballard (2016) analysis | 2041 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Johnston and Ballard (2016) | 2985 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Hiscox (2006) analysis | 1610 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Hiscox (2006) | 2972 | NA | NA |
+| Table 1, p. 5 | Subjects in the TESS/GfK replication of Hiscox (2006) | 2084 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Levendusky and Malhotra (2016) analysis | 1041 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Levendusky and Malhotra (2016) | 1987 | NA | NA |
+| Table 1, p. 5 | Subjects in the TESS/GfK replication of Levendusky and Malhotra (2016) | 1411 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Hopkins and Mummolo (2017) analysis | 3269 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Hopkins and Mummolo (2017) | 2972 | NA | NA |
+| Table 1, p. 5 | Subjects in the TESS/GfK replication of Hopkins and Mummolo (2017) | 3189 | NA | NA |
+| Table 2, p. 11 | Table 2, original, comparisons tested | 40 | 40.0000 | TRUE |
+| Table 2, p. 11 | Table 2, original, significant after the Holm correction | 0 | 0.0000 | TRUE |
+| Table 2, p. 11 | Table 2, mt, comparisons tested | 40 | 40.0000 | TRUE |
+| Table 2, p. 11 | Table 2, mt, significant after the Holm correction | 8 | 8.0000 | TRUE |
+| Table 2, p. 11 | Table 2, gfk, comparisons tested | 10 | 10.0000 | TRUE |
+| Table 2, p. 11 | Table 2, gfk, significant after the Holm correction | 0 | 0.0000 | TRUE |
+| Table 2, p. 11 | Table 2, original, significant before correction | 1 | 2.0000 | FALSE |
+| Table 2, p. 11 | Table 2, MTurk, significant before correction | 9 | 9.0000 | TRUE |
+| Table 2, p. 11 | Table 2, TESS/GfK, significant before correction | 2 | 1.0000 | FALSE |
+| Results II, p. 10 | Original comparisons tested, as the text states them | 40 | 40.0000 | TRUE |
+| Results II, p. 10 | MTurk comparisons tested, as the text states them | 40 | 40.0000 | TRUE |
+| Results II, p. 10 | TESS/GfK comparisons tested, as the text states them | 10 | 10.0000 | TRUE |
+| Results II, p. 10 | Original comparisons the text says rejected homogeneity | 1 | 2.0000 | FALSE |
+| Results II, p. 10 | MTurk comparisons the text says rejected homogeneity | 8 | 9.0000 | FALSE |
+| Results II, p. 10 | TESS/GfK comparisons the text says rejected homogeneity | 0 | 1.0000 | FALSE |
+| Table A1, pp. 15-16 | Table A1 original entries reproduced of 40 published | 40 | 40.0000 | TRUE |
+| Table A1, pp. 15-16 | Table A1 mt entries reproduced of 40 published | 40 | 40.0000 | TRUE |
+| Table A1, pp. 15-16 | Table A1 gfk entries reproduced of 10 published | 10 | 10.0000 | TRUE |
 | Online Appendix Table 1 | Treatment estimate and standard error cells reproduced of 4 published | 4 | NA | NA |
 | Online Appendix Table 1 | Intercept, sample size and R-squared cells of appendix Table 1 (Gun Control) | 8 | NA | NA |
 | Online Appendix Table 2 | Treatment estimate and standard error cells reproduced of 8 published | 8 | NA | NA |
@@ -418,11 +421,11 @@ estimates and 8.0e-14 in the standard errors.
 | Online Appendix Table 16 | Intercept, sample size and R-squared cells of appendix Table 16 (Stimulus Spending) | 12 | NA | NA |
 | Online Appendix Table 17 | Treatment estimate and standard error cells reproduced of 6 published | 6 | NA | NA |
 | Online Appendix Table 17 | Intercept, sample size and R-squared cells of appendix Table 17 (Terrorism Spending) | 12 | NA | NA |
-| Text, p. 6 | Most dependent variables in any of the deposit’s study groupings | 2 | 5.0000 | 0 |
-| Footnote 5 | Mean absolute standardized effect | 0.2 | 0.2002 | 1 |
-| Text, p. 8 | Pairs significant in both versions with opposite signs | 0 | 0.0000 | 1 |
-| Text, pp. 10-11 | Comparisons rejecting homogeneity in more than one sample | 1 | NA | NA |
-| Figure 4 | Subjects per treatment arm the MTurk replications typically employ | 500 | NA | NA |
+| Results I, p. 6 | Most dependent variables in any of the deposit’s study groupings | 2 | 5.0000 | FALSE |
+| Footnote 5, p. 6 | Mean absolute standardized effect | 0.2 | 0.2002 | TRUE |
+| Results I, p. 8 | Pairs significant in both versions with opposite signs | 0 | 0.0000 | TRUE |
+| Results II, pp. 10-11 | Comparisons rejecting homogeneity in more than one sample | 1 | NA | NA |
+| Results II, p. 10 | Subjects per treatment arm the MTurk replications typically employ | 500 | NA | NA |
 
 Ground truth: 145 rows, comparing the published value to the deposit’s
 own committed output.
@@ -756,152 +759,152 @@ variables). No correction and no note changes a conclusion.
 # Maintained rewrite verification
 
 | Location | Quantity | Paper | Rewrite | Match |
-|:---|:---|:---|---:|---:|
-| Text, p. 2 | Pairs of estimates entering the correlation | 40 | 40.0000 | 1 |
-| Text, p. 2 | MTurk-original correlation | 0.85 | 0.8512 | 1 |
-| Text, p. 8 | Original-MTurk pairs of coefficients | 40 | 40.0000 | 1 |
-| Text, p. 8 | MTurk-original correlation, restated | 0.85 | 0.8512 | 1 |
-| Text, p. 8 | MTurk-original correlation on the TESS/GfK subset | 0.90 | 0.9017 | 1 |
-| Text, p. 8 | TESS/GfK-MTurk correlation | 0.96 | 0.9582 | 1 |
-| Text, p. 8 | TESS/GfK-original correlation | 0.85 | 0.8517 | 1 |
-| Text, p. 8 | Coefficients significant in the original studies | 25 | 25.0000 | 1 |
-| Text, p. 8 | Of those, also significant on MTurk | 18 | 18.0000 | 1 |
-| Text, p. 8 | Coefficients not significant in the original studies | 15 | 15.0000 | 1 |
-| Text, p. 8 | Of those, also not significant on MTurk | 11 | 11.0000 | 1 |
-| Text, p. 8 | Replicated significant coefficients, restated inside the formula | 18 | 18.0000 | 1 |
-| Text, p. 8 | Replicated null coefficients, restated inside the formula | 11 | 11.0000 | 1 |
-| Text, p. 8 | Originally significant coefficients, restated inside the formula | 25 | 25.0000 | 1 |
-| Text, p. 8 | Originally null coefficients, restated inside the formula | 15 | 15.0000 | 1 |
-| Text, p. 8 | Replication rate as a percentage | 72.5 | 72.5000 | 1 |
-| Abstract | Replication experiments reported | 15 | 15.0000 | 1 |
-| Text, p. 2 | Replication studies, restated | 15 | 15.0000 | 1 |
-| Text, p. 10 | Replications the heterogeneity test covers | 15 | 15.0000 | 1 |
-| Text, p. 2 | Study pairs behind the correlation | 12 | 12.0000 | 1 |
-| Text, p. 8 | Study pairs, restated | 12 | 12.0000 | 1 |
-| Results I heading, p. 5 | Studies the section covers | 12 | 12.0000 | 1 |
-| Text, p. 10 | Original studies in the test | 12 | 12.0000 | 1 |
-| Text, p. 10 | Original studies, restated in the sentence | 12 | 12.0000 | 1 |
-| Text, p. 10 | Study versions the test covers | 27 | 27.0000 | 1 |
-| Text, p. 8 | Coefficients behind the correlation | 40 | 40.0000 | 1 |
-| Text, pp. 5-6 | Studies replicated on both platforms | 3 | 3.0000 | 1 |
-| Text, p. 5 | Cases with a fresh probability sample | 3 | 3.0000 | 1 |
-| Text, p. 8 | Studies with a TESS/GfK version | 3 | 3.0000 | 1 |
-| Text, p. 8 | Coefficients in those studies | 10 | 10.0000 | 1 |
-| Text, p. 2 | Degrees of freedom of the correlation | 38 | 38.0000 | 1 |
-| Text, p. 8 | Degrees of freedom, restated | 38 | 38.0000 | 1 |
-| Text, p. 8 | Degrees of freedom on the TESS/GfK subset | 8 | 8.0000 | 1 |
-| Text, p. 8 | Degrees of freedom, TESS/GfK against MTurk | 8 | 8.0000 | 1 |
-| Text, p. 8 | Degrees of freedom, TESS/GfK against original | 8 | 8.0000 | 1 |
-| Figure 2 | Facets, one per study | 12 | 12.0000 | 1 |
-| Figure 2 | Estimates plotted | 90 | 90.0000 | 1 |
-| Figure 2 | Facets carrying two study versions | 9 | 9.0000 | 1 |
-| Figure 2 | Facets carrying three study versions | 3 | 3.0000 | 1 |
-| Figure 2 | Versions in each two-version facet | 2 | 2.0000 | 1 |
-| Figure 2 | Versions in each three-version facet | 3 | 3.0000 | 1 |
-| Figure 2 | Confidence level of the plotted intervals | 95 | 95.0004 | 1 |
-| Figure 3 | Coefficient pairs plotted | 40 | 40.0000 | 1 |
-| Figure 3 | Confidence level of the plotted intervals | 95 | 95.0004 | 1 |
-| Text, p. 10 | Simulation parameters varied | 2 | 2.0000 | 1 |
-| Figure 4 | Heterogeneity scale named for the high-power claim | 0.2 | 0.2000 | 1 |
-| Figure 4 | Heterogeneity scale named for the moderate-power claim | 0.1 | 0.1000 | 1 |
-| Figure 4 | Simulated power at 0.2 SD and 500 subjects per arm | 0.8 | 0.6100 | 0 |
-| Figure 4 | Simulated power at 0.1 SD and 500 subjects per arm | 0.6 | 0.1500 | 0 |
-| Table 1 | Estimates reported for concealed_carry | 1 | 1.0000 | 1 |
-| Table 1 | Estimates reported for death_penalty | 1 | 1.0000 | 1 |
-| Table 1 | Estimates reported for elite_endorsements | 2 | 2.0000 | 1 |
-| Table 1 | Estimates reported for expert_economists | 5 | 5.0000 | 1 |
-| Table 1 | Estimates reported for frame_breadth | 4 | 4.0000 | 1 |
-| Table 1 | Estimates reported for free_trade | 4 | 4.0000 | 1 |
-| Table 1 | Estimates reported for immigration | 2 | 2.0000 | 1 |
-| Table 1 | Estimates reported for mental_illness | 6 | 6.0000 | 1 |
-| Table 1 | Estimates reported for patriot_act | 9 | 9.0000 | 1 |
-| Table 1 | Estimates reported for polarization | 2 | 2.0000 | 1 |
-| Table 1 | Estimates reported for superordinate_id | 2 | 2.0000 | 1 |
-| Table 1 | Estimates reported for system_threat | 2 | 2.0000 | 1 |
-| Table 1 | Subjects in the original Haider-Markel and Joslyn (2001) analysis | 518 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Haider-Markel and Joslyn (2001) | 1009 | NA | NA |
-| Table 1 | Subjects in the original Brader (2005) analysis | 281 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Brader (2005) | 1709 | NA | NA |
-| Table 1 | Subjects in the original Peffley and Hurwitz (2007) analysis | 905 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Peffley and Hurwitz (2007) | 1285 | NA | NA |
-| Table 1 | Subjects in the original Transue (2007) analysis | 345 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Transue (2007) | 367 | NA | NA |
-| Table 1 | Subjects in the original Chong and Druckman (2010) analysis | 1302 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Chong and Druckman (2010) | 1887 | NA | NA |
-| Table 1 | Subjects in the original Nicholson (2012) analysis | 1491 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Nicholson (2012) | 1249 | NA | NA |
-| Table 1 | Subjects in the original McGinty, Webster and Barry (2013) analysis | 2935 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of McGinty, Webster and Barry (2013) | 2487 | NA | NA |
-| Table 1 | Subjects in the original Craig and Richeson (2014) analysis | 611 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Craig and Richeson (2014) | 709 | NA | NA |
-| Table 1 | Subjects in the original Johnston and Ballard (2016) analysis | 2041 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Johnston and Ballard (2016) | 2985 | NA | NA |
-| Table 1 | Subjects in the original Hiscox (2006) analysis | 1610 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Hiscox (2006) | 2972 | NA | NA |
-| Table 1 | Subjects in the TESS/GfK replication of Hiscox (2006) | 2084 | NA | NA |
-| Table 1 | Subjects in the original Levendusky and Malhotra (2016) analysis | 1041 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Levendusky and Malhotra (2016) | 1987 | NA | NA |
-| Table 1 | Subjects in the TESS/GfK replication of Levendusky and Malhotra (2016) | 1411 | NA | NA |
-| Table 1 | Subjects in the original Hopkins and Mummolo (2017) analysis | 3269 | NA | NA |
-| Table 1 | Subjects in the MTurk replication of Hopkins and Mummolo (2017) | 2972 | NA | NA |
-| Table 1 | Subjects in the TESS/GfK replication of Hopkins and Mummolo (2017) | 3189 | NA | NA |
-| Table 2 | Table 2, original, comparisons tested | 40 | 40.0000 | 1 |
-| Table 2 | Table 2, original, significant after the Holm correction | 0 | 0.0000 | 1 |
-| Table 2 | Table 2, mt, comparisons tested | 40 | 40.0000 | 1 |
-| Table 2 | Table 2, mt, significant after the Holm correction | 8 | 8.0000 | 1 |
-| Table 2 | Table 2, gfk, comparisons tested | 10 | 10.0000 | 1 |
-| Table 2 | Table 2, gfk, significant after the Holm correction | 0 | 0.0000 | 1 |
-| Table 2 | Table 2, original, significant before correction | 1 | 1.0000 | 1 |
-| Table 2 | Table 2, MTurk, significant before correction | 9 | 8.0000 | 0 |
-| Table 2 | Table 2, TESS/GfK, significant before correction | 2 | 1.0000 | 0 |
-| Text, p. 10 | Original comparisons tested, as the text states them | 40 | 40.0000 | 1 |
-| Text, p. 10 | MTurk comparisons tested, as the text states them | 40 | 40.0000 | 1 |
-| Text, p. 10 | TESS/GfK comparisons tested, as the text states them | 10 | 10.0000 | 1 |
-| Text, p. 10 | Original comparisons the text says rejected homogeneity | 1 | 1.0000 | 1 |
-| Text, p. 10 | MTurk comparisons the text says rejected homogeneity | 8 | 8.0000 | 1 |
-| Text, p. 10 | TESS/GfK comparisons the text says rejected homogeneity | 0 | 1.0000 | 0 |
-| Table A1 | Table A1 original entries reproduced of 40 published | 40 | 40.0000 | 1 |
-| Table A1 | Table A1 mt entries reproduced of 40 published | 40 | 40.0000 | 1 |
-| Table A1 | Table A1 gfk entries reproduced of 10 published | 10 | 10.0000 | 1 |
-| Online Appendix Table 1 | Treatment estimate and standard error cells reproduced of 4 published | 4 | 4.0000 | 1 |
+|:---|:---|:---|---:|:---|
+| Introduction, p. 2 | Pairs of estimates entering the correlation | 40 | 40.0000 | TRUE |
+| Introduction, p. 2 | MTurk-original correlation | 0.85 | 0.8512 | TRUE |
+| Results I, p. 8 | Original-MTurk pairs of coefficients | 40 | 40.0000 | TRUE |
+| Results I, p. 8 | MTurk-original correlation, restated | 0.85 | 0.8512 | TRUE |
+| Results I, p. 8 | MTurk-original correlation on the TESS/GfK subset | 0.90 | 0.9017 | TRUE |
+| Results I, p. 8 | TESS/GfK-MTurk correlation | 0.96 | 0.9582 | TRUE |
+| Results I, p. 8 | TESS/GfK-original correlation | 0.85 | 0.8517 | TRUE |
+| Results I, p. 8 | Coefficients significant in the original studies | 25 | 25.0000 | TRUE |
+| Results I, p. 8 | Of those, also significant on MTurk | 18 | 18.0000 | TRUE |
+| Results I, p. 8 | Coefficients not significant in the original studies | 15 | 15.0000 | TRUE |
+| Results I, p. 8 | Of those, also not significant on MTurk | 11 | 11.0000 | TRUE |
+| Results I, p. 8 | Replicated significant coefficients, restated inside the formula | 18 | 18.0000 | TRUE |
+| Results I, p. 8 | Replicated null coefficients, restated inside the formula | 11 | 11.0000 | TRUE |
+| Results I, p. 8 | Originally significant coefficients, restated inside the formula | 25 | 25.0000 | TRUE |
+| Results I, p. 8 | Originally null coefficients, restated inside the formula | 15 | 15.0000 | TRUE |
+| Results I, p. 8 | Replication rate as a percentage | 72.5 | 72.5000 | TRUE |
+| Abstract, p. 1 | Replication experiments reported | 15 | 15.0000 | TRUE |
+| Introduction, p. 2 | Replication studies, restated | 15 | 15.0000 | TRUE |
+| Results II, p. 10 | Replications the heterogeneity test covers | 15 | 15.0000 | TRUE |
+| Introduction, p. 2 | Study pairs behind the correlation | 12 | 12.0000 | TRUE |
+| Results I, p. 8 | Study pairs, restated | 12 | 12.0000 | TRUE |
+| Results I heading, p. 5 | Studies the section covers | 12 | 12.0000 | TRUE |
+| Results II, p. 10 | Original studies in the test | 12 | 12.0000 | TRUE |
+| Results II, p. 10 | Original studies, restated in the sentence | 12 | 12.0000 | TRUE |
+| Results II, p. 10 | Study versions the test covers | 27 | 27.0000 | TRUE |
+| Results I, p. 8 | Coefficients behind the correlation | 40 | 40.0000 | TRUE |
+| Results I, pp. 5-6 | Studies replicated on both platforms | 3 | 3.0000 | TRUE |
+| Results I, p. 5 | Cases with a fresh probability sample | 3 | 3.0000 | TRUE |
+| Results I, p. 8 | Studies with a TESS/GfK version | 3 | 3.0000 | TRUE |
+| Results I, p. 8 | Coefficients in those studies | 10 | 10.0000 | TRUE |
+| Introduction, p. 2 | Degrees of freedom of the correlation | 38 | 38.0000 | TRUE |
+| Results I, p. 8 | Degrees of freedom, restated | 38 | 38.0000 | TRUE |
+| Results I, p. 8 | Degrees of freedom on the TESS/GfK subset | 8 | 8.0000 | TRUE |
+| Results I, p. 8 | Degrees of freedom, TESS/GfK against MTurk | 8 | 8.0000 | TRUE |
+| Results I, p. 8 | Degrees of freedom, TESS/GfK against original | 8 | 8.0000 | TRUE |
+| Figure 2, p. 7 | Facets, one per study | 12 | 12.0000 | TRUE |
+| Figure 2, p. 7 | Estimates plotted | 90 | 90.0000 | TRUE |
+| Results I, p. 7 | Facets carrying two study versions | 9 | 9.0000 | TRUE |
+| Results I, p. 7 | Facets carrying three study versions | 3 | 3.0000 | TRUE |
+| Results I, p. 7 | Versions in each two-version facet | 2 | 2.0000 | TRUE |
+| Results I, p. 7 | Versions in each three-version facet | 3 | 3.0000 | TRUE |
+| Results I, p. 6 | Confidence level of the plotted intervals | 95 | 95.0004 | TRUE |
+| Figure 3, p. 9 | Coefficient pairs plotted | 40 | 40.0000 | TRUE |
+| Results I, p. 8 | Confidence level of the plotted intervals | 95 | 95.0004 | TRUE |
+| Results II, p. 10 | Simulation parameters varied | 2 | 2.0000 | TRUE |
+| Results II, p. 10 | Heterogeneity scale named for the high-power claim | 0.2 | 0.2000 | TRUE |
+| Results II, p. 10 | Heterogeneity scale named for the moderate-power claim | 0.1 | 0.1000 | TRUE |
+| Results II, p. 10 | Simulated power at 0.2 SD and 500 subjects per arm | 0.8 | 0.6100 | FALSE |
+| Results II, p. 10 | Simulated power at 0.1 SD and 500 subjects per arm | 0.6 | 0.1500 | FALSE |
+| Table 1, p. 5 | Estimates reported for concealed_carry | 1 | 1.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for death_penalty | 1 | 1.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for elite_endorsements | 2 | 2.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for expert_economists | 5 | 5.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for frame_breadth | 4 | 4.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for free_trade | 4 | 4.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for immigration | 2 | 2.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for mental_illness | 6 | 6.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for patriot_act | 9 | 9.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for polarization | 2 | 2.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for superordinate_id | 2 | 2.0000 | TRUE |
+| Table 1, p. 5 | Estimates reported for system_threat | 2 | 2.0000 | TRUE |
+| Table 1, p. 5 | Subjects in the original Haider-Markel and Joslyn (2001) analysis | 518 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Haider-Markel and Joslyn (2001) | 1009 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Brader (2005) analysis | 281 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Brader (2005) | 1709 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Peffley and Hurwitz (2007) analysis | 905 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Peffley and Hurwitz (2007) | 1285 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Transue (2007) analysis | 345 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Transue (2007) | 367 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Chong and Druckman (2010) analysis | 1302 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Chong and Druckman (2010) | 1887 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Nicholson (2012) analysis | 1491 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Nicholson (2012) | 1249 | NA | NA |
+| Table 1, p. 5 | Subjects in the original McGinty, Webster and Barry (2013) analysis | 2935 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of McGinty, Webster and Barry (2013) | 2487 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Craig and Richeson (2014) analysis | 611 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Craig and Richeson (2014) | 709 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Johnston and Ballard (2016) analysis | 2041 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Johnston and Ballard (2016) | 2985 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Hiscox (2006) analysis | 1610 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Hiscox (2006) | 2972 | NA | NA |
+| Table 1, p. 5 | Subjects in the TESS/GfK replication of Hiscox (2006) | 2084 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Levendusky and Malhotra (2016) analysis | 1041 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Levendusky and Malhotra (2016) | 1987 | NA | NA |
+| Table 1, p. 5 | Subjects in the TESS/GfK replication of Levendusky and Malhotra (2016) | 1411 | NA | NA |
+| Table 1, p. 5 | Subjects in the original Hopkins and Mummolo (2017) analysis | 3269 | NA | NA |
+| Table 1, p. 5 | Subjects in the MTurk replication of Hopkins and Mummolo (2017) | 2972 | NA | NA |
+| Table 1, p. 5 | Subjects in the TESS/GfK replication of Hopkins and Mummolo (2017) | 3189 | NA | NA |
+| Table 2, p. 11 | Table 2, original, comparisons tested | 40 | 40.0000 | TRUE |
+| Table 2, p. 11 | Table 2, original, significant after the Holm correction | 0 | 0.0000 | TRUE |
+| Table 2, p. 11 | Table 2, mt, comparisons tested | 40 | 40.0000 | TRUE |
+| Table 2, p. 11 | Table 2, mt, significant after the Holm correction | 8 | 8.0000 | TRUE |
+| Table 2, p. 11 | Table 2, gfk, comparisons tested | 10 | 10.0000 | TRUE |
+| Table 2, p. 11 | Table 2, gfk, significant after the Holm correction | 0 | 0.0000 | TRUE |
+| Table 2, p. 11 | Table 2, original, significant before correction | 1 | 1.0000 | TRUE |
+| Table 2, p. 11 | Table 2, MTurk, significant before correction | 9 | 8.0000 | FALSE |
+| Table 2, p. 11 | Table 2, TESS/GfK, significant before correction | 2 | 1.0000 | FALSE |
+| Results II, p. 10 | Original comparisons tested, as the text states them | 40 | 40.0000 | TRUE |
+| Results II, p. 10 | MTurk comparisons tested, as the text states them | 40 | 40.0000 | TRUE |
+| Results II, p. 10 | TESS/GfK comparisons tested, as the text states them | 10 | 10.0000 | TRUE |
+| Results II, p. 10 | Original comparisons the text says rejected homogeneity | 1 | 1.0000 | TRUE |
+| Results II, p. 10 | MTurk comparisons the text says rejected homogeneity | 8 | 8.0000 | TRUE |
+| Results II, p. 10 | TESS/GfK comparisons the text says rejected homogeneity | 0 | 1.0000 | FALSE |
+| Table A1, pp. 15-16 | Table A1 original entries reproduced of 40 published | 40 | 40.0000 | TRUE |
+| Table A1, pp. 15-16 | Table A1 mt entries reproduced of 40 published | 40 | 40.0000 | TRUE |
+| Table A1, pp. 15-16 | Table A1 gfk entries reproduced of 10 published | 10 | 10.0000 | TRUE |
+| Online Appendix Table 1 | Treatment estimate and standard error cells reproduced of 4 published | 4 | 4.0000 | TRUE |
 | Online Appendix Table 1 | Intercept, sample size and R-squared cells of appendix Table 1 (Gun Control) | 8 | NA | NA |
-| Online Appendix Table 2 | Treatment estimate and standard error cells reproduced of 8 published | 8 | 8.0000 | 1 |
+| Online Appendix Table 2 | Treatment estimate and standard error cells reproduced of 8 published | 8 | 8.0000 | TRUE |
 | Online Appendix Table 2 | Intercept, sample size and R-squared cells of appendix Table 2 (Immigration) | 16 | NA | NA |
-| Online Appendix Table 3 | Treatment estimate and standard error cells reproduced of 4 published | 4 | 4.0000 | 1 |
+| Online Appendix Table 3 | Treatment estimate and standard error cells reproduced of 4 published | 4 | 4.0000 | TRUE |
 | Online Appendix Table 3 | Intercept, sample size and R-squared cells of appendix Table 3 (Death Penalty) | 8 | NA | NA |
-| Online Appendix Table 4 | Treatment estimate and standard error cells reproduced of 8 published | 8 | 8.0000 | 1 |
+| Online Appendix Table 4 | Treatment estimate and standard error cells reproduced of 8 published | 8 | 8.0000 | TRUE |
 | Online Appendix Table 4 | Intercept, sample size and R-squared cells of appendix Table 4 (Superordinate Identity) | 8 | NA | NA |
-| Online Appendix Table 5 | Treatment estimate and standard error cells reproduced of 36 published | 36 | 36.0000 | 1 |
+| Online Appendix Table 5 | Treatment estimate and standard error cells reproduced of 36 published | 36 | 36.0000 | TRUE |
 | Online Appendix Table 5 | Intercept, sample size and R-squared cells of appendix Table 5 (Patriot Act) | 8 | NA | NA |
-| Online Appendix Table 6 | Treatment estimate and standard error cells reproduced of 8 published | 8 | 8.0000 | 1 |
+| Online Appendix Table 6 | Treatment estimate and standard error cells reproduced of 8 published | 8 | 8.0000 | TRUE |
 | Online Appendix Table 6 | Intercept, sample size and R-squared cells of appendix Table 6 (Elite Endorsements) | 24 | NA | NA |
-| Online Appendix Table 7 | Treatment estimate and standard error cells reproduced of 24 published | 24 | 24.0000 | 1 |
+| Online Appendix Table 7 | Treatment estimate and standard error cells reproduced of 24 published | 24 | 24.0000 | TRUE |
 | Online Appendix Table 7 | Intercept, sample size and R-squared cells of appendix Table 7 (Mental Illness) | 16 | NA | NA |
-| Online Appendix Table 8 | Treatment estimate and standard error cells reproduced of 8 published | 8 | 8.0000 | 1 |
+| Online Appendix Table 8 | Treatment estimate and standard error cells reproduced of 8 published | 8 | 8.0000 | TRUE |
 | Online Appendix Table 8 | Intercept, sample size and R-squared cells of appendix Table 8 (System Threat) | 16 | NA | NA |
-| Online Appendix Table 9 | Treatment estimate and standard error cells reproduced of 12 published | 12 | 12.0000 | 1 |
+| Online Appendix Table 9 | Treatment estimate and standard error cells reproduced of 12 published | 12 | 12.0000 | TRUE |
 | Online Appendix Table 9 | Intercept, sample size and R-squared cells of appendix Table 9 (Expert Economists: Immigration, Health Care and China) | 24 | NA | NA |
-| Online Appendix Table 10 | Treatment estimate and standard error cells reproduced of 8 published | 8 | 8.0000 | 1 |
+| Online Appendix Table 10 | Treatment estimate and standard error cells reproduced of 8 published | 8 | 8.0000 | TRUE |
 | Online Appendix Table 10 | Intercept, sample size and R-squared cells of appendix Table 10 (Expert Economists: Tax Cuts and Gold Standard) | 16 | NA | NA |
-| Online Appendix Table 11 | Treatment estimate and standard error cells reproduced of 24 published | 24 | 24.0000 | 1 |
+| Online Appendix Table 11 | Treatment estimate and standard error cells reproduced of 24 published | 24 | 24.0000 | TRUE |
 | Online Appendix Table 11 | Intercept, sample size and R-squared cells of appendix Table 11 (Free Trade) | 12 | NA | NA |
-| Online Appendix Table 12 | Treatment estimate and standard error cells reproduced of 6 published | 6 | 6.0000 | 1 |
+| Online Appendix Table 12 | Treatment estimate and standard error cells reproduced of 6 published | 6 | 6.0000 | TRUE |
 | Online Appendix Table 12 | Intercept, sample size and R-squared cells of appendix Table 12 (Extremity) | 12 | NA | NA |
-| Online Appendix Table 13 | Treatment estimate and standard error cells reproduced of 6 published | 6 | 6.0000 | 1 |
+| Online Appendix Table 13 | Treatment estimate and standard error cells reproduced of 6 published | 6 | 6.0000 | TRUE |
 | Online Appendix Table 13 | Intercept, sample size and R-squared cells of appendix Table 13 (Perceived Polarization) | 12 | NA | NA |
-| Online Appendix Table 14 | Treatment estimate and standard error cells reproduced of 6 published | 6 | 6.0000 | 1 |
+| Online Appendix Table 14 | Treatment estimate and standard error cells reproduced of 6 published | 6 | 6.0000 | TRUE |
 | Online Appendix Table 14 | Intercept, sample size and R-squared cells of appendix Table 14 (Crime Spending) | 12 | NA | NA |
-| Online Appendix Table 15 | Treatment estimate and standard error cells reproduced of 6 published | 6 | 6.0000 | 1 |
+| Online Appendix Table 15 | Treatment estimate and standard error cells reproduced of 6 published | 6 | 6.0000 | TRUE |
 | Online Appendix Table 15 | Intercept, sample size and R-squared cells of appendix Table 15 (Health Care Spending) | 12 | NA | NA |
-| Online Appendix Table 16 | Treatment estimate and standard error cells reproduced of 6 published | 6 | 6.0000 | 1 |
+| Online Appendix Table 16 | Treatment estimate and standard error cells reproduced of 6 published | 6 | 6.0000 | TRUE |
 | Online Appendix Table 16 | Intercept, sample size and R-squared cells of appendix Table 16 (Stimulus Spending) | 12 | NA | NA |
-| Online Appendix Table 17 | Treatment estimate and standard error cells reproduced of 6 published | 6 | 6.0000 | 1 |
+| Online Appendix Table 17 | Treatment estimate and standard error cells reproduced of 6 published | 6 | 6.0000 | TRUE |
 | Online Appendix Table 17 | Intercept, sample size and R-squared cells of appendix Table 17 (Terrorism Spending) | 12 | NA | NA |
-| Text, p. 6 | Most dependent variables in any of the deposit’s study groupings | 2 | 5.0000 | 0 |
-| Footnote 5 | Mean absolute standardized effect | 0.2 | 0.2002 | 1 |
-| Text, p. 8 | Pairs significant in both versions with opposite signs | 0 | 0.0000 | 1 |
-| Text, pp. 10-11 | Comparisons rejecting homogeneity in more than one sample | 1 | 1.0000 | 1 |
-| Figure 4 | Subjects per treatment arm the MTurk replications typically employ | 500 | NA | NA |
+| Results I, p. 6 | Most dependent variables in any of the deposit’s study groupings | 2 | 5.0000 | FALSE |
+| Footnote 5, p. 6 | Mean absolute standardized effect | 0.2 | 0.2002 | TRUE |
+| Results I, p. 8 | Pairs significant in both versions with opposite signs | 0 | 0.0000 | TRUE |
+| Results II, pp. 10-11 | Comparisons rejecting homogeneity in more than one sample | 1 | 1.0000 | TRUE |
+| Results II, p. 10 | Subjects per treatment arm the MTurk replications typically employ | 500 | NA | NA |
 
 Maintained rewrite verification: published value against rewrite output.
 
@@ -925,14 +928,14 @@ subjects per treatment arm.
 
 | Item       | Value                  |
 |:-----------|:-----------------------|
-| R version  | 4.6.1                  |
+| R version  | 4.6.2                  |
 | Platform   | aarch64-apple-darwin23 |
-| Date run   | 2026-11-08             |
+| Date run   | 2026-11-12             |
 | tidyverse  | 2.0.0                  |
-| sandwich   | 3.1.1                  |
+| sandwich   | 3.1.3                  |
 | lmtest     | 0.9.40                 |
-| estimatr   | 2.0.1.9000             |
+| estimatr   | 2.0.1                  |
 | metap      | 1.14                   |
-| knitr      | 1.51                   |
-| kableExtra | 1.4.0                  |
+| knitr      | 1.52                   |
+| kableExtra | 1.4.1                  |
 | here       | 1.0.2                  |

@@ -76,18 +76,18 @@ published_appendix <- read_csv(here::here("ground_truth", "published_appendix_ta
 # the typography of value_paper alone, and the four rows it cannot are rows with no
 # published value that no block reaches. The article's own statement is what the column was
 # recording.
-# expect_column carries the two claims this article's own record already declares cannot be
-# compared at printed precision, so the declaration lives beside the published value rather
-# than being typed again in the block that prints it. Table 2's MTurk cell moves with the R
-# 3.6.0 sample() change and the maintained pipeline keeps the current sampler; Table 2's
-# TESS/GfK cell holds the Original count, because that column reproduces the deposited output
-# file in its alphabetical row order rather than the table's printed one. The extraction's
-# notes column carries the full reason for each, and the ground truth files them as
-# defect_locus = environment and paper_internal. PROCEDURES makes both README findings rather
-# than errata: a corrected Table 2 would need the retired sampler, which maintained/output/
-# deliberately cannot produce.
-claim_start(published = published_claims, errata = errata_entries, format = "id",
-            expect_column = "expect")
+# Two claims this article's own record declares cannot be compared at printed precision, and
+# each says so at its own call site in the Table 2 section below with expect = "range" or
+# expect = "derived". The extraction's expect column records the same two declarations
+# beside the published value, and claim_start() does not read it. Table 2's MTurk cell moves
+# with the R 3.6.0 sample() change and the maintained pipeline keeps the current sampler;
+# Table 2's TESS/GfK cell holds the Original count, because that column reproduces the
+# deposited output file in its alphabetical row order rather than the table's printed one.
+# The extraction's notes column carries the full reason for each, and the ground truth files
+# them as defect_locus = environment and paper_internal. PROCEDURES makes both README
+# findings rather than errata: a corrected Table 2 would need the retired sampler, which
+# maintained/output/ deliberately cannot produce.
+claim_start(published = published_claims, errata = errata_entries, format = "id")
 
 # One row per estimate, one column per sample. build_ground_truth.R reaches the same
 # quantities through maintained/output/text_correlations.csv; this file builds them from
@@ -324,15 +324,23 @@ claim("text_one_shared_case", nrow(shared),
 #   Original                     40               1                      0
 #   Mechanical Turk              40               9                      8
 #   TESS/GfK                     10               2                      0
+# The N Significant column is claimed outside the loop, because two of its three cells carry
+# their own expectation: the MTurk cell is one draw of a sampler R has since retired, and the
+# TESS/GfK cell is compared against a count the table prints in the wrong row.
 for (s in c("original", "mt", "gfk")) {
   cell <- table_2[table_2$sample == s, ]
   claim(str_glue("t2_{s}_n_comparisons"), cell$n_comparisons,
         str_glue("Table 2, {s}, comparisons tested"))
-  claim(str_glue("t2_{s}_n_sig"), cell$n_sig,
-        str_glue("Table 2, {s}, significant before correction"))
   claim(str_glue("t2_{s}_n_sig_holm"), cell$n_sig_holm,
         str_glue("Table 2, {s}, significant after the Holm correction"))
 }
+
+claim("t2_original_n_sig", table_2$n_sig[table_2$sample == "original"],
+      "Table 2, original, significant before correction")
+claim("t2_mt_n_sig", table_2$n_sig[table_2$sample == "mt"],
+      "Table 2, mt, significant before correction", expect = "range")
+claim("t2_gfk_n_sig", table_2$n_sig[table_2$sample == "gfk"],
+      "Table 2, gfk, significant before correction", expect = "derived")
 
 # Appendix: Table A1 ----
 # TABLE A1  Original and Replication Average Treatment Effect Estimates
